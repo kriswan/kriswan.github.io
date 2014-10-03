@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://kriswan.github.io/</loc>
+    <lastmod>2014-10-04T00:54:51+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://kriswan.github.io/about/</loc>
+    <lastmod>2014-10-04T00:54:51+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://kriswan.github.io/archive/</loc>
+    <lastmod>2014-10-04T00:54:51+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://kriswan.github.io/2013/07/09/dbx2013.html</loc>
+    <lastmod>2013-07-09T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+   </url>
+   
+  <url>
+    <loc>http://kriswan.github.io/2013/03/21/hello-dropbox.html</loc>
+    <lastmod>2013-03-21T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+   </url>
+   
+  <url>
+    <loc>http://kriswan.github.io/2013/01/01/1950s-called-wanted-toolbox-back.html</loc>
+    <lastmod>2013-01-01T00:00:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+   </url>
+   
+</urlset>
