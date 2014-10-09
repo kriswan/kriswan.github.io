@@ -17,8 +17,14 @@ comments: no
 
 ###联系方式：
 
-个人邮箱: [kriswansf@gmail.com](mailto:kriswansf@gmail.com)
+&nbsp; &nbsp; Mail: [<img src="/assets/images/mail.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> kriswansf@gmail.com](mailto:kriswansf@gmail.com)
 
-github : [kriswan](https://github.com/kriswan)
+WeiBo: [<img src="/assets/images/weibo.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> @RagingBull_Kris](http://weibo.com/ragingbullkris)
+
+Qzone: [<img src="/assets/images/QQ.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> 544271927](http://user.qzone.qq.com/544271927)
+
+GitHub: [<img src="/assets/images/github.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> kriswan](https://github.com/kriswan)
+
+Twitter: [<img src="/assets/images/twitter.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> @kriswan](https://twitter.com/icanshutup)
 
 ----
