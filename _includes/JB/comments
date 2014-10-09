@@ -10,7 +10,7 @@
 {% when "facebook" %}
   {% include JB/comments-providers/facebook %}
 {% when "custom" %}
-  {% include comments.md %}
+  {% include custom/comments %}
 {% endcase %}
 
 {% endif %}
