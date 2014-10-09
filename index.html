@@ -1,0 +1,33 @@
+---
+layout: page
+title: "Recent Articles"
+description: ""
+---
+{% include JB/setup %}
+
+<div class="posts">
+    <div class="content full-bleed" id="recent-posts">
+        {% for post in site.posts limit:25 %}<a
+            href="{{ post.url }}" class="post-excerpt">
+        <div class="padded-content">
+            <div class="title">
+                <span style="font-size:14px;color:red">{{ post.date | date:"%Y-%m-%d" }}</span>
+                &raquo;
+                {{ post.title }}
+                {%  if post.description %}
+                <span class="body">
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    {{ " **** " }} {{ post.description | strip_html }}</span>
+                {% else %}
+                <span class="body">{{ post.excerpt | strip_html }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>{% endfor %}
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <div class="end">
+            <a href="/archive.html">More...</a>
+        </div>
+    </div>
+</div>
+
