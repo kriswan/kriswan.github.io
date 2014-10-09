@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "introduce(自我介绍)"
+title: "Self-introduction"
 description: "自我介绍"
 category: 
 tags: []
