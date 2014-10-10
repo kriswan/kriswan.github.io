@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "learning jekyll"
-description: ""
+description: "jekyll 学习"
 category: "jekyll"
 tags: [jekyll]
 ---
