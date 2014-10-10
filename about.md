@@ -31,3 +31,5 @@ GitHub: [<img src="/assets/images/github.png" width="29" height="29" style="disp
 Twitter: [<img src="/assets/images/twitter.png" width="29" height="29" style="display:inline-block;vertical-align:middle"> @kriswan](https://twitter.com/icanshutup)
 
 ----
+
+{% include comments %}
