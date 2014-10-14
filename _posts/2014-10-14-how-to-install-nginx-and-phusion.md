@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "how to install nginx and phusion"
+title: "How to install nginx and phusion"
 description: "安装和配置nginx 和 phusion"
 category: 
 tags: [nginx,phusion]
