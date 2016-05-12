@@ -13,7 +13,6 @@ comments: no
 
 喜欢干净整洁的代码，轻微代码洁癖。
 
-![图片](/assets/images/kriswan.jpg)
 
 
 ----
