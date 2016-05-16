@@ -4,6 +4,18 @@ title: Hello World
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 ## Quick Start
+{% centerquote %} 文本剧中1 {% endcenterquote %}
+{% cq %} 文本剧中2 {% endcq %}
+
+{% fullimage /images/IMG_6287.JPG, alt, title %}
+{% fi /images/IMG_6322.JPG, alt, title %}
+
+###test 图片
+
+/images/IMG_6287.JPG
+
+![/images/IMG_6322.JPG](/images/IMG_6322.JPG)
+
 
 ### Create a new post
 

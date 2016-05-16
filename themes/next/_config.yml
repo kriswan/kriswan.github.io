@@ -227,45 +227,44 @@ auto_excerpt:
 
 # MathJax Support
 mathjax:
-  enable: false
+  enable: true
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 
 # Swiftype Search API Key
-#swiftype_key:
+swiftype_key: LxvsiJiNBRhCHDnosEhG
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: e18f4cb94e0d8682b5f94f689e9fe988 #百度统计
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+duoshuo_shortname: kriswan  #多说站点kriswan.duoshuo.com
 
 # Disqus
-#disqus_shortname:
+disqus_shortname: kriswansblog #https://kriswansblog.disqus.com/admin/setup/
 
 # Baidu Share
 # Available value:
 #    button | slide
-#baidushare:
+baidushare: true
 ##  type: button
 
 # Share
-#jiathis:
+jiathis: true
 #add_this_id:
 
 # Share
-#duoshuo_share: true
+duoshuo_share: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-#google_site_verification:
-
+google_site_verification: Fw42hLJt-jpObOzc54Ir2jHmNj466D0lxgaQhcJdAGg
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-77780292-1 #https://analytics.google.com/analytics/
 
 # CNZZ count
-#cnzz_siteid:
+cnzz_siteid: 1259154409
 
 
 # Make duoshuo show UA
@@ -274,9 +273,10 @@ mathjax:
 duoshuo_info:
   ua_enable: true
   admin_enable: false
-  user_id: 0
+  user_id: 9209638
   #admin_nickname: Author
 
+duoshuo_hotartical: true
 
 # Facebook SDK Support.
 # https://github.com/iissnan/hexo-theme-next/pull/410
@@ -299,22 +299,22 @@ leancloud_visitors:
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: true
-  site_uv_header: <i class="fa fa-user"></i>
-  site_uv_footer:
+  site_uv_header: <i class="fa fa-user">本站访客数</i>
+  site_uv_footer: 人次
   # custom pv span for the whole site
   site_pv: true
-  site_pv_header: <i class="fa fa-eye"></i>
-  site_pv_footer:
+  site_pv_header: <i class="fa fa-eye">本站总访问量</i>
+  site_pv_footer: 次
   # custom pv span for one page only
   page_pv: true
-  page_pv_header: <i class="fa fa-file-o"></i>
-  page_pv_footer:
+  page_pv_header: <i class="fa fa-file-o">本文总阅读量</i>
+  page_pv_footer: 次
 
 # Tencent analytics ID
-# tencent_analytics:
+# tencent_analytics: 56250713
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
 baidu_push: false
@@ -343,36 +343,31 @@ vendors:
   _internal: vendors
 
   # Internal version: 2.1.3
-  jquery:
+  jquery: //cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js
 
   # Internal version: 2.1.5
-  # http://fancyapps.com/fancybox/
-  fancybox:
-  fancybox_css:
+  # Fancybox: http://fancyapps.com/fancybox/
+  fancybox: //cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js
+  fancybox_css: //cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css
 
   # Internal version: 1.0.6
-  # https://github.com/ftlabs/fastclick
-  fastclick:
+  fastclick: //cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js
 
   # Internal version: 1.9.7
-  # https://github.com/tuupola/jquery_lazyload
-  lazyload:
+  lazyload: //cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js
 
   # Internal version: 1.2.1
-  # http://VelocityJS.org
-  velocity:
+  velocity: //cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js
 
   # Internal version: 1.2.1
-  # http://VelocityJS.org
-  velocity_ui:
+  velocity_ui: //cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js
 
   # Internal version: 0.7.9
-  # https://faisalman.github.io/ua-parser-js/
-  ua_parser:
+  ua_parser: //cdn.jsdelivr.net/ua-parser.js/0.7.10/ua-parser.min.js
 
   # Internal version: 4.4.0
   # http://fontawesome.io/
-  fontawesome:
+  fontawesome: //maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css
 
 
 # Assets

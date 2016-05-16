@@ -1,0 +1,370 @@
+<RepricingResponseType xmlns="urn:ctrip:api:flight:message:IntlBooking:RePricing:v1" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <ResponseHeader xmlns:d2p1="urn:ctrip:api:flight:data:messagetypes:v1">
+    <d2p1:Version>1.0</d2p1:Version>
+    <d2p1:SourceAppID>130102</d2p1:SourceAppID>
+    <d2p1:SessionID>825e0d24-3fd4-44c0-a3d5-9b4597420cc0</d2p1:SessionID>
+    <d2p1:TransactionID>825e0d24-3fd4-44c0-a3d5-9b4597420cc0</d2p1:TransactionID>
+    <d2p1:MessageID />
+    <d2p1:ChannelID>Affiliate</d2p1:ChannelID>
+    <d2p1:SubChannelID i:nil="true" />
+    <d2p1:MessageType>FlightIntl.Booking.API.Repricing.WebService</d2p1:MessageType>
+    <d2p1:CustomerID>testflight01</d2p1:CustomerID>
+    <d2p1:ServerIP>10.2.6.44</d2p1:ServerIP>
+    <d2p1:ReturnCode>0</d2p1:ReturnCode>
+  </ResponseHeader>
+  <TokenNumber>2116051615000016882</TokenNumber>
+  <SuccessResult>
+    <ExecType>0</ExecType>
+    <PriceDetail xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1">
+      <d3p1:Currency>RMB</d3p1:Currency>
+      <d3p1:SalePrice>5750</d3p1:SalePrice>
+      <d3p1:PublishPrice>5750</d3p1:PublishPrice>
+      <d3p1:AccountPrice>5741</d3p1:AccountPrice>
+      <d3p1:Tax>193</d3p1:Tax>
+      <d3p1:FuelSurCharge>0</d3p1:FuelSurCharge>
+      <d3p1:SettlementPrice>0</d3p1:SettlementPrice>
+    </PriceDetail>
+    <OriginalPriceDetail xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1">
+      <d3p1:Currency>HKD</d3p1:Currency>
+      <d3p1:SalePrice>6710</d3p1:SalePrice>
+      <d3p1:PublishPrice>6710</d3p1:PublishPrice>
+      <d3p1:AccountPrice>6710</d3p1:AccountPrice>
+      <d3p1:Tax>225</d3p1:Tax>
+      <d3p1:FuelSurCharge>0</d3p1:FuelSurCharge>
+      <d3p1:SettlementPrice>0</d3p1:SettlementPrice>
+    </OriginalPriceDetail>
+    <PriceChanged>0</PriceChanged>
+    <TaxChanged>0</TaxChanged>
+    <PublishPriceChanged>0</PublishPriceChanged>
+    <SalePriceChanged>0</SalePriceChanged>
+    <TicketPolicyDetail>
+      <Expression>14AUG16BJS KA HKG502.74KA SHA Q5.79 353.84NUC862.37END ROE6.514200/OutBound:YRT2,YRT2 InBound:#@HKYA@-99</Expression>
+      <RefundRerouteEndorseDescription>最大停留:Travel must commence before MSC from HKG
+最短停留:
+:Ticket validity date New travel dates must be prior to: 2017-08-14 00:00.No text.Check with Agent for further details or Check full fare rules.
+去程可否更改:True
+去程改期:
+去程改期备注:Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).
+回程可否更改:False
+回程改期:
+回程改期备注:
+全部未使用可否退票:True
+全部未使用退票备注:Please Check Airline's Penalties.
+部分使用可否退票:True
+部分未使用退票备注:Please Check Airline's Penalties.
+NoShow备注:Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).
+</RefundRerouteEndorseDescription>
+      <MinStay />
+      <MaxStay>旅行必须开始在MSC从HKG之前</MaxStay>
+      <BaggageList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:Baggage>
+          <d4p1:OrigDestSeqID>1</d4p1:OrigDestSeqID>
+          <d4p1:RemarkID>6</d4p1:RemarkID>
+          <d4p1:TravelerCategoryCode>Adult</d4p1:TravelerCategoryCode>
+        </d4p1:Baggage>
+        <d4p1:Baggage>
+          <d4p1:OrigDestSeqID>2</d4p1:OrigDestSeqID>
+          <d4p1:RemarkID>0</d4p1:RemarkID>
+          <d4p1:TravelerCategoryCode>Adult</d4p1:TravelerCategoryCode>
+        </d4p1:Baggage>
+      </BaggageList>
+      <RemarkGroupList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:RemarkGroup>
+          <d4p1:OrigDestSeqID>1</d4p1:OrigDestSeqID>
+          <d4p1:NonRefund>N</d4p1:NonRefund>
+          <d4p1:NonReroute>H</d4p1:NonReroute>
+          <d4p1:RefundRemarkID>1</d4p1:RefundRemarkID>
+          <d4p1:RerouteRemarkID>2</d4p1:RerouteRemarkID>
+          <d4p1:NoShowRemarkID>5</d4p1:NoShowRemarkID>
+          <d4p1:RemarkID>0</d4p1:RemarkID>
+        </d4p1:RemarkGroup>
+        <d4p1:RemarkGroup>
+          <d4p1:OrigDestSeqID>2</d4p1:OrigDestSeqID>
+          <d4p1:NonRefund>N</d4p1:NonRefund>
+          <d4p1:NonReroute>T</d4p1:NonReroute>
+          <d4p1:RefundRemarkID>1</d4p1:RefundRemarkID>
+          <d4p1:RerouteRemarkID>4</d4p1:RerouteRemarkID>
+          <d4p1:NoShowRemarkID>5</d4p1:NoShowRemarkID>
+          <d4p1:RemarkID>0</d4p1:RemarkID>
+        </d4p1:RemarkGroup>
+      </RemarkGroupList>
+      <ServiceFee xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:FareRuleInfo>
+          <d4p1:OutboundRevalitaionFeeInfo>
+            <d4p1:Fee>0</d4p1:Fee>
+            <d4p1:CurrencyInfo>
+              <d4p1:Currency>HKD</d4p1:Currency>
+              <d4p1:ExchangeRate>0.83933500</d4p1:ExchangeRate>
+            </d4p1:CurrencyInfo>
+          </d4p1:OutboundRevalitaionFeeInfo>
+          <d4p1:OutboundExchangeFeeInfo>
+            <d4p1:Fee>0</d4p1:Fee>
+            <d4p1:CurrencyInfo>
+              <d4p1:Currency>HKD</d4p1:Currency>
+              <d4p1:ExchangeRate>0.83933500</d4p1:ExchangeRate>
+            </d4p1:CurrencyInfo>
+          </d4p1:OutboundExchangeFeeInfo>
+          <d4p1:OutboundRefundFeeInfo>
+            <d4p1:Fee>0</d4p1:Fee>
+            <d4p1:CurrencyInfo>
+              <d4p1:Currency>HKD</d4p1:Currency>
+              <d4p1:ExchangeRate>0.83933500</d4p1:ExchangeRate>
+            </d4p1:CurrencyInfo>
+          </d4p1:OutboundRefundFeeInfo>
+          <d4p1:InboundRefundFeeInfo>
+            <d4p1:Fee>0</d4p1:Fee>
+            <d4p1:CurrencyInfo>
+              <d4p1:Currency>HKD</d4p1:Currency>
+              <d4p1:ExchangeRate>0.83933500</d4p1:ExchangeRate>
+            </d4p1:CurrencyInfo>
+          </d4p1:InboundRefundFeeInfo>
+        </d4p1:FareRuleInfo>
+        <d4p1:BaseFeeInfo>
+          <d4p1:RevalidationFeeDetail>
+            <d4p1:CarrierFee>0</d4p1:CarrierFee>
+            <d4p1:CtripFee>200</d4p1:CtripFee>
+            <d4p1:ConsolidatorFee>0</d4p1:ConsolidatorFee>
+          </d4p1:RevalidationFeeDetail>
+          <d4p1:ExchangeFeeDetail>
+            <d4p1:CarrierFee>0</d4p1:CarrierFee>
+            <d4p1:CtripFee>200</d4p1:CtripFee>
+            <d4p1:ConsolidatorFee>0</d4p1:ConsolidatorFee>
+          </d4p1:ExchangeFeeDetail>
+          <d4p1:RefundFeeDetail>
+            <d4p1:CarrierFee>125</d4p1:CarrierFee>
+            <d4p1:CtripFee>200</d4p1:CtripFee>
+            <d4p1:ConsolidatorFee>0</d4p1:ConsolidatorFee>
+          </d4p1:RefundFeeDetail>
+          <d4p1:CurrencyInfo>
+            <d4p1:Currency>HKD</d4p1:Currency>
+            <d4p1:ExchangeRate>0.83933500</d4p1:ExchangeRate>
+          </d4p1:CurrencyInfo>
+          <d4p1:SettlementFee>0</d4p1:SettlementFee>
+          <d4p1:ARFee>0</d4p1:ARFee>
+        </d4p1:BaseFeeInfo>
+      </ServiceFee>
+      <TextRemarkList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:TextRemark>
+          <d4p1:RemarkID>1</d4p1:RemarkID>
+          <d4p1:TextCN>按航司客规为准。</d4p1:TextCN>
+          <d4p1:TextEN>Please Check Airline's Penalties.</d4p1:TextEN>
+        </d4p1:TextRemark>
+        <d4p1:TextRemark>
+          <d4p1:RemarkID>2</d4p1:RemarkID>
+          <d4p1:TextCN>机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前换开金额：机票的换开罚金在170CNY / 170CNY )之间。</d4p1:TextCN>
+          <d4p1:TextEN>Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).</d4p1:TextEN>
+        </d4p1:TextRemark>
+        <d4p1:TextRemark>
+          <d4p1:RemarkID>4</d4p1:RemarkID>
+          <d4p1:TextCN />
+          <d4p1:TextEN />
+        </d4p1:TextRemark>
+        <d4p1:TextRemark>
+          <d4p1:RemarkID>5</d4p1:RemarkID>
+          <d4p1:TextCN>出发前误机换开金额:允许有限制。误机机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前误机换开金额：机票的换开罚金在0CNY/0CNY 之间。</d4p1:TextCN>
+          <d4p1:TextEN>Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).</d4p1:TextEN>
+        </d4p1:TextRemark>
+        <d4p1:TextRemark>
+          <d4p1:RemarkID>6</d4p1:RemarkID>
+          <d4p1:TextCN>BJS-HKG:20公斤；HKG-SHA:20公斤</d4p1:TextCN>
+          <d4p1:TextEN>BJS-HKG:20公斤；HKG-SHA:20公斤</d4p1:TextEN>
+        </d4p1:TextRemark>
+      </TextRemarkList>
+    </TicketPolicyDetail>
+    <QTEDetailInfoList>
+      <QTEDetailInfo>
+        <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        <PriceChanged>0</PriceChanged>
+        <TaxChanged>0</TaxChanged>
+        <PublishPriceChanged>0</PublishPriceChanged>
+        <SalePriceChanged>0</SalePriceChanged>
+        <TicketPolicyDetail>
+          <Expression>14AUG16BJS KA HKG502.74KA SHA Q5.79 353.84NUC862.37END ROE6.514200/OutBound:YRT2,YRT2 InBound:#@HKYA@-99</Expression>
+          <RefundRerouteEndorseDescription>最大停留:Travel must commence before MSC from HKG
+最短停留:
+:Ticket validity date New travel dates must be prior to: 2017-08-14 00:00.No text.Check with Agent for further details or Check full fare rules.
+去程可否更改:True
+去程改期:
+去程改期备注:Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).
+回程可否更改:False
+回程改期:
+回程改期备注:
+全部未使用可否退票:True
+全部未使用退票备注:Please Check Airline's Penalties.
+部分使用可否退票:True
+部分未使用退票备注:Please Check Airline's Penalties.
+NoShow备注:Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).
+</RefundRerouteEndorseDescription>
+          <MinStay />
+          <MaxStay>旅行必须开始在MSC从HKG之前</MaxStay>
+          <BaggageList xmlns:d6p1="urn:ctrip:api:flight:data:flighttypes:v1">
+            <d6p1:Baggage>
+              <d6p1:OrigDestSeqID>1</d6p1:OrigDestSeqID>
+              <d6p1:RemarkID>6</d6p1:RemarkID>
+              <d6p1:TravelerCategoryCode>Adult</d6p1:TravelerCategoryCode>
+            </d6p1:Baggage>
+            <d6p1:Baggage>
+              <d6p1:OrigDestSeqID>2</d6p1:OrigDestSeqID>
+              <d6p1:RemarkID>0</d6p1:RemarkID>
+              <d6p1:TravelerCategoryCode>Adult</d6p1:TravelerCategoryCode>
+            </d6p1:Baggage>
+          </BaggageList>
+          <RemarkGroupList xmlns:d6p1="urn:ctrip:api:flight:data:flighttypes:v1">
+            <d6p1:RemarkGroup>
+              <d6p1:OrigDestSeqID>1</d6p1:OrigDestSeqID>
+              <d6p1:NonRefund>N</d6p1:NonRefund>
+              <d6p1:NonReroute>H</d6p1:NonReroute>
+              <d6p1:RefundRemarkID>1</d6p1:RefundRemarkID>
+              <d6p1:RerouteRemarkID>2</d6p1:RerouteRemarkID>
+              <d6p1:NoShowRemarkID>5</d6p1:NoShowRemarkID>
+              <d6p1:RemarkID>0</d6p1:RemarkID>
+            </d6p1:RemarkGroup>
+            <d6p1:RemarkGroup>
+              <d6p1:OrigDestSeqID>2</d6p1:OrigDestSeqID>
+              <d6p1:NonRefund>N</d6p1:NonRefund>
+              <d6p1:NonReroute>T</d6p1:NonReroute>
+              <d6p1:RefundRemarkID>1</d6p1:RefundRemarkID>
+              <d6p1:RerouteRemarkID>4</d6p1:RerouteRemarkID>
+              <d6p1:NoShowRemarkID>5</d6p1:NoShowRemarkID>
+              <d6p1:RemarkID>0</d6p1:RemarkID>
+            </d6p1:RemarkGroup>
+          </RemarkGroupList>
+          <ServiceFee xmlns:d6p1="urn:ctrip:api:flight:data:flighttypes:v1">
+            <d6p1:FareRuleInfo>
+              <d6p1:OutboundRevalitaionFeeInfo>
+                <d6p1:Fee>0</d6p1:Fee>
+                <d6p1:CurrencyInfo>
+                  <d6p1:Currency>HKD</d6p1:Currency>
+                  <d6p1:ExchangeRate>0.83933500</d6p1:ExchangeRate>
+                </d6p1:CurrencyInfo>
+              </d6p1:OutboundRevalitaionFeeInfo>
+              <d6p1:OutboundExchangeFeeInfo>
+                <d6p1:Fee>0</d6p1:Fee>
+                <d6p1:CurrencyInfo>
+                  <d6p1:Currency>HKD</d6p1:Currency>
+                  <d6p1:ExchangeRate>0.83933500</d6p1:ExchangeRate>
+                </d6p1:CurrencyInfo>
+              </d6p1:OutboundExchangeFeeInfo>
+              <d6p1:OutboundRefundFeeInfo>
+                <d6p1:Fee>0</d6p1:Fee>
+                <d6p1:CurrencyInfo>
+                  <d6p1:Currency>HKD</d6p1:Currency>
+                  <d6p1:ExchangeRate>0.83933500</d6p1:ExchangeRate>
+                </d6p1:CurrencyInfo>
+              </d6p1:OutboundRefundFeeInfo>
+              <d6p1:InboundRefundFeeInfo>
+                <d6p1:Fee>0</d6p1:Fee>
+                <d6p1:CurrencyInfo>
+                  <d6p1:Currency>HKD</d6p1:Currency>
+                  <d6p1:ExchangeRate>0.83933500</d6p1:ExchangeRate>
+                </d6p1:CurrencyInfo>
+              </d6p1:InboundRefundFeeInfo>
+            </d6p1:FareRuleInfo>
+            <d6p1:BaseFeeInfo>
+              <d6p1:RevalidationFeeDetail>
+                <d6p1:CarrierFee>0</d6p1:CarrierFee>
+                <d6p1:CtripFee>200</d6p1:CtripFee>
+                <d6p1:ConsolidatorFee>0</d6p1:ConsolidatorFee>
+              </d6p1:RevalidationFeeDetail>
+              <d6p1:ExchangeFeeDetail>
+                <d6p1:CarrierFee>0</d6p1:CarrierFee>
+                <d6p1:CtripFee>200</d6p1:CtripFee>
+                <d6p1:ConsolidatorFee>0</d6p1:ConsolidatorFee>
+              </d6p1:ExchangeFeeDetail>
+              <d6p1:RefundFeeDetail>
+                <d6p1:CarrierFee>125</d6p1:CarrierFee>
+                <d6p1:CtripFee>200</d6p1:CtripFee>
+                <d6p1:ConsolidatorFee>0</d6p1:ConsolidatorFee>
+              </d6p1:RefundFeeDetail>
+              <d6p1:CurrencyInfo>
+                <d6p1:Currency>HKD</d6p1:Currency>
+                <d6p1:ExchangeRate>0.83933500</d6p1:ExchangeRate>
+              </d6p1:CurrencyInfo>
+              <d6p1:SettlementFee>0</d6p1:SettlementFee>
+              <d6p1:ARFee>0</d6p1:ARFee>
+            </d6p1:BaseFeeInfo>
+          </ServiceFee>
+          <TextRemarkList xmlns:d6p1="urn:ctrip:api:flight:data:flighttypes:v1">
+            <d6p1:TextRemark>
+              <d6p1:RemarkID>1</d6p1:RemarkID>
+              <d6p1:TextCN>按航司客规为准。</d6p1:TextCN>
+              <d6p1:TextEN>Please Check Airline's Penalties.</d6p1:TextEN>
+            </d6p1:TextRemark>
+            <d6p1:TextRemark>
+              <d6p1:RemarkID>2</d6p1:RemarkID>
+              <d6p1:TextCN>机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前换开金额：机票的换开罚金在170CNY / 170CNY )之间。</d6p1:TextCN>
+              <d6p1:TextEN>Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).</d6p1:TextEN>
+            </d6p1:TextRemark>
+            <d6p1:TextRemark>
+              <d6p1:RemarkID>4</d6p1:RemarkID>
+              <d6p1:TextCN />
+              <d6p1:TextEN />
+            </d6p1:TextRemark>
+            <d6p1:TextRemark>
+              <d6p1:RemarkID>5</d6p1:RemarkID>
+              <d6p1:TextCN>出发前误机换开金额:允许有限制。误机机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前误机换开金额：机票的换开罚金在0CNY/0CNY 之间。</d6p1:TextCN>
+              <d6p1:TextEN>Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).</d6p1:TextEN>
+            </d6p1:TextRemark>
+            <d6p1:TextRemark>
+              <d6p1:RemarkID>6</d6p1:RemarkID>
+              <d6p1:TextCN>BJS-HKG:20公斤；HKG-SHA:20公斤</d6p1:TextCN>
+              <d6p1:TextEN>BJS-HKG:20公斤；HKG-SHA:20公斤</d6p1:TextEN>
+            </d6p1:TextRemark>
+          </TextRemarkList>
+        </TicketPolicyDetail>
+        <PriceInfo xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1">
+          <d5p1:IsDefault>false</d5p1:IsDefault>
+          <d5p1:TravelerCategoryCode>Adult</d5p1:TravelerCategoryCode>
+          <d5p1:Agency>
+            <d5p1:AgencyID>0</d5p1:AgencyID>
+            <d5p1:CityID>0</d5p1:CityID>
+          </d5p1:Agency>
+          <d5p1:CommissionRate>0</d5p1:CommissionRate>
+          <d5p1:SalesRate>0</d5p1:SalesRate>
+          <d5p1:Exchange>0</d5p1:Exchange>
+          <d5p1:ProfitType>0</d5p1:ProfitType>
+          <d5p1:PriceDetail>
+            <d5p1:Currency>RMB</d5p1:Currency>
+            <d5p1:SalePrice>5750</d5p1:SalePrice>
+            <d5p1:PublishPrice>5750</d5p1:PublishPrice>
+            <d5p1:AccountPrice>5741</d5p1:AccountPrice>
+            <d5p1:Tax>193</d5p1:Tax>
+            <d5p1:FuelSurCharge>0</d5p1:FuelSurCharge>
+            <d5p1:SettlementPrice>0</d5p1:SettlementPrice>
+          </d5p1:PriceDetail>
+          <d5p1:OriginalPriceDetail>
+            <d5p1:Currency>HKD</d5p1:Currency>
+            <d5p1:SalePrice>6710</d5p1:SalePrice>
+            <d5p1:PublishPrice>6710</d5p1:PublishPrice>
+            <d5p1:AccountPrice>6710</d5p1:AccountPrice>
+            <d5p1:Tax>225</d5p1:Tax>
+            <d5p1:FuelSurCharge>0</d5p1:FuelSurCharge>
+            <d5p1:SettlementPrice>0</d5p1:SettlementPrice>
+          </d5p1:OriginalPriceDetail>
+          <d5p1:CarryType>0</d5p1:CarryType>
+          <d5p1:IsPrivateFare>false</d5p1:IsPrivateFare>
+          <d5p1:DiscountPrice>0</d5p1:DiscountPrice>
+        </PriceInfo>
+        <TagList xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1">
+          <d5p1:Tag>
+            <d5p1:Key>AutoQTETransno</d5p1:Key>
+            <d5p1:Value>2116051615000016882</d5p1:Value>
+          </d5p1:Tag>
+          <d5p1:Tag>
+            <d5p1:Key>AutoQTEFlag</d5p1:Key>
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:Tag>
+          <d5p1:Tag>
+            <d5p1:Key>AutoQTEStatus</d5p1:Key>
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:Tag>
+          <d5p1:Tag>
+            <d5p1:Key>AutoQTELatestSendTime</d5p1:Key>
+            <d5p1:Value>2016-5-16 16:14:13</d5p1:Value>
+          </d5p1:Tag>
+        </TagList>
+      </QTEDetailInfo>
+    </QTEDetailInfoList>
+  </SuccessResult>
+  <ErrorResult xmlns:d2p1="urn:ctrip:api:flight:data:messagetypes:v1" i:nil="true" />
+</RepricingResponseType>

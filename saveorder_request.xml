@@ -1,0 +1,415 @@
+<SaveOrderRequestType xmlns="urn:ctrip:api:flight:message:IntlBooking:SaveOrder:v1" xmlns:d2p1="urn:ctrip:api:flight:data:messagetypes:v1" xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1" xmlns:ns4="urn:ctrip:api:flight:data:commontypes:v1">
+  <RequestHeader>
+    <d2p1:Version>1.0</d2p1:Version>
+    <d2p1:SourceAppID>130102</d2p1:SourceAppID>
+    <d2p1:SessionID>825e0d24-3fd4-44c0-a3d5-9b4597420cc0</d2p1:SessionID>
+    <d2p1:TransactionID>825e0d24-3fd4-44c0-a3d5-9b4597420cc0</d2p1:TransactionID>
+    <d2p1:MessageID />
+    <d2p1:ChannelID>Affiliate</d2p1:ChannelID>
+    <d2p1:SubChannelID>108324</d2p1:SubChannelID>
+    <d2p1:MessageType>FlightIntl.Aggregator.Order.SubmitOrder</d2p1:MessageType>
+    <d2p1:CustomerID>testflight01</d2p1:CustomerID>
+    <d2p1:LoggingLevel>0</d2p1:LoggingLevel>
+  </RequestHeader>
+  <Action>CreateOrder</Action>
+  <FlightProduct>
+    <FlightOrigDestList>
+      <FlightOrigDest>
+        <OrigDestSeqID>1</OrigDestSeqID>
+        <FlightSegmentList>
+          <FlightSegment>
+            <CarrierCode>KA</CarrierCode>
+            <FlightNumber>KA997</FlightNumber>
+            <DepartureCityCode>BJS</DepartureCityCode>
+            <ArrivalCityCode>HKG</ArrivalCityCode>
+            <DepartureAirportCode>PEK</DepartureAirportCode>
+            <ArrivalAirportCode>HKG</ArrivalAirportCode>
+            <TakeoffDateTime>2016-08-14T03:10:00.000+08:00</TakeoffDateTime>
+            <ArrivalDateTime>2016-08-14T06:30:00.000+08:00</ArrivalDateTime>
+            <Duration>200</Duration>
+            <EquipmentCode>320</EquipmentCode>
+            <SeatCountList>
+              <d7p1:SeatCount>
+                <d7p1:Class>Y</d7p1:Class>
+                <d7p1:Count>9</d7p1:Count>
+              </d7p1:SeatCount>
+            </SeatCountList>
+            <GroupID />
+            <TagList>
+              <d7p1:Tag>
+                <d7p1:Key>building</d7p1:Key>
+                <d7p1:Value>0,0</d7p1:Value>
+              </d7p1:Tag>
+            </TagList>
+            <SegmentSeqID>1</SegmentSeqID>
+            <FcGroupID>0</FcGroupID>
+            <PriceUnitIndex>0</PriceUnitIndex>
+          </FlightSegment>
+        </FlightSegmentList>
+      </FlightOrigDest>
+      <FlightOrigDest>
+        <OrigDestSeqID>2</OrigDestSeqID>
+        <FlightSegmentList>
+          <FlightSegment>
+            <CarrierCode>KA</CarrierCode>
+            <FlightNumber>KA858</FlightNumber>
+            <DepartureCityCode>HKG</DepartureCityCode>
+            <ArrivalCityCode>SHA</ArrivalCityCode>
+            <DepartureAirportCode>HKG</DepartureAirportCode>
+            <ArrivalAirportCode>SHA</ArrivalAirportCode>
+            <TakeoffDateTime>2016-08-21T10:00:00.000+08:00</TakeoffDateTime>
+            <ArrivalDateTime>2016-08-21T12:20:00.000+08:00</ArrivalDateTime>
+            <Duration>140</Duration>
+            <EquipmentCode>333</EquipmentCode>
+            <SeatCountList>
+              <d7p1:SeatCount>
+                <d7p1:Class>Y</d7p1:Class>
+                <d7p1:Count>9</d7p1:Count>
+              </d7p1:SeatCount>
+            </SeatCountList>
+            <GroupID />
+            <TagList>
+              <d7p1:Tag>
+                <d7p1:Key>building</d7p1:Key>
+                <d7p1:Value>39,10</d7p1:Value>
+              </d7p1:Tag>
+            </TagList>
+            <SegmentSeqID>1</SegmentSeqID>
+            <FcGroupID>0</FcGroupID>
+            <PriceUnitIndex>0</PriceUnitIndex>
+          </FlightSegment>
+        </FlightSegmentList>
+      </FlightOrigDest>
+    </FlightOrigDestList>
+    <PriceUnit>
+      <FareInfoList>
+        <FareInfo>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <Schedule />
+          <FareBasis>YRT2</FareBasis>
+          <FareSource>0</FareSource>
+          <PrivateFareType>0</PrivateFareType>
+          <TicketingCarrier />
+        </FareInfo>
+        <FareInfo>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <Schedule />
+          <FareBasis>YRT2</FareBasis>
+          <FareSource>0</FareSource>
+          <PrivateFareType>0</PrivateFareType>
+          <TicketingCarrier />
+        </FareInfo>
+      </FareInfoList>
+      <PriceInfoList>
+        <d7p1:PriceInfo>
+          <d7p1:IsDefault>true</d7p1:IsDefault>
+          <d7p1:Expression>@HKYA@-99</d7p1:Expression>
+          <d7p1:TravelerCategoryCode>Adult</d7p1:TravelerCategoryCode>
+          <d7p1:Agency>
+            <d7p1:AgencyID>440</d7p1:AgencyID>
+            <d7p1:AgencyCode>HKYA</d7p1:AgencyCode>
+            <d7p1:CityID>58</d7p1:CityID>
+            <d7p1:CityCode>HKG</d7p1:CityCode>
+            <d7p1:AgencyName />
+            <d7p1:OfficialName>香港永安旅遊有限公司 13300280</d7p1:OfficialName>
+          </d7p1:Agency>
+          <d7p1:CommissionRate>0</d7p1:CommissionRate>
+          <d7p1:SalesRate>1</d7p1:SalesRate>
+          <d7p1:Exchange>0.85555555</d7p1:Exchange>
+          <d7p1:ProfitType>0</d7p1:ProfitType>
+          <d7p1:TicketRemark />
+          <d7p1:PriceDetail>
+            <d7p1:Currency>RMB</d7p1:Currency>
+            <d7p1:SalePrice>5750</d7p1:SalePrice>
+            <d7p1:PublishPrice>5750</d7p1:PublishPrice>
+            <d7p1:AccountPrice>5741</d7p1:AccountPrice>
+            <d7p1:Tax>193</d7p1:Tax>
+            <d7p1:FuelSurCharge>0</d7p1:FuelSurCharge>
+            <d7p1:SettlementPrice>0</d7p1:SettlementPrice>
+          </d7p1:PriceDetail>
+          <d7p1:OriginalPriceDetail>
+            <d7p1:Currency>HKD</d7p1:Currency>
+            <d7p1:SalePrice>6710</d7p1:SalePrice>
+            <d7p1:PublishPrice>6710</d7p1:PublishPrice>
+            <d7p1:AccountPrice>6710</d7p1:AccountPrice>
+            <d7p1:Tax>225</d7p1:Tax>
+            <d7p1:FuelSurCharge>0</d7p1:FuelSurCharge>
+            <d7p1:SettlementPrice>0</d7p1:SettlementPrice>
+          </d7p1:OriginalPriceDetail>
+          <d7p1:OfficeNo>HKGH23722</d7p1:OfficeNo>
+          <d7p1:CarryType>0</d7p1:CarryType>
+          <d7p1:TagList>
+            <d7p1:Tag>
+              <d7p1:Key>SP</d7p1:Key>
+              <d7p1:Value>,,,,,,,</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>CSP</d7p1:Key>
+              <d7p1:Value>,,0,0,</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>NetP</d7p1:Key>
+              <d7p1:Value>HKD,6710</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>RealReservationType</d7p1:Key>
+              <d7p1:Value>4</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>CommitionSource</d7p1:Key>
+              <d7p1:Value>3</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>FullTax</d7p1:Key>
+              <d7p1:Value>228</d7p1:Value>
+            </d7p1:Tag>
+            <d7p1:Tag>
+              <d7p1:Key>YQYRPolicyIds</d7p1:Key>
+              <d7p1:Value>11,0</d7p1:Value>
+            </d7p1:Tag>
+          </d7p1:TagList>
+          <d7p1:IsPrivateFare>false</d7p1:IsPrivateFare>
+          <d7p1:DiscountPrice>0</d7p1:DiscountPrice>
+        </d7p1:PriceInfo>
+      </PriceInfoList>
+      <BaggageList>
+        <Baggage>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <Remark>
+            <RemarkID>6</RemarkID>
+            <RemarkInfoCn>BJS-HKG:20公斤；HKG-SHA:20公斤</RemarkInfoCn>
+            <RemarkInfoEn>BJS-HKG:20公斤；HKG-SHA:20公斤</RemarkInfoEn>
+          </Remark>
+          <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        </Baggage>
+        <Baggage>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        </Baggage>
+      </BaggageList>
+      <RemarkGroupList>
+        <RemarkGroup>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <NonRefund>N</NonRefund>
+          <NonReroute>H</NonReroute>
+          <RefundRemark>
+            <RemarkID>2</RemarkID>
+            <RemarkInfoCn>机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前换开金额：机票的换开罚金在170CNY / 170CNY )之间。</RemarkInfoCn>
+            <RemarkInfoEn>Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).</RemarkInfoEn>
+          </RefundRemark>
+          <RerouteRemark>
+            <RemarkID>2</RemarkID>
+            <RemarkInfoCn>机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前换开金额：机票的换开罚金在170CNY / 170CNY )之间。</RemarkInfoCn>
+            <RemarkInfoEn>Ticket validity date New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure(Penalty fee for ticket reissue between:  170CNY / 170CNY ).</RemarkInfoEn>
+          </RerouteRemark>
+          <NoShowRemark>
+            <RemarkID>5</RemarkID>
+            <RemarkInfoCn>出发前误机换开金额:允许有限制。误机机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前误机换开金额：机票的换开罚金在0CNY/0CNY 之间。</RemarkInfoCn>
+            <RemarkInfoEn>Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).</RemarkInfoEn>
+          </NoShowRemark>
+        </RemarkGroup>
+        <RemarkGroup>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <NonRefund>N</NonRefund>
+          <NonReroute>T</NonReroute>
+          <RefundRemark>
+            <RemarkID>4</RemarkID>
+            <RemarkInfoCn />
+            <RemarkInfoEn />
+          </RefundRemark>
+          <RerouteRemark>
+            <RemarkID>4</RemarkID>
+            <RemarkInfoCn />
+            <RemarkInfoEn />
+          </RerouteRemark>
+          <NoShowRemark>
+            <RemarkID>5</RemarkID>
+            <RemarkInfoCn>出发前误机换开金额:允许有限制。误机机票有效期新的旅行日期必须在2017-05-16 00:00之前。出发前误机换开金额：机票的换开罚金在0CNY/0CNY 之间。</RemarkInfoCn>
+            <RemarkInfoEn>Reissue and amount before departure NO SHOW:Allowed with restrictions.Ticket validity date NO SHOW New travel dates must be prior to:2017-05-16 00:00.Reissue and amount before departure NO SHOW(Penalty fee for ticket reissue between:0CNY/0CNY).</RemarkInfoEn>
+          </NoShowRemark>
+        </RemarkGroup>
+      </RemarkGroupList>
+      <BookingClassInfoList>
+        <d7p1:BookingClassInfo>
+          <d7p1:BookingClass>Y</d7p1:BookingClass>
+          <d7p1:CabinClass>Economy</d7p1:CabinClass>
+          <d7p1:Count>9</d7p1:Count>
+        </d7p1:BookingClassInfo>
+        <d7p1:BookingClassInfo>
+          <d7p1:BookingClass>Y</d7p1:BookingClass>
+          <d7p1:CabinClass>Economy</d7p1:CabinClass>
+          <d7p1:Count>9</d7p1:Count>
+        </d7p1:BookingClassInfo>
+      </BookingClassInfoList>
+      <EngineType>Amadeus</EngineType>
+      <PriceUnitMisc>
+        <SourceFareIDs />
+        <TicketingCarrier>KA</TicketingCarrier>
+        <TicketType>0001</TicketType>
+        <TicketRemark />
+        <TravelerEligibility>NOR</TravelerEligibility>
+        <RecommendLevel>2</RecommendLevel>
+        <MinPassengerCount>1</MinPassengerCount>
+        <MaxPassengerCount>9</MaxPassengerCount>
+        <MinStay />
+        <MaxStay />
+        <OutboundDateRanges>
+          <d7p1:AllowedDateRange />
+          <d7p1:ForbiddenDateRange />
+        </OutboundDateRanges>
+        <InboundDateRanges>
+          <d7p1:AllowedDateRange />
+          <d7p1:ForbiddenDateRange />
+        </InboundDateRanges>
+        <BookingDeadline>
+          <d7p1:AdvReservationFrom />
+          <d7p1:AdvReservationTo />
+          <d7p1:IsImmediateBooking>true</d7p1:IsImmediateBooking>
+          <d7p1:BeforeDeparture />
+          <d7p1:AfterReservation />
+        </BookingDeadline>
+        <PUFareType>OTHER</PUFareType>
+        <InventoryType>None</InventoryType>
+        <TicketingDeadline>2016-05-16T17:44:00.000+08:00</TicketingDeadline>
+        <CarrierTicketingDeadline>2016-08-14T23:59:00.000+08:00</CarrierTicketingDeadline>
+        <ResultCacheKey>7F4DF26AEFBFFDA70E7D98B12AB513F2</ResultCacheKey>
+        <TagList>
+          <d7p1:Tag>
+            <d7p1:Key>PrivateFareType</d7p1:Key>
+            <d7p1:Value>1,0|2,0</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>TicketingCarrier</d7p1:Key>
+            <d7p1:Value>KA</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>MinPassengerCount</d7p1:Key>
+            <d7p1:Value>1</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>ResultCacheKey</d7p1:Key>
+            <d7p1:Value>7F4DF26AEFBFFDA70E7D98B12AB513F2</d7p1:Value>
+          </d7p1:Tag>
+        </TagList>
+      </PriceUnitMisc>
+    </PriceUnit>
+  </FlightProduct>
+  <TravelerInfoList>
+    <Traveler>
+      <PersonName>XIAO/LIANG</PersonName>
+      <Gender>Male</Gender>
+      <IDCard>
+        <d7p1:IDCardType>PASSPORT</d7p1:IDCardType>
+        <d7p1:IDCardNo>G12344356</d7p1:IDCardNo>
+        <d7p1:CardTimeLimit>2016-11-30T00:00:00.000+08:00</d7p1:CardTimeLimit>
+      </IDCard>
+      <TravelerCategoryCode>Adult</TravelerCategoryCode>
+      <TravelerEligibilityCode>CHD</TravelerEligibilityCode>
+      <Birthday>1980-01-31T00:00:00.000+08:00</Birthday>
+      <Nationality>CN</Nationality>
+      <PassportType>Travel</PassportType>
+      <Mobilephone />
+      <SaveCommonTraveler>false</SaveCommonTraveler>
+    </Traveler>
+    <Traveler>
+      <PersonName>ZHAO/YUANYUAN</PersonName>
+      <Gender>Male</Gender>
+      <IDCard>
+        <d7p1:IDCardType>PASSPORT</d7p1:IDCardType>
+        <d7p1:IDCardNo>G87451</d7p1:IDCardNo>
+        <d7p1:CardTimeLimit>2020-02-26T00:00:00.000+08:00</d7p1:CardTimeLimit>
+      </IDCard>
+      <TravelerCategoryCode>Adult</TravelerCategoryCode>
+      <TravelerEligibilityCode>CHD</TravelerEligibilityCode>
+      <Birthday>1990-10-10T00:00:00.000+08:00</Birthday>
+      <Nationality>CN</Nationality>
+      <PassportType>Travel</PassportType>
+      <Mobilephone />
+      <SaveCommonTraveler>false</SaveCommonTraveler>
+    </Traveler>
+  </TravelerInfoList>
+  <ContactInfo>
+    <PersonName>wangsan</PersonName>
+    <Gender>Male</Gender>
+    <ContactInfoDetail>
+      <ContactTel>15712835717</ContactTel>
+      <ContactEmail />
+      <MobilePhone1>15712835717</MobilePhone1>
+    </ContactInfoDetail>
+    <ConfirmStyle>TEL</ConfirmStyle>
+  </ContactInfo>
+  <DeliveryInfo>
+    <DeliveryType>PJN</DeliveryType>
+    <PayTypeCanUse>Alian</PayTypeCanUse>
+  </DeliveryInfo>
+  <OrderMiscInfo>
+    <IsInstancePurchase>true</IsInstancePurchase>
+    <IsQuickBooking>false</IsQuickBooking>
+    <SubAction>NewOrder</SubAction>
+    <OrderReference>0</OrderReference>
+    <IsManual>false</IsManual>
+    <TripType>MD</TripType>
+    <LocaleID>0</LocaleID>
+    <SourceURL>bj6.trade.qunar.com</SourceURL>
+    <UseConsumerCoupon>false</UseConsumerCoupon>
+    <BookAbilityTokenNumber>2116051615000016883</BookAbilityTokenNumber>
+    <QTEInfo>
+      <AutoQTETransno>2116051615000016882</AutoQTETransno>
+      <AutoQTEFlag>1</AutoQTEFlag>
+      <AutoQTEStatus>1</AutoQTEStatus>
+      <AutoQTELatestSendTime>2016-05-16T16:14:13.000+08:00</AutoQTELatestSendTime>
+      <AutoQTEErrorCode>0</AutoQTEErrorCode>
+    </QTEInfo>
+    <AffiliateInfo>
+      <AllianceID>1</AllianceID>
+      <SID>50</SID>
+      <OuID>abcDFG645354</OuID>
+      <AllianceOrderId />
+    </AffiliateInfo>
+    <VersionFlag>0</VersionFlag>
+    <BookingBeginTime>2016-05-16T16:14:37.311+08:00</BookingBeginTime>
+    <ReModifyOrder>false</ReModifyOrder>
+    <ClientIp>10.90.184.138</ClientIp>
+    <QTEDetailInfoList>
+      <QTEDetailInfo>
+        <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        <TagList>
+          <d7p1:Tag>
+            <d7p1:Key>AutoQTETransno</d7p1:Key>
+            <d7p1:Value>2116051615000016882</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>AutoQTEFlag</d7p1:Key>
+            <d7p1:Value>1</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>AutoQTEStatus</d7p1:Key>
+            <d7p1:Value>1</d7p1:Value>
+          </d7p1:Tag>
+          <d7p1:Tag>
+            <d7p1:Key>AutoQTELatestSendTime</d7p1:Key>
+            <d7p1:Value>2016-5-16 16:14:13</d7p1:Value>
+          </d7p1:Tag>
+        </TagList>
+      </QTEDetailInfo>
+    </QTEDetailInfoList>
+    <TagInfo>
+      <SearchResultTagList>
+        <d7p1:Tag>
+          <d7p1:Key>AmadeusSessionId</d7p1:Key>
+          <d7p1:Value>RequestID:9740a730-720e-461f-a126-4ce011419b02,HKYA:014UV7IZ6J</d7p1:Value>
+        </d7p1:Tag>
+      </SearchResultTagList>
+      <PriceTagList>
+        <d7p1:Tag>
+          <d7p1:Key>PlanCategory</d7p1:Key>
+          <d7p1:Value>Prioritizing</d7p1:Value>
+        </d7p1:Tag>
+      </PriceTagList>
+    </TagInfo>
+  </OrderMiscInfo>
+</SaveOrderRequestType>
+
+
+返回错误：
+下单处理异常:创单接口返回失败,无法下单! 'Element' 'TravelerCategoryCode' from namespace 'urn:ctrip:api:flight:message:IntlBooking:SaveOrder:v1' is not expected. Expecting element 'Remark'

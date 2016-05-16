@@ -1,0 +1,391 @@
+<SearchResponseType xmlns="urn:ctrip:api:flight:message:Product:IntlSearch:v1" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <ResponseHeader xmlns:d2p1="urn:ctrip:api:flight:data:messagetypes:v1">
+    <d2p1:Version>1.0</d2p1:Version>
+    <d2p1:SourceAppID>130102</d2p1:SourceAppID>
+    <d2p1:SessionID>9740a730-720e-461f-a126-4ce011419b02</d2p1:SessionID>
+    <d2p1:TransactionID>9740a730-720e-461f-a126-4ce011419b02</d2p1:TransactionID>
+    <d2p1:MessageID />
+    <d2p1:ChannelID>Affiliate</d2p1:ChannelID>
+    <d2p1:SubChannelID>108324</d2p1:SubChannelID>
+    <d2p1:MessageType>FlightIntl.Booking.FlightAggregateSearch.SearchFlights</d2p1:MessageType>
+    <d2p1:CustomerID>testflight01</d2p1:CustomerID>
+    <d2p1:ServerIP>10.2.6.44</d2p1:ServerIP>
+    <d2p1:ReturnCode>0</d2p1:ReturnCode>
+    <d2p1:DiagOutput>Amadeus(SUCCESS:14/14)</d2p1:DiagOutput>
+  </ResponseHeader>
+  <SearchResult>
+    <FlightProductGroupList>
+      <FlightProductGroup>
+        <FlightSegmentList>
+          <FlightSegment>
+            <OrigDestSeqID>1</OrigDestSeqID>
+            <SegmentSeqID>1</SegmentSeqID>
+            <IsAddOn>false</IsAddOn>
+            <FlightID>12</FlightID>
+            <GroupID />
+            <PriceUnitIndex>0</PriceUnitIndex>
+            <FcGroupID>0</FcGroupID>
+            <PrimarySegment>0</PrimarySegment>
+          </FlightSegment>
+          <FlightSegment>
+            <OrigDestSeqID>2</OrigDestSeqID>
+            <SegmentSeqID>1</SegmentSeqID>
+            <IsAddOn>false</IsAddOn>
+            <FlightID>13</FlightID>
+            <GroupID />
+            <PriceUnitIndex>0</PriceUnitIndex>
+            <FcGroupID>0</FcGroupID>
+            <PrimarySegment>0</PrimarySegment>
+          </FlightSegment>
+        </FlightSegmentList>
+        <PriceList>
+          <Price>
+            <PriceUnitID>1</PriceUnitID>
+            <ProductID>7-0</ProductID>
+            <RouteSearchToken>{Amadeus,3,0,,,0}{KA997,1,Y,Y,,|KA858,2,Y,Y,,}{5750,193|KA|0}{NOR}</RouteSearchToken>
+            <FlyerFlag>None</FlyerFlag>
+            <RecommendsHotel>false</RecommendsHotel>
+            <CashBack>0</CashBack>
+            <BookingClassInfoList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1">
+              <d7p1:BookingClassInfo>
+                <d7p1:BookingClass>Y</d7p1:BookingClass>
+                <d7p1:CabinClass>Economy</d7p1:CabinClass>
+                <d7p1:Count>9</d7p1:Count>
+              </d7p1:BookingClassInfo>
+              <d7p1:BookingClassInfo>
+                <d7p1:BookingClass>Y</d7p1:BookingClass>
+                <d7p1:CabinClass>Economy</d7p1:CabinClass>
+                <d7p1:Count>9</d7p1:Count>
+              </d7p1:BookingClassInfo>
+            </BookingClassInfoList>
+            <PlanInfo xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1">
+              <d7p1:PlanCategory>Prioritizing</d7p1:PlanCategory>
+              <d7p1:SortIndicator>0</d7p1:SortIndicator>
+              <d7p1:Points>0</d7p1:Points>
+              <d7p1:ExpireTime>0001-01-01T00:00:00</d7p1:ExpireTime>
+            </PlanInfo>
+            <TagList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1">
+              <d7p1:Tag>
+                <d7p1:Key>PlanCategory</d7p1:Key>
+                <d7p1:Value>Prioritizing</d7p1:Value>
+              </d7p1:Tag>
+            </TagList>
+            <Similarity>0</Similarity>
+            <UnaccompaniedAgeRange>0-18</UnaccompaniedAgeRange>
+          </Price>
+        </PriceList>
+        <IsPartial>false</IsPartial>
+        <IsBookable>true</IsBookable>
+      </FlightProductGroup>
+    </FlightProductGroupList>
+    <PriceUnitList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1">
+      <d3p1:PriceUnit>
+        <d3p1:PriceUnitID>1</d3p1:PriceUnitID>
+        <d3p1:FareInfoList>
+          <d3p1:FareInfo>
+            <d3p1:OrigDestSeqID>1</d3p1:OrigDestSeqID>
+            <d3p1:FareID>1</d3p1:FareID>
+            <d3p1:Schedule />
+            <d3p1:FareBasis>YRT2</d3p1:FareBasis>
+          </d3p1:FareInfo>
+          <d3p1:FareInfo>
+            <d3p1:OrigDestSeqID>2</d3p1:OrigDestSeqID>
+            <d3p1:FareID>1</d3p1:FareID>
+            <d3p1:Schedule />
+            <d3p1:FareBasis>YRT2</d3p1:FareBasis>
+          </d3p1:FareInfo>
+        </d3p1:FareInfoList>
+        <d3p1:PriceInfoList>
+          <d3p1:PriceInfo>
+            <d3p1:IsDefault>true</d3p1:IsDefault>
+            <d3p1:Expression>@HKYA@-99</d3p1:Expression>
+            <d3p1:TravelerCategoryCode>Adult</d3p1:TravelerCategoryCode>
+            <d3p1:Agency>
+              <d3p1:AgencyID>440</d3p1:AgencyID>
+              <d3p1:AgencyCode>HKYA</d3p1:AgencyCode>
+              <d3p1:CityID>58</d3p1:CityID>
+              <d3p1:CityCode>HKG</d3p1:CityCode>
+              <d3p1:AgencyName />
+              <d3p1:OfficialName>香港永安旅遊有限公司 13300280</d3p1:OfficialName>
+            </d3p1:Agency>
+            <d3p1:CommissionRate>0</d3p1:CommissionRate>
+            <d3p1:SalesRate>1</d3p1:SalesRate>
+            <d3p1:Exchange>0.85555555</d3p1:Exchange>
+            <d3p1:ProfitType>0</d3p1:ProfitType>
+            <d3p1:TicketRemark />
+            <d3p1:PriceDetail>
+              <d3p1:Currency>RMB</d3p1:Currency>
+              <d3p1:SalePrice>5750</d3p1:SalePrice>
+              <d3p1:PublishPrice>5750</d3p1:PublishPrice>
+              <d3p1:AccountPrice>5741</d3p1:AccountPrice>
+              <d3p1:Tax>193</d3p1:Tax>
+              <d3p1:FuelSurCharge>0</d3p1:FuelSurCharge>
+              <d3p1:SettlementPrice>0</d3p1:SettlementPrice>
+            </d3p1:PriceDetail>
+            <d3p1:OriginalPriceDetail>
+              <d3p1:Currency>HKD</d3p1:Currency>
+              <d3p1:SalePrice>6710</d3p1:SalePrice>
+              <d3p1:PublishPrice>6710</d3p1:PublishPrice>
+              <d3p1:AccountPrice>6710</d3p1:AccountPrice>
+              <d3p1:Tax>225</d3p1:Tax>
+              <d3p1:FuelSurCharge>0</d3p1:FuelSurCharge>
+              <d3p1:SettlementPrice>0</d3p1:SettlementPrice>
+            </d3p1:OriginalPriceDetail>
+            <d3p1:OfficeNo>HKGH23722</d3p1:OfficeNo>
+            <d3p1:CarryType>0</d3p1:CarryType>
+            <d3p1:TagList>
+              <d3p1:Tag>
+                <d3p1:Key>SP</d3p1:Key>
+                <d3p1:Value>,,,,,,,</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>CSP</d3p1:Key>
+                <d3p1:Value>,,0,0,</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>NetP</d3p1:Key>
+                <d3p1:Value>HKD,6710</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>RealReservationType</d3p1:Key>
+                <d3p1:Value>4</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>CommitionSource</d3p1:Key>
+                <d3p1:Value>3</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>FullTax</d3p1:Key>
+                <d3p1:Value>228</d3p1:Value>
+              </d3p1:Tag>
+              <d3p1:Tag>
+                <d3p1:Key>YQYRPolicyIds</d3p1:Key>
+                <d3p1:Value>11,0</d3p1:Value>
+              </d3p1:Tag>
+            </d3p1:TagList>
+            <d3p1:IsPrivateFare>false</d3p1:IsPrivateFare>
+            <d3p1:DiscountPrice>0</d3p1:DiscountPrice>
+          </d3p1:PriceInfo>
+        </d3p1:PriceInfoList>
+        <d3p1:RemarkGroupList>
+          <d3p1:RemarkGroup>
+            <d3p1:OrigDestSeqID>1</d3p1:OrigDestSeqID>
+            <d3p1:NonRefund>T</d3p1:NonRefund>
+            <d3p1:NonReroute>T</d3p1:NonReroute>
+          </d3p1:RemarkGroup>
+          <d3p1:RemarkGroup>
+            <d3p1:OrigDestSeqID>2</d3p1:OrigDestSeqID>
+            <d3p1:NonRefund>T</d3p1:NonRefund>
+            <d3p1:NonReroute>T</d3p1:NonReroute>
+          </d3p1:RemarkGroup>
+        </d3p1:RemarkGroupList>
+        <d3p1:BookingClassInfoListList />
+        <d3p1:MajorCabinClassList>
+          <d3p1:CabinClass>Economy</d3p1:CabinClass>
+        </d3p1:MajorCabinClassList>
+        <d3p1:EngineType>Amadeus</d3p1:EngineType>
+        <d3p1:PriceUnitMisc>
+          <d3p1:Channel>1A-WS</d3p1:Channel>
+          <d3p1:SourceFareIDs />
+          <d3p1:TicketingCarrier>KA</d3p1:TicketingCarrier>
+          <d3p1:TicketingCarrierName>港龙航空</d3p1:TicketingCarrierName>
+          <d3p1:IsAddOnJoined>false</d3p1:IsAddOnJoined>
+          <d3p1:TicketType>0001</d3p1:TicketType>
+          <d3p1:TicketRemark />
+          <d3p1:TravelerEligibility>NOR</d3p1:TravelerEligibility>
+          <d3p1:RecommendLevel>2</d3p1:RecommendLevel>
+          <d3p1:MinPassengerCount>1</d3p1:MinPassengerCount>
+          <d3p1:MaxPassengerCount>9</d3p1:MaxPassengerCount>
+          <d3p1:MinStay />
+          <d3p1:MaxStay />
+          <d3p1:OutboundDateRanges>
+            <d3p1:AllowedDateRange />
+            <d3p1:ForbiddenDateRange />
+          </d3p1:OutboundDateRanges>
+          <d3p1:InboundDateRanges>
+            <d3p1:AllowedDateRange />
+            <d3p1:ForbiddenDateRange />
+          </d3p1:InboundDateRanges>
+          <d3p1:SalesDateRanges>2016-05-16&gt;2016-05-16</d3p1:SalesDateRanges>
+          <d3p1:IsImmediateBooking>true</d3p1:IsImmediateBooking>
+          <d3p1:BookingDeadline>
+            <d3p1:AdvReservationFrom />
+            <d3p1:AdvReservationTo />
+            <d3p1:IsImmediateBooking>true</d3p1:IsImmediateBooking>
+            <d3p1:BeforeDeparture />
+            <d3p1:AfterReservation />
+          </d3p1:BookingDeadline>
+          <d3p1:IsOpenJawAllowed>false</d3p1:IsOpenJawAllowed>
+          <d3p1:IsKAllowed>false</d3p1:IsKAllowed>
+          <d3p1:RemarkFareID>N1</d3p1:RemarkFareID>
+          <d3p1:PUFareType>OTHER</d3p1:PUFareType>
+          <d3p1:InventoryType>None</d3p1:InventoryType>
+          <d3p1:TicketingDeadline>2016-05-16T17:44:10</d3p1:TicketingDeadline>
+          <d3p1:CarrierTicketingDeadline>2016-08-14T23:59:59</d3p1:CarrierTicketingDeadline>
+          <d3p1:ResultCacheKey>7F4DF26AEFBFFDA70E7D98B12AB513F2</d3p1:ResultCacheKey>
+          <d3p1:TagList>
+            <d3p1:Tag>
+              <d3p1:Key>PrivateFareType</d3p1:Key>
+              <d3p1:Value>1,0|2,0</d3p1:Value>
+            </d3p1:Tag>
+            <d3p1:Tag>
+              <d3p1:Key>TicketingCarrier</d3p1:Key>
+              <d3p1:Value>KA</d3p1:Value>
+            </d3p1:Tag>
+            <d3p1:Tag>
+              <d3p1:Key>MinPassengerCount</d3p1:Key>
+              <d3p1:Value>1</d3p1:Value>
+            </d3p1:Tag>
+            <d3p1:Tag>
+              <d3p1:Key>ResultCacheKey</d3p1:Key>
+              <d3p1:Value>7F4DF26AEFBFFDA70E7D98B12AB513F2</d3p1:Value>
+            </d3p1:Tag>
+          </d3p1:TagList>
+          <d3p1:IsGVProduct>false</d3p1:IsGVProduct>
+          <d3p1:IsCZSpecial>false</d3p1:IsCZSpecial>
+          <d3p1:InvoiceType>E</d3p1:InvoiceType>
+        </d3p1:PriceUnitMisc>
+      </d3p1:PriceUnit>
+    </PriceUnitList>
+    <FlightList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1">
+      <d3p1:Flight>
+        <d3p1:FlightID>12</d3p1:FlightID>
+        <d3p1:Carrier>
+          <d3p1:AirlineCode>KA</d3p1:AirlineCode>
+          <d3p1:AirlineName>港龙航空</d3p1:AirlineName>
+          <d3p1:Alliance>寰宇一家</d3p1:Alliance>
+        </d3p1:Carrier>
+        <d3p1:FlightNumber>KA997</d3p1:FlightNumber>
+        <d3p1:DepartureCity>
+          <d3p1:CityID>1</d3p1:CityID>
+          <d3p1:CityCode>BJS</d3p1:CityCode>
+          <d3p1:CityName>北京</d3p1:CityName>
+          <d3p1:CityNameEN>Beijing</d3p1:CityNameEN>
+          <d3p1:ProvinceID>1</d3p1:ProvinceID>
+          <d3p1:CountryID>1</d3p1:CountryID>
+          <d3p1:CountryName>中国</d3p1:CountryName>
+          <d3p1:IsDomestic>false</d3p1:IsDomestic>
+        </d3p1:DepartureCity>
+        <d3p1:ArrivalCity>
+          <d3p1:CityID>58</d3p1:CityID>
+          <d3p1:CityCode>HKG</d3p1:CityCode>
+          <d3p1:CityName>香港</d3p1:CityName>
+          <d3p1:CityNameEN>Hong Kong</d3p1:CityNameEN>
+          <d3p1:ProvinceID>32</d3p1:ProvinceID>
+          <d3p1:CountryID>1</d3p1:CountryID>
+          <d3p1:CountryName>中国</d3p1:CountryName>
+          <d3p1:IsDomestic>false</d3p1:IsDomestic>
+        </d3p1:ArrivalCity>
+        <d3p1:DepartureAirport>
+          <d3p1:Terminal />
+          <d3p1:PortCode>PEK</d3p1:PortCode>
+          <d3p1:PortName>首都国际机场</d3p1:PortName>
+          <d3p1:PortNameEN>CAPITAL</d3p1:PortNameEN>
+        </d3p1:DepartureAirport>
+        <d3p1:ArrivalAirport>
+          <d3p1:Terminal />
+          <d3p1:PortCode>HKG</d3p1:PortCode>
+          <d3p1:PortName>香港国际机场</d3p1:PortName>
+          <d3p1:PortNameEN>HONG KONG</d3p1:PortNameEN>
+        </d3p1:ArrivalAirport>
+        <d3p1:TakeoffDateTime>2016-08-14T03:10:00</d3p1:TakeoffDateTime>
+        <d3p1:ArrivalDateTime>2016-08-14T06:30:00</d3p1:ArrivalDateTime>
+        <d3p1:EquipmentCode>320</d3p1:EquipmentCode>
+        <d3p1:Duration>200</d3p1:Duration>
+        <d3p1:ArrivalDays>0</d3p1:ArrivalDays>
+        <d3p1:TagList>
+          <d3p1:Tag>
+            <d3p1:Key>building</d3p1:Key>
+            <d3p1:Value>0,0</d3p1:Value>
+          </d3p1:Tag>
+        </d3p1:TagList>
+      </d3p1:Flight>
+      <d3p1:Flight>
+        <d3p1:FlightID>13</d3p1:FlightID>
+        <d3p1:Carrier>
+          <d3p1:AirlineCode>KA</d3p1:AirlineCode>
+          <d3p1:AirlineName>港龙航空</d3p1:AirlineName>
+          <d3p1:Alliance>寰宇一家</d3p1:Alliance>
+        </d3p1:Carrier>
+        <d3p1:FlightNumber>KA858</d3p1:FlightNumber>
+        <d3p1:DepartureCity>
+          <d3p1:CityID>58</d3p1:CityID>
+          <d3p1:CityCode>HKG</d3p1:CityCode>
+          <d3p1:CityName>香港</d3p1:CityName>
+          <d3p1:CityNameEN>Hong Kong</d3p1:CityNameEN>
+          <d3p1:ProvinceID>32</d3p1:ProvinceID>
+          <d3p1:CountryID>1</d3p1:CountryID>
+          <d3p1:CountryName>中国</d3p1:CountryName>
+          <d3p1:IsDomestic>false</d3p1:IsDomestic>
+        </d3p1:DepartureCity>
+        <d3p1:ArrivalCity>
+          <d3p1:CityID>2</d3p1:CityID>
+          <d3p1:CityCode>SHA</d3p1:CityCode>
+          <d3p1:CityName>上海</d3p1:CityName>
+          <d3p1:CityNameEN>Shanghai</d3p1:CityNameEN>
+          <d3p1:ProvinceID>2</d3p1:ProvinceID>
+          <d3p1:CountryID>1</d3p1:CountryID>
+          <d3p1:CountryName>中国</d3p1:CountryName>
+          <d3p1:IsDomestic>false</d3p1:IsDomestic>
+        </d3p1:ArrivalCity>
+        <d3p1:DepartureAirport>
+          <d3p1:Terminal>T1</d3p1:Terminal>
+          <d3p1:PortCode>HKG</d3p1:PortCode>
+          <d3p1:PortName>香港国际机场</d3p1:PortName>
+          <d3p1:PortNameEN>HONG KONG</d3p1:PortNameEN>
+        </d3p1:DepartureAirport>
+        <d3p1:ArrivalAirport>
+          <d3p1:Terminal>T1</d3p1:Terminal>
+          <d3p1:PortCode>SHA</d3p1:PortCode>
+          <d3p1:PortName>虹桥国际机场</d3p1:PortName>
+          <d3p1:PortNameEN>HONGQIAO</d3p1:PortNameEN>
+        </d3p1:ArrivalAirport>
+        <d3p1:TakeoffDateTime>2016-08-21T10:00:00</d3p1:TakeoffDateTime>
+        <d3p1:ArrivalDateTime>2016-08-21T12:20:00</d3p1:ArrivalDateTime>
+        <d3p1:EquipmentCode>333</d3p1:EquipmentCode>
+        <d3p1:Duration>140</d3p1:Duration>
+        <d3p1:ArrivalDays>0</d3p1:ArrivalDays>
+        <d3p1:TagList>
+          <d3p1:Tag>
+            <d3p1:Key>building</d3p1:Key>
+            <d3p1:Value>39,10</d3p1:Value>
+          </d3p1:Tag>
+        </d3p1:TagList>
+      </d3p1:Flight>
+    </FlightList>
+    <FareList>
+      <Fare>
+        <FareID>1</FareID>
+        <IsAddOn>false</IsAddOn>
+        <FareSource>0</FareSource>
+        <IsCorpTravel>false</IsCorpTravel>
+        <CabinClass>Economy</CabinClass>
+        <BookingClass />
+        <TicketingCarrier />
+        <OperatingCarrier />
+        <PrivateFareType>0</PrivateFareType>
+      </Fare>
+    </FareList>
+    <TextRemarkList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+    <SearchCriteriaToken>SNQFEEXCMAKGE5XSBKLGF5XQOY3WFYLI5NRFEEXFMAJAE4NFTCBT2HEBMJJ3VGA4WYYGVMLRGAFDASJQAY2DIMAV6GKKIFUXUTSWJJTHSQMBQ5RRGJGGAXDSRZWRMIZTC6RQCAA</SearchCriteriaToken>
+    <TagList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1">
+      <d3p1:Tag>
+        <d3p1:Key>AmadeusSessionId</d3p1:Key>
+        <d3p1:Value>RequestID:9740a730-720e-461f-a126-4ce011419b02,HKYA:014UV7IZ6J</d3p1:Value>
+      </d3p1:Tag>
+    </TagList>
+    <MiscTransportationList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+  </SearchResult>
+  <QueryTimelineList>
+    <QueryTimeline>
+      <EngineType>Amadeus</EngineType>
+      <QueryExecutionTime>0</QueryExecutionTime>
+      <NoResultReason>0</NoResultReason>
+    </QueryTimeline>
+    <QueryTimeline>
+      <EngineType>Unknown</EngineType>
+      <QueryExecutionTime>4</QueryExecutionTime>
+      <NoResultReason>0</NoResultReason>
+    </QueryTimeline>
+  </QueryTimelineList>
+</SearchResponseType>
