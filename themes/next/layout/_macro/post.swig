@@ -191,7 +191,7 @@
     </div>
 
     <div>
-      {% if not is_index %}
+      {% if ! is_index %}
         {% include 'reward.swig' %}
       {% endif %}
     </div>

@@ -16,9 +16,6 @@ rss:
 # Specify the date when the site was setup
 #since: 2015
 
-
-
-
 # ---------------------------------------------------------------
 # Menu Settings
 # ---------------------------------------------------------------
@@ -31,7 +28,6 @@ menu:
   archives: /archives
   tags: /tags
   #commonweal: /404.html
-
 
 # Enable/Disable menu icons.
 # Icon Mapping:
@@ -47,8 +43,6 @@ menu_icons:
   tags: tags
   archives: archive
   commonweal: heartbeat
-
-
 
 
 # ---------------------------------------------------------------
@@ -79,19 +73,19 @@ font:
   global:
     # external: true will load this font family from host.
     external: true
-    family: Lato
+    family: Gafata  #Lato
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
   # Fallback to `global` font settings.
   headings:
     external: true
-    family:
+    family: Gafata
 
   # Font settings for posts
   # Fallback to `global` font settings.
   posts:
     external: true
-    family:
+    family: Gafata
 
   # Font settings for Logo
   # Fallback to `global` font settings.
@@ -106,9 +100,6 @@ font:
     external: true
     family:
 
-
-
-
 # ---------------------------------------------------------------
 # Sidebar Settings
 # ---------------------------------------------------------------
@@ -117,8 +108,11 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/kriswan
+  Twitter: https://twitter.com/icanshutup
+  Weibo: http://weibo.com/ragingbullkris
+  Linkedin: https://www.linkedin.com/in/%E9%A1%BA%E9%A3%9E-%E4%B8%87-909b78120
 
 
 # Social Links Icons
@@ -133,12 +127,13 @@ social_icons:
   GitHub: github
   Twitter: twitter
   Weibo: weibo
+  Linkedin: linkedin
 
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
-#avatar:
+avatar: /images/avatar.png
 
 
 # Table Of Contents in the Sidebar
@@ -198,7 +193,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # Automatically scroll page to section which is under <!-- more --> mark.
@@ -377,3 +372,8 @@ images: images
 
 # Theme version
 version: 5.0.1
+
+# Donate 文章末尾显示打赏按钮
+reward_comment: 鼓励一下 #这里写上你的jargon (Just whatever)
+wechatpay: /images/wechat_payqrcode.jpg #此处为微信向我付款二维码图片的相对或者是绝对URL
+alipay: /images/alipay_qcode12x12.png #此处为支付宝向我付款二维码图片的相对或者是绝对URL

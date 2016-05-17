@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: kris's blog
-subtitle: need to share
+title: Kris's Blog
+subtitle: 分享
 description: You'll live through your pain.Know it will pass,And strength you will gain
 author: 小万
 language: zh-Hans
 email: kriswansf@gmail.com #联系邮箱
-avatar: /images/avatar.png
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://kriswan.github.io
