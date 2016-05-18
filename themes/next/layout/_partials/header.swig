@@ -30,7 +30,7 @@
   {% set hasSearch = theme.swiftype_key || theme.tinysou_Key || config.search %}
 
   {% if theme.menu %}
-    <ul id="menu" class="menu">
+    <ul id="menu" class="menu menu-left">
       {% for name, path in theme.menu %}
         {% set itemName = name.toLowerCase() %}
         <li class="menu-item menu-item-{{ itemName }}">
@@ -42,21 +42,6 @@
           </a>
         </li>
       {% endfor %}
-
-      {% if hasSearch %}
-        <li class="menu-item menu-item-search">
-          {% if theme.swiftype_key %}
-            <a href="#" class="st-search-show-outputs">
-          {% elseif config.search %}
-            <a href="#" class="popup-trigger">
-          {% endif %}
-            {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            {% endif %}
-            {{ __('menu.search') }}
-          </a>
-        </li>
-      {% endif %}
     </ul>
   {% endif %}
 
@@ -66,4 +51,3 @@
     </div>
   {% endif %}
 </nav>
-
