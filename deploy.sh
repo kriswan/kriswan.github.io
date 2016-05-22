@@ -3,7 +3,7 @@
 if test $1 = 'test'
 then
   hexo clean
-  hexo g && gulp
+  hexo g 
   hexo s
 else
   hexo clean
