@@ -22,5 +22,6 @@ install:
 - npm install
 script:
 - hexo clean
+
 - hexo g && gulp
 - hexo deploy
