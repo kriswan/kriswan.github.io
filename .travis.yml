@@ -31,6 +31,7 @@ install:
 # 部署的命令
 script:
 # - npm run deploy  #
+- rm /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
 - hexo clean
 - hexo g && gulp
 - hexo deploy
