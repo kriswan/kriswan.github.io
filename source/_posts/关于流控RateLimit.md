@@ -7,6 +7,7 @@ categories: java
 
 {% blockquote %}
  关于流控的一点总结
-{% endblockquoute %}
+{% endblockquote %}
+
 ### water is comming !!!...
 {% asset_img water-flow.jpg water is comming ! %}
