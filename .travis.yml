@@ -4,38 +4,26 @@ node_js:
 branches:
   only:
   - hexo_blog_code
-
 cache:
   directories:
-    - node_modules
-
-#配置环境
+  - node_modules
 before_install:
-- openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.pri.enc -out ~/.ssh/id_rsa.travisci.pri -d
-
-# 改变文件权限
-- chmod 600 ~/.ssh/id_rsa.travisci.pri 
-# 配置 ssh
+- openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.pri.enc -out .travis/id_rsa.travisci.pri -d
+- chmod 600 ~/.ssh/id_rsa
 - eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa.travisci.pri
+- ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
-# 配置 git 替换为自己的信息
 - git config --global user.name 'kriswan'
 - git config --global user.email kriswansf@gmail.com
-
-# 安装依赖
 install:
 - npm install hexo-cli -g
 - npm install
-
-# 部署的命令
 script:
-# - npm run deploy  #
 - hexo clean
 - hexo g && gulp
-- rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
+# - rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
 - hexo deploy
-- rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
-- git push git@github.com:kriswan/kriswan.github.io.git master:master --force
-- hexo deploy
+# - rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
+# - git push git@github.com:kriswan/kriswan.github.io.git master:master --force
+# - hexo deploy
 - hexo clean
