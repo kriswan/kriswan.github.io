@@ -31,4 +31,7 @@ install:
 # 部署的命令
 script:
 # - npm run deploy  #
-- hexo clean && hexo g -d
+- hexo clean
+- hexo g && gulp
+- hexo deploy
+- hexo clean

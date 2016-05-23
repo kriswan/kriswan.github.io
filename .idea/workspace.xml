@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4c4cbbc2-c83c-4657-94d8-1d4d99724024" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/关于流控RateLimit.md" afterPath="$PROJECT_DIR$/source/_posts/关于流控RateLimit.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <ignored path="kriswan.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,10 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="关于流控RateLimit.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70247936">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="关于流控RateLimit.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/关于流控RateLimit.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21520804">
+            <state vertical-scroll-proportion="-5.172414">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -98,8 +108,8 @@
         <option value="$PROJECT_DIR$/source/categories/index.md" />
         <option value="$PROJECT_DIR$/source/tags/index.md" />
         <option value="$PROJECT_DIR$/themes/next/layout/_partials/duoshuo-hot-articles.swig" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/source/_posts/关于流控RateLimit.md" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -385,7 +395,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463987395058</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="s">
+      <created>1463987508553</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463987508553</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -666,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6818182">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/hexo-guide.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.51724136">
@@ -698,13 +706,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/关于流控RateLimit.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21520804">
+        <state vertical-scroll-proportion="-5.172414">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70247936">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
