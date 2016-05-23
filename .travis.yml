@@ -33,6 +33,8 @@ script:
 # - npm run deploy  #
 - hexo clean
 - hexo g && gulp
-- rm /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
+- rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
 - hexo deploy
+- rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
+- git push git@github.com:kriswan/kriswan.github.io.git master:master --force
 - hexo clean
