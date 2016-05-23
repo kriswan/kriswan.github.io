@@ -7,14 +7,14 @@ branches:
 cache:
   directories:
   - node_modules
-  
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.enc -out ~\/.ssh/id_rsa.travisci -d
+- openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.enc -out ~/.ssh/id_rsa.travisci -d
 
 - chmod 600 ~/.ssh/id_rsa.travisci
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa.travisci
-- cp .travis/ssh_config ~/.ssh/config
+- cp .travis/ssh_config ~/.ssh/configll
 - git config --global user.name 'kriswan'
 - git config --global user.email kriswansf@gmail.com
 install:
