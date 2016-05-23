@@ -37,4 +37,5 @@ script:
 - hexo deploy
 - rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
 - git push git@github.com:kriswan/kriswan.github.io.git master:master --force
+- hexo deploy
 - hexo clean
