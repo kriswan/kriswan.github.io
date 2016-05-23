@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[关于流控RateLimit]]></title>
+      <url>http://kriswan.github.io/2016/05/22/%E5%85%B3%E4%BA%8E%E6%B5%81%E6%8E%A7RateLimit/</url>
+      <content type="html"><![CDATA[<blockquote><p>关于流控的一点总结</p>
+</blockquote>
+<h3 id="water-is-comming-…"><a href="#water-is-comming-…" class="headerlink" title="water is comming !!!…"></a>water is comming !!!…</h3><img src="/2016/05/22/关于流控RateLimit/water-flow.jpg" alt="water is comming !" title="water is comming !">
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo-Guide]]></title>
+      <url>http://kriswan.github.io/2016/05/13/hexo-guide/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><blockquote class="blockquote-center"><p>引言… </p>
+</blockquote>
+<blockquote class="blockquote-center"><p>引言…short version </p>
+</blockquote>
+<p>###test 图片</p>
+<p>/images/IMG_6287.JPG</p>
+<p><img src="/images/IMG_6322.JPG" alt="/images/IMG_6322.JPG"></p>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo-Tags]]></title>
+      <url>http://kriswan.github.io/2016/05/13/hexo-tags/</url>
+      <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>In this article, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily! </p>
+</blockquote>
+<h3 id="add-a-quote"><a href="#add-a-quote" class="headerlink" title="add a quote"></a>add a quote</h3><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>David Levithan, Wide Awake</strong><cite><a href="http://wanders.com.cn" target="_blank" rel="external">万的个人网站</a></cite></footer></blockquote>
+<h3 id="add-a-youtubu-video"><a href="#add-a-youtubu-video" class="headerlink" title="add a youtubu video"></a>add a youtubu video</h3><div class="video-container"><iframe src="//www.youtube.com/embed/wgdBVIX9ifA" frameborder="0" allowfullscreen></iframe></div>
+<h3 id="include-a-code-file"><a href="#include-a-code-file" class="headerlink" title="include a code file"></a>include a code file</h3><figure class="highlight javascript"><figcaption><span>[gulpfile] []</span><a href="/downloads/code/gulpfile.js">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">'gulp-htmlclean'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压缩 public 目录 css</span></span><br><span class="line">gulp.task(<span class="string">'minify-css'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.css'</span>)</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 压缩 public 目录 html</span></span><br><span class="line">gulp.task(<span class="string">'minify-html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.html'</span>)</span><br><span class="line">    .pipe(htmlclean())</span><br><span class="line">    .pipe(htmlmin({</span><br><span class="line">         removeComments: <span class="literal">true</span>,</span><br><span class="line">         minifyJS: <span class="literal">true</span>,</span><br><span class="line">         minifyCSS: <span class="literal">true</span>,</span><br><span class="line">         minifyURLs: <span class="literal">true</span>,</span><br><span class="line">    }))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./public'</span>))</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 压缩 public/js 目录 js</span></span><br><span class="line">gulp.task(<span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.js'</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 执行 gulp 命令时执行的任务</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [</span><br><span class="line">    <span class="string">'minify-html'</span>,<span class="string">'minify-css'</span>,<span class="string">'minify-js'</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<h3 id="adding-a-caption-and-a-URL-to-a-codeblock"><a href="#adding-a-caption-and-a-URL-to-a-codeblock" class="headerlink" title="adding a caption and a URL to a codeblock"></a>adding a caption and a URL to a codeblock</h3><figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<blockquote class="pullquote [qut]"><p>you wanna quote something, you’d better place it here!</p>
+</blockquote>
+<h3 id="add-a-iframe"><a href="#add-a-iframe" class="headerlink" title="add a iframe"></a>add a iframe</h3><iframe src="http://baidu.com" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+
+ If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
+
+<h3 id="mail-to-me"><a href="#mail-to-me" class="headerlink" title="mail to me"></a>mail to me</h3><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#107;&#x72;&#x69;&#x73;&#119;&#97;&#110;&#115;&#x66;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#107;&#x72;&#x69;&#x73;&#119;&#97;&#110;&#115;&#x66;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>]]></content>
+    </entry>
+    
+  
+  
+</search>
