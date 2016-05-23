@@ -104,4 +104,4 @@ theme: next
 deploy:
   type: git
   repository: git@github.com:kriswan/kriswan.github.io.git
-  branch: hexo_blog_code
+  branch: master
