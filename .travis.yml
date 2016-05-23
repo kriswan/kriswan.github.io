@@ -9,9 +9,9 @@ cache:
   - node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.pri.enc -out .travis/id_rsa.travisci.pri -d
-- chmod 600 ~/.ssh/id_rsa
+- chmod 600 ~/.ssh/id_rsa.travisci.pri
 - eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
+- ssh-add ~/.ssh/id_rsa.travisci.pri
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name 'kriswan'
 - git config --global user.email kriswansf@gmail.com
@@ -26,4 +26,4 @@ script:
 # - rm -f /home/travis/build/kriswan/kriswan.github.io/.git/index.lock
 # - git push git@github.com:kriswan/kriswan.github.io.git master:master --force
 # - hexo deploy
-- hexo clean
+# - hexo clean
