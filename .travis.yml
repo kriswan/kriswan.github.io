@@ -1,12 +1,15 @@
 language: node_js
 node_js:
 - '4'
+
 branches:
   only:
   - hexo_blog_code
+
 cache:
   directories:
   - node_modules
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.pri.enc -out .travis/id_rsa.travisci.pri -d
 - chmod 600 ~/.ssh/id_rsa.travisci.pri
@@ -15,9 +18,11 @@ before_install:
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name 'kriswan'
 - git config --global user.email kriswansf@gmail.com
+
 install:
 - npm install hexo-cli -g
 - npm install
+
 script:
 - hexo clean
 - hexo g && gulp
