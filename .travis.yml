@@ -11,7 +11,7 @@ cache:
   - node_modules
 
 before_install:
-- cp .travis/id_rsa.travisci.pri  ~/.ssh/
+# - cp .travis/id_rsa.travisci.pri  ~/.ssh/
 - openssl aes-256-cbc -K $encrypted_6914e38f3767_key -iv $encrypted_6914e38f3767_iv -in id_rsa.travisci.pri.enc -out .travis/id_rsa.travisci.pri -d
 - chmod 600 ~/.ssh/id_rsa.travisci.pri
 - eval $(ssh-agent)
