@@ -1,0 +1,6 @@
+
+Host github.com
+    User kriswansf@gmail.com
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa.travisci.pri
+    IdentitiesOnly yes
