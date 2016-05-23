@@ -3,7 +3,7 @@ node_js:
 - '4'
 branches:
   only:
-  - master
+  - hexo_blog_code
 
 cache:
   directories:
@@ -19,7 +19,7 @@ before_install:
 # 配置 ssh
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa.travisci.pri
-- cat .travis/ssh_config >>  ~/.ssh/config
+- cp .travis/ssh_config ~/.ssh/config
 # 配置 git 替换为自己的信息
 - git config --global user.name 'kriswan'
 - git config --global user.email kriswansf@gmail.com

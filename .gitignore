@@ -1,0 +1,4 @@
+
+# ignore some files and dirs
+.idea/
+.deploy_git/
