@@ -103,5 +103,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:kriswan/kriswan.github.io.git
+  repository:
+    github: git@github.com:kriswan/kriswan.github.io.git
+    coding: git@git.coding.net:kriswan/kriswan.git
   branch: master

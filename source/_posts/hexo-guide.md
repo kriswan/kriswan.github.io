@@ -10,9 +10,12 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 {% centerquote %} 引言... {% endcenterquote %}
 {% cq %} 引言...short version {% endcq %}
 
-###test 图片
 
-/images/IMG_6287.JPG
+### 一些博客链接
+
+[搭建博客连接](http://ibruce.info/2013/11/22/hexo-your-blog/)
+
+###test 图片
 
 ![/images/IMG_6322.JPG](/images/IMG_6322.JPG)
 
