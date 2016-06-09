@@ -1,5 +1,5 @@
 ---
-title: Hexo-Guide
+title: Hexo介绍
 date: 2016-05-13 18:54:15
 tags: hexo
 categories: hexo
