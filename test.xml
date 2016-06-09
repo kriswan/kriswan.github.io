@@ -1,0 +1,414 @@
+<SaveOrderRequestType xmlns="urn:ctrip:api:flight:message:IntlBooking:SaveOrder:v1" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestHeader xmlns:d2p1="urn:ctrip:api:flight:data:messagetypes:v1">
+    <d2p1:Version>1.0</d2p1:Version>
+    <d2p1:SourceAppID>360132</d2p1:SourceAppID>
+    <d2p1:SessionID>7244eedb-6062-462b-a3f9-e1fca6a1adc2</d2p1:SessionID>
+    <d2p1:TransactionID>ly001</d2p1:TransactionID>
+    <d2p1:MessageID>a92e1f0a-444f-4f42-b2eb-5f74376df1c1</d2p1:MessageID>
+    <d2p1:ChannelID>Affiliate</d2p1:ChannelID>
+    <d2p1:SubChannelID>8684</d2p1:SubChannelID>
+    <d2p1:MessageType>FlightIntl.Aggregator.Order.SubmitOrder</d2p1:MessageType>
+    <d2p1:CustomerID>test</d2p1:CustomerID>
+    <d2p1:AgentID>lytravel</d2p1:AgentID>
+    <d2p1:LoggingLevel>0</d2p1:LoggingLevel>
+  </RequestHeader>
+  <Action>CreateOrder</Action>
+  <OrderIdList />
+  <FlightProduct>
+    <FlightOrigDestList>
+      <FlightOrigDest>
+        <OrigDestSeqID>1</OrigDestSeqID>
+        <FlightSegmentList>
+          <FlightSegment>
+            <CarrierCode>MU</CarrierCode>
+            <FlightNumber>MU9857</FlightNumber>
+            <OperatingCarrierCode>FM</OperatingCarrierCode>
+            <OperatingFlightNumber>FM857</OperatingFlightNumber>
+            <DepartureCityCode>SHA</DepartureCityCode>
+            <ArrivalCityCode>HKT</ArrivalCityCode>
+            <DepartureAirportCode>PVG</DepartureAirportCode>
+            <ArrivalAirportCode>HKT</ArrivalAirportCode>
+            <TakeoffDateTime>2016-06-19T22:30:00</TakeoffDateTime>
+            <ArrivalDateTime>2016-06-20T02:15:00</ArrivalDateTime>
+            <Duration>0</Duration>
+            <EquipmentCode>738</EquipmentCode>
+            <StopList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+            <SeatCountList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1">
+              <d7p1:SeatCount>
+                <d7p1:Class>N</d7p1:Class>
+                <d7p1:Count>2</d7p1:Count>
+              </d7p1:SeatCount>
+            </SeatCountList>
+            <GroupID />
+            <IsSurface>false</IsSurface>
+            <IsOpenTran>false</IsOpenTran>
+            <NeedAppl>false</NeedAppl>
+            <SegmentSeqID>1</SegmentSeqID>
+          </FlightSegment>
+        </FlightSegmentList>
+      </FlightOrigDest>
+      <FlightOrigDest>
+        <OrigDestSeqID>2</OrigDestSeqID>
+        <FlightSegmentList>
+          <FlightSegment>
+            <CarrierCode>MU</CarrierCode>
+            <FlightNumber>MU9832</FlightNumber>
+            <OperatingCarrierCode>FM</OperatingCarrierCode>
+            <OperatingFlightNumber>FM832</OperatingFlightNumber>
+            <DepartureCityCode>HKT</DepartureCityCode>
+            <ArrivalCityCode>SHA</ArrivalCityCode>
+            <DepartureAirportCode>HKT</DepartureAirportCode>
+            <ArrivalAirportCode>PVG</ArrivalAirportCode>
+            <TakeoffDateTime>2016-06-26T02:10:00</TakeoffDateTime>
+            <ArrivalDateTime>2016-06-26T07:40:00</ArrivalDateTime>
+            <Duration>0</Duration>
+            <EquipmentCode>738</EquipmentCode>
+            <StopList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+            <SeatCountList xmlns:d7p1="urn:ctrip:api:flight:data:flighttypes:v1">
+              <d7p1:SeatCount>
+                <d7p1:Class>V</d7p1:Class>
+                <d7p1:Count>2</d7p1:Count>
+              </d7p1:SeatCount>
+            </SeatCountList>
+            <GroupID />
+            <IsSurface>false</IsSurface>
+            <IsOpenTran>false</IsOpenTran>
+            <NeedAppl>false</NeedAppl>
+            <SegmentSeqID>1</SegmentSeqID>
+          </FlightSegment>
+        </FlightSegmentList>
+      </FlightOrigDest>
+    </FlightOrigDestList>
+    <PriceUnit>
+      <FareInfoList>
+        <FareInfo>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <Schedule>1234567</Schedule>
+          <FareBasis>NSRCS</FareBasis>
+          <PrivateFareType i:nil="true" />
+        </FareInfo>
+        <FareInfo>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <Schedule>1234567</Schedule>
+          <FareBasis>VPRCS</FareBasis>
+          <PrivateFareType i:nil="true" />
+        </FareInfo>
+      </FareInfoList>
+      <PriceInfoList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:PriceInfo>
+          <d4p1:IsDefault>true</d4p1:IsDefault>
+          <d4p1:Expression>1/2[SHA-MU-N-HKT(NOA,P215825766,NOS,C-99)]+1/2[HKT-MU-V-SHA(NOA,P215824995,NOS,C-99)]</d4p1:Expression>
+          <d4p1:TravelerCategoryCode>Adult</d4p1:TravelerCategoryCode>
+          <d4p1:Agency>
+            <d4p1:AgencyID>1306</d4p1:AgencyID>
+            <d4p1:AgencyCode>NBTT</d4p1:AgencyCode>
+            <d4p1:CityID>2</d4p1:CityID>
+            <d4p1:CityCode>SHA</d4p1:CityCode>
+          </d4p1:Agency>
+          <d4p1:CommissionRate>0</d4p1:CommissionRate>
+          <d4p1:SalesRate>0</d4p1:SalesRate>
+          <d4p1:Exchange>1</d4p1:Exchange>
+          <d4p1:ProfitType>0</d4p1:ProfitType>
+          <d4p1:TicketRemark>^无提前出票时限^无提前出票时限</d4p1:TicketRemark>
+          <d4p1:PriceDetail>
+            <d4p1:Currency>RMB</d4p1:Currency>
+            <d4p1:SalePrice>2101</d4p1:SalePrice>
+            <d4p1:PublishPrice>2250</d4p1:PublishPrice>
+            <d4p1:AccountPrice>0</d4p1:AccountPrice>
+            <d4p1:Tax>1173</d4p1:Tax>
+            <d4p1:FuelSurCharge>0</d4p1:FuelSurCharge>
+            <d4p1:SettlementPrice>0</d4p1:SettlementPrice>
+          </d4p1:PriceDetail>
+          <d4p1:OriginalPriceDetail>
+            <d4p1:Currency>RMB</d4p1:Currency>
+            <d4p1:SalePrice>2101</d4p1:SalePrice>
+            <d4p1:PublishPrice>2250</d4p1:PublishPrice>
+            <d4p1:AccountPrice>0</d4p1:AccountPrice>
+            <d4p1:Tax>1173</d4p1:Tax>
+            <d4p1:FuelSurCharge>0</d4p1:FuelSurCharge>
+            <d4p1:SettlementPrice>0</d4p1:SettlementPrice>
+          </d4p1:OriginalPriceDetail>
+          <d4p1:SegmentPriceList />
+          <d4p1:InsuranceList />
+          <d4p1:OfficeNo>SHA717</d4p1:OfficeNo>
+          <d4p1:CarryType>0</d4p1:CarryType>
+          <d4p1:PriceKey>OG4AF4e40xhH7EnlE2yNw/vrMuu7eIieSTuFYJEtL+U=</d4p1:PriceKey>
+          <d4p1:TagList>
+            <d4p1:Tag>
+              <d4p1:Key>SP</d4p1:Key>
+              <d4p1:Value>,,,,,,,</d4p1:Value>
+            </d4p1:Tag>
+            <d4p1:Tag>
+              <d4p1:Key>CSP</d4p1:Key>
+              <d4p1:Value>,,1.500,0,</d4p1:Value>
+            </d4p1:Tag>
+            <d4p1:Tag>
+              <d4p1:Key>NetP</d4p1:Key>
+              <d4p1:Value>RMB,2069</d4p1:Value>
+            </d4p1:Tag>
+            <d4p1:Tag>
+              <d4p1:Key>RealReservationType</d4p1:Key>
+              <d4p1:Value>1</d4p1:Value>
+            </d4p1:Tag>
+            <d4p1:Tag>
+              <d4p1:Key>CommitionSource</d4p1:Key>
+              <d4p1:Value>0</d4p1:Value>
+            </d4p1:Tag>
+          </d4p1:TagList>
+          <d4p1:NationalityAllowed>CN</d4p1:NationalityAllowed>
+          <d4p1:NationalityDisallowed />
+          <d4p1:AgeRestriction />
+        </d4p1:PriceInfo>
+      </PriceInfoList>
+      <BaggageList>
+        <Baggage>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <Remark>
+            <RemarkID>8</RemarkID>
+            <RemarkInfoCn>SHA-HKT:普通乘客：以航司规定为准；</RemarkInfoCn>
+            <RemarkInfoEn />
+          </Remark>
+          <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        </Baggage>
+        <Baggage>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <Remark>
+            <RemarkID>9</RemarkID>
+            <RemarkInfoCn>HKT-SHA:普通乘客：以航司规定为准；</RemarkInfoCn>
+            <RemarkInfoEn />
+          </Remark>
+          <TravelerCategoryCode>Adult</TravelerCategoryCode>
+        </Baggage>
+      </BaggageList>
+      <RemarkGroupList>
+        <RemarkGroup>
+          <OrigDestSeqID>1</OrigDestSeqID>
+          <NonRefund>T</NonRefund>
+          <NonReroute>T</NonReroute>
+          <RefundRemark />
+          <RerouteRemark />
+          <NoShowRemark>
+            <RemarkID>R1</RemarkID>
+            <RemarkInfoCn>特价机票退改期规定严格，请航班起飞前24小时提交，否则视为误机不得退改</RemarkInfoCn>
+            <RemarkInfoEn />
+          </NoShowRemark>
+          <Remark />
+          <Ptcmd />
+        </RemarkGroup>
+        <RemarkGroup>
+          <OrigDestSeqID>2</OrigDestSeqID>
+          <NonRefund>T</NonRefund>
+          <NonReroute>T</NonReroute>
+          <RefundRemark />
+          <RerouteRemark />
+          <NoShowRemark>
+            <RemarkID>R2</RemarkID>
+            <RemarkInfoCn>特价机票退改期规定严格，请航班起飞前24小时提交，否则视为误机不得退改</RemarkInfoCn>
+            <RemarkInfoEn />
+          </NoShowRemark>
+          <Remark />
+          <Ptcmd />
+        </RemarkGroup>
+      </RemarkGroupList>
+      <BookingClassInfoList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:BookingClassInfo>
+          <d4p1:BookingClass>N</d4p1:BookingClass>
+          <d4p1:CabinClass>Economy</d4p1:CabinClass>
+          <d4p1:BookingToken />
+          <d4p1:Count>0</d4p1:Count>
+        </d4p1:BookingClassInfo>
+        <d4p1:BookingClassInfo>
+          <d4p1:BookingClass>V</d4p1:BookingClass>
+          <d4p1:CabinClass>Economy</d4p1:CabinClass>
+          <d4p1:BookingToken />
+          <d4p1:Count>0</d4p1:Count>
+        </d4p1:BookingClassInfo>
+      </BookingClassInfoList>
+      <EngineType>SharedPlatform</EngineType>
+      <PriceUnitMisc>
+        <SourceFareIDs>215825766,215824995</SourceFareIDs>
+        <TicketingCarrier>MU</TicketingCarrier>
+        <IsAddOnJoined>false</IsAddOnJoined>
+        <TicketType>0001</TicketType>
+        <TravelerEligibility>NOR</TravelerEligibility>
+        <RecommendLevel>2</RecommendLevel>
+        <MinPassengerCount>1</MinPassengerCount>
+        <MaxPassengerCount>9</MaxPassengerCount>
+        <MinStay>2</MinStay>
+        <MaxStay>30</MaxStay>
+        <OutboundDateRanges xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1">
+          <d5p1:AllowedDateRange>2015-06-19&gt;2015-06-19</d5p1:AllowedDateRange>
+          <d5p1:ForbiddenDateRange />
+        </OutboundDateRanges>
+        <InboundDateRanges xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1">
+          <d5p1:AllowedDateRange>2015-06-19&gt;2015-08-18</d5p1:AllowedDateRange>
+          <d5p1:ForbiddenDateRange />
+        </InboundDateRanges>
+        <ForbiddenFlights />
+        <AllowedFlights>MU(MU\FM)/MU(MU\FM),1234567;MU(MU\FM)/MU(MU\FM),1234567</AllowedFlights>
+        <IsImmediateBooking>true</IsImmediateBooking>
+        <BookingDeadline xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1">
+          <d5p1:AdvReservationFrom>0D</d5p1:AdvReservationFrom>
+          <d5p1:AdvReservationTo>365D</d5p1:AdvReservationTo>
+          <d5p1:IsImmediateBooking>false</d5p1:IsImmediateBooking>
+          <d5p1:BeforeDeparture>10D</d5p1:BeforeDeparture>
+          <d5p1:AfterReservation>365D</d5p1:AfterReservation>
+        </BookingDeadline>
+        <IsKAllowed>false</IsKAllowed>
+        <FareRemark>
+          <RemarkID>6</RemarkID>
+          <RemarkInfoCn>不可加订婴儿票;特殊产品,不能升舱,不享受累计里程,最晚起飞前3小时出票,保证正常出行;</RemarkInfoCn>
+        </FareRemark>
+        <PUFareType>FILE</PUFareType>
+        <InventoryType>FAV</InventoryType>
+        <TicketingDeadline>2015-04-21T21:55:12.0976055+08:00</TicketingDeadline>
+        <CarrierTicketingDeadline>2015-04-21T21:55:12.0976055+08:00</CarrierTicketingDeadline>
+        <ResultCacheKey>A465118E190AE0F77B9CEA2EF49D55E2</ResultCacheKey>
+        <TagList xmlns:d5p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      </PriceUnitMisc>
+      <SharedPlatform xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:IsNeedPnr>true</d4p1:IsNeedPnr>
+        <d4p1:IntlProductType>RTKSeat</d4p1:IntlProductType>
+        <d4p1:AutoOfficeNo>SHA518</d4p1:AutoOfficeNo>
+        <d4p1:InvoiceType>0</d4p1:InvoiceType>
+        <d4p1:NationalityAllowed>CN</d4p1:NationalityAllowed>
+        <d4p1:NationalityDisallowed />
+        <d4p1:AgeRestriction />
+      </SharedPlatform>
+    </PriceUnit>
+    <OrderTag>
+      <IsPartial>false</IsPartial>
+      <ReservationType>0</ReservationType>
+      <FlyerFlag>None</FlyerFlag>
+    </OrderTag>
+  </FlightProduct>
+  <TravelerInfoList>
+    <Traveler>
+      <InfoId />
+      <PersonName>te/test</PersonName>
+      <Gender>Male</Gender>
+      <IDCard xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:IDCardType>PASSPORT</d4p1:IDCardType>
+        <d4p1:IDCardNo>1111111</d4p1:IDCardNo>
+        <d4p1:RegisterAddress xmlns:d5p1="urn:ctrip:api:flight:data:commontypes:v1">
+          <d5p1:Province>上海市</d5p1:Province>
+          <d5p1:City>上海市</d5p1:City>
+          <d5p1:District />
+          <d5p1:DistrictID i:nil="true" />
+          <d5p1:Addr>福泉路99号</d5p1:Addr>
+          <d5p1:AddrID i:nil="true" />
+          <d5p1:PostCode />
+        </d4p1:RegisterAddress>
+        <d4p1:CardTimeLimit>2020-12-28T00:00:00+08:00</d4p1:CardTimeLimit>
+      </IDCard>
+      <TravelerCategoryCode>Adult</TravelerCategoryCode>
+      <TravelerEligibilityCode>ADT</TravelerEligibilityCode>
+      <Birthday>1990-08-15T00:00:00+08:00</Birthday>
+      <Nationality>CN</Nationality>
+      <PassportType>Travel</PassportType>
+      <FFPNoList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <Mobilephone />
+      <SaveCommonTraveler>false</SaveCommonTraveler>
+    </Traveler>
+    <Traveler>
+      <InfoId />
+      <PersonName>te/test2</PersonName>
+      <Gender>Female</Gender>
+      <IDCard xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1">
+        <d4p1:IDCardType>PASSPORT</d4p1:IDCardType>
+        <d4p1:IDCardNo>222222</d4p1:IDCardNo>
+        <d4p1:RegisterAddress xmlns:d5p1="urn:ctrip:api:flight:data:commontypes:v1">
+          <d5p1:Province>上海市</d5p1:Province>
+          <d5p1:City>上海市</d5p1:City>
+          <d5p1:District />
+          <d5p1:DistrictID i:nil="true" />
+          <d5p1:Addr>福泉路99号</d5p1:Addr>
+          <d5p1:AddrID i:nil="true" />
+          <d5p1:PostCode />
+        </d4p1:RegisterAddress>
+        <d4p1:CardTimeLimit>2025-03-23T00:00:00+08:00</d4p1:CardTimeLimit>
+      </IDCard>
+      <TravelerCategoryCode>Adult</TravelerCategoryCode>
+      <TravelerEligibilityCode>ADT</TravelerEligibilityCode>
+      <Birthday>1991-08-11T00:00:00+08:00</Birthday>
+      <Nationality>CN</Nationality>
+      <PassportType>Travel</PassportType>
+      <FFPNoList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <Mobilephone />
+      <SaveCommonTraveler>false</SaveCommonTraveler>
+    </Traveler>
+  </TravelerInfoList>
+  <ContactInfo>
+    <PersonName>张三</PersonName>
+    <Gender>Female</Gender>
+    <ContactInfoDetail>
+      <ContactTel>021-88888888</ContactTel>
+      <ContactFax />
+      <ContactEmail>aa@hotmail.com</ContactEmail>
+      <MobilePhone1>13000000000</MobilePhone1>
+      <MobilePhone2 />
+      <ForeignMobile />
+    </ContactInfoDetail>
+    <ConfirmStyle>TEL</ConfirmStyle>
+  </ContactInfo>
+  <DeliveryInfo>
+    <DeliveryType>PJN</DeliveryType>
+    <PayTypeCanUse />
+    <CTripDelivery>
+      <CantonID>0</CantonID>
+      <DeliveryDateTime>2015-04-21T22:07:23.5424864+08:00</DeliveryDateTime>
+      <DeliveryFee>0</DeliveryFee>
+      <Address xmlns:d4p1="urn:ctrip:api:flight:data:commontypes:v1">
+        <d4p1:Province>上海市</d4p1:Province>
+        <d4p1:City>上海市</d4p1:City>
+        <d4p1:District />
+        <d4p1:DistrictID i:nil="true" />
+        <d4p1:Addr>福泉路99号</d4p1:Addr>
+        <d4p1:AddrID i:nil="true" />
+        <d4p1:PostCode />
+      </Address>
+      <InfoId>0</InfoId>
+    </CTripDelivery>
+  </DeliveryInfo>
+  <OrderMiscInfo>
+    <SalesOrderID i:nil="true" />
+    <ExternalOrderID>IF553506BC2100315749</ExternalOrderID>
+    <IsInstancePurchase>true</IsInstancePurchase>
+    <IsQuickBooking>false</IsQuickBooking>
+    <SubAction>NewOrder</SubAction>
+    <OrderReference>0</OrderReference>
+    <IsManual>false</IsManual>
+    <TripType>RT</TripType>
+    <LocaleID>0</LocaleID>
+    <SourceURL>www.ly.com</SourceURL>
+    <CashBack>0</CashBack>
+    <UseConsumerCoupon>false</UseConsumerCoupon>
+    <CorpInfo i:nil="true" />
+    <BookAbilityTokenNumber>5615042022000000341</BookAbilityTokenNumber>
+    <QTEInfo>
+      <AutoQTETransno>5615042022000002003</AutoQTETransno>
+      <AutoQTEFlag>0</AutoQTEFlag>
+      <AutoQTEStatus>0</AutoQTEStatus>
+      <AutoQTELatestSendTime>2015-04-20T22:01:33.9593208+08:00</AutoQTELatestSendTime>
+      <AutoQTEErrorCode>-10</AutoQTEErrorCode>
+    </QTEInfo>
+    <AffiliateInfo>
+      <AllianceID>200111</AllianceID>
+      <SID>111111</SID>
+      <OuID />
+    </AffiliateInfo>
+    <VersionFlag>0</VersionFlag>
+    <BookingBeginTime>2015-04-20T22:07:23.5424864+08:00</BookingBeginTime>
+    <ReModifyOrder>false</ReModifyOrder>
+    <TagList xmlns:d3p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+    <QTEDetailInfoList />
+    <TagInfo>
+      <FlightProductGroupTagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <SearchResultTagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <PriceTagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <QTETagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <BookingAbilityTagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+      <PaymentAndFulfillmentTagList xmlns:d4p1="urn:ctrip:api:flight:data:flighttypes:v1" />
+    </TagInfo>
+  </OrderMiscInfo>
+</SaveOrderRequestType>
