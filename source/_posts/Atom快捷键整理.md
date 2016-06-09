@@ -5,6 +5,8 @@ tags: 工具
 categories: 工具
 ---
 
+![atom](/images/atom-light-640x360.jpg)
+
 ## Atom快捷键
 
 > 最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键
@@ -102,6 +104,7 @@ categories: 工具
 > 鼠标扔掉 ?  
 > 触摸板扔掉 ？
 
+![macbookpro](/images/macbookpro.jpg)
 
 ### 系统标示符
 > Mac 菜单和键盘通常使用符号来代表某些按键，其中包括以下修饰键：
