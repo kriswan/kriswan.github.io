@@ -4,6 +4,191 @@
   
     
     <entry>
+      <title><![CDATA[Atom快捷键整理]]></title>
+      <url>http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</url>
+      <content type="html"><![CDATA[<h2 id="Atom快捷键"><a href="#Atom快捷键" class="headerlink" title="Atom快捷键"></a>Atom快捷键</h2><blockquote>
+<p>最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键<br>这里只针对平时用的频率比较高的Atom的一些快捷键做整理</p>
+</blockquote>
+<ul>
+<li><code>ctrl-shift-U</code> 调出切换编码选项 <em><u>切换编码哦</u></em></li>
+</ul>
+<h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><ul>
+<li><code>alt-cmd-s</code> 保存所有打开的文件</li>
+<li><code>cmd-o</code> 打开文件目录</li>
+<li><code>cmd-\</code> 显示或隐藏目录树</li>
+<li><code>cmd-t</code> 查找文件</li>
+<li><code>cmd-b</code> 在打开的文件之间切换</li>
+<li><code>ctrl-shift-c</code> 复制当前文件绝对路径</li>
+</ul>
+<h3 id="目录树操作"><a href="#目录树操作" class="headerlink" title="目录树操作"></a>目录树操作</h3><ul>
+<li><code>ctrl-0</code> 焦点切换到目录树(再按一次或者Esc退出目录树)<ul>
+<li><code>a</code> 添加文件</li>
+<li><code>d</code> 将当前文件另存为(duplicate)</li>
+<li><code>i</code> 显示(隐藏)版本控制忽略的文件</li>
+</ul>
+</li>
+<li><code>alt-right 和 alt-left</code> 展开(隐藏)所有目录</li>
+<li><code>ctrl-al-] 和 ctrl-al-[</code> 同上</li>
+<li><code>ctrl-[ 和 ctrl-]</code> 展开(隐藏)当前目录</li>
+<li><code>ctrl-f 和 ctrl-b</code> 同上</li>
+<li><code>delete</code> 删除文件</li>
+</ul>
+<h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><ul>
+<li><code>ctrl-p</code> 前一行</li>
+<li><code>ctrl-n</code> 后一行</li>
+<li><code>ctrl-f</code> 前进一个字符</li>
+<li><code>ctrl-b</code> 后退一个字符</li>
+<li><code>cmd-right, ctrl-E</code> 移动到一行结束</li>
+<li><code>cmd-left, ctrl-A</code> 移动到一行开始</li>
+<li><code>cmd-up</code> 移动到文件开始</li>
+<li><code>cmd-down</code> 移动到文件结束</li>
+<li><code>ctrl-g</code> 移动到指定行 <code>行号</code> 处</li>
+<li><code>cmd-r</code> 在方法之间跳转</li>
+</ul>
+<h3 id="文本选取"><a href="#文本选取" class="headerlink" title="文本选取"></a>文本选取</h3><ul>
+<li><code>ctrl-shift-P</code> 选取至上一行</li>
+<li><code>ctrl-shift-N</code> 选取至下一样</li>
+<li><code>ctrl-shift-E, cmd-shift-right</code> 选取至本行结束</li>
+<li><code>ctrl-shift-A, cmd-shift-left</code> 选取至本行开始</li>
+<li><code>cmd-shift-up</code> 选取至文件开始</li>
+<li><code>cmd-shift-down</code> 选取至文件结尾</li>
+<li><code>cmd-click</code> 增加新光标 <em><u>这个帅气</u></em></li>
+<li><code>cmd-shift-L</code> 将多行选取改为多行光标 <em><u>可以利用这个搞多行编辑</u></em></li>
+<li><code>cmd-D</code> 选取文档中和当前单词相同的下一处 <em><u>黑科技啊</u></em></li>
+<li><code>ctrl-cmd-G</code> 选取文档中所有和当前光标单词相同的位置</li>
+</ul>
+<h3 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h3><ul>
+<li><code>cmd-K, cmd-U</code> 使当前字符大写</li>
+<li><code>cmd-K, cmd-L</code> 使当前字符小写</li>
+<li><code>ctrl-shift-K</code> 删除当前行</li>
+<li><code>cmd-backspace</code> 删除到当前行开始</li>
+<li><code>cmd-fn-backspace</code> 删除到当前行结束</li>
+</ul>
+<h3 id="括号跳转"><a href="#括号跳转" class="headerlink" title="括号跳转"></a>括号跳转</h3><ul>
+<li><code>ctrl-m</code> 相应括号之间，html tag之间等跳转</li>
+<li><code>ctrl-cmd-m</code> 括号(tag)之间文本选取</li>
+<li><code>alt-cmd-.</code> 关闭当前XML/HTML tag</li>
+</ul>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><ul>
+<li><code>cmd-F</code> 在buffer中查找</li>
+<li><code>cmd-shift-f</code> 在整个工程中查找</li>
+</ul>
+<h3 id="代码操作"><a href="#代码操作" class="headerlink" title="代码操作"></a>代码操作</h3><ul>
+<li><code>alt-cmd-[</code> 折叠</li>
+<li><code>alt-cmd-]</code> 展开</li>
+<li><code>alt-cmd-shift-{</code> 折叠全部</li>
+<li><code>alt-cmd-shift-}</code> 展开全部</li>
+<li><code>cmd-k cmd-N</code> 指定折叠层级 N为层级数</li>
+<li><code>ctrl-space</code> 提示补全信息</li>
+</ul>
+<h3 id="文件类型选择"><a href="#文件类型选择" class="headerlink" title="文件类型选择"></a>文件类型选择</h3><ul>
+<li><code>ctrl-shift-L</code> 选择文本类型  <em><u>选择当前文件的文本类型哦</u></em></li>
+<li><code>ctrl-shift-M</code> Markdown预览</li>
+<li><code>alt-shift-S</code> 代码片段查找</li>
+</ul>
+<h3 id="格式化beautify"><a href="#格式化beautify" class="headerlink" title="格式化beautify"></a>格式化beautify</h3><ul>
+<li><code>ctrl-alt-b</code> 格式化</li>
+</ul>
+<h2 id="MacOS快捷键"><a href="#MacOS快捷键" class="headerlink" title="MacOS快捷键"></a>MacOS快捷键</h2><blockquote>
+<p>mac系统上的快捷键做了一次整理，方便自己<br>鼠标扔掉 ?<br>触摸板扔掉 ？</p>
+</blockquote>
+<h3 id="系统标示符"><a href="#系统标示符" class="headerlink" title="系统标示符"></a>系统标示符</h3><blockquote>
+<p>Mac 菜单和键盘通常使用符号来代表某些按键，其中包括以下修饰键：</p>
+</blockquote>
+<ul>
+<li>Command ⌘</li>
+<li>Shift ⇧</li>
+<li>Option ⌥</li>
+<li>Control ⌃</li>
+<li>Caps Lock ⇪</li>
+<li>Fn</li>
+</ul>
+<h3 id="系统常用快捷键"><a href="#系统常用快捷键" class="headerlink" title="系统常用快捷键"></a>系统常用快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Command-G</td>
+<td>再次查找：查找之前所找到项目出现的下一个位置。要查找其出现的上一个位置，请按 Command-Shift-G。</td>
+<td>这个有用啊</td>
+</tr>
+<tr>
+<td>Command-M</td>
+<td>将最前端的窗口最小化至 Dock。要最小化最前端应用的所有窗口，请按 Command-Option-M。</td>
+<td>看片的时候有用哦</td>
+</tr>
+<tr>
+<td>Command-H</td>
+<td>隐藏最前端应用的窗口。要查看最前端的应用但隐藏所有其他应用，请按 Command-Option-H。</td>
+<td></td>
+</tr>
+<tr>
+<td>Option-Command-Esc</td>
+<td>强制退出：选择要强制退出的应用。或者，按住 Command-Shift-Option-Esc 3 秒钟可仅强制最前端的应用退出。</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift-Command-3</td>
+<td>屏幕快照：拍摄整个屏幕的屏幕快照</td>
+<td></td>
+</tr>
+<tr>
+<td>Command-逗号 (,)</td>
+<td>偏好设置：打开最前端应用的偏好设置</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="系统设置快捷键"><a href="#系统设置快捷键" class="headerlink" title="系统设置快捷键"></a>系统设置快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电源按钮</td>
+<td>轻按可打开 Mac 或将 Mac 从睡眠状态唤醒。 按住此按钮 5 秒钟会强制 Mac 关机。</td>
+<td></td>
+</tr>
+<tr>
+<td>Control–Command–电源按钮</td>
+<td>强制 Mac 重新启动。</td>
+<td></td>
+</tr>
+<tr>
+<td>Control–Shift–（电源按钮或介质推出键）</td>
+<td>将显示器置于睡眠状态。</td>
+<td></td>
+</tr>
+<tr>
+<td>Control–Command–介质推出键</td>
+<td>退出所有应用，然后重新启动 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。</td>
+<td></td>
+</tr>
+<tr>
+<td>Control–Option–Command–（电源按钮或介质推出键）</td>
+<td>退出所有应用，然后关闭 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift-Command-Q</td>
+<td>注销您的 OS X 用户帐户。系统将提示您确认。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[分布式事物(－)]]></title>
       <url>http://kriswan.github.io/2016/06/02/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9-%EF%BC%8D/</url>
       <content type="html"><![CDATA[<blockquote><p>关于分布式事务的一点学习总结</p>
@@ -67,7 +252,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="mail-to-me"><a href="#mail-to-me" class="headerlink" title="mail to me"></a>mail to me</h3><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#107;&#x72;&#105;&#x73;&#x77;&#97;&#110;&#115;&#102;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#107;&#x72;&#105;&#x73;&#x77;&#97;&#110;&#115;&#102;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a>]]></content>
+<h3 id="mail-to-me"><a href="#mail-to-me" class="headerlink" title="mail to me"></a>mail to me</h3><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#x6b;&#114;&#105;&#115;&#x77;&#x61;&#x6e;&#115;&#102;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x6b;&#114;&#105;&#115;&#x77;&#x61;&#x6e;&#115;&#102;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>]]></content>
     </entry>
     
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kriswan.github.io/"/>
-  <updated>2016-06-02T11:15:18.000Z</updated>
+  <updated>2016-06-09T05:09:01.000Z</updated>
   <id>http://kriswan.github.io/</id>
   
   <author>
@@ -14,6 +14,208 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Atom快捷键整理</title>
+    <link href="http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
+    <id>http://kriswan.github.io/2016/06/08/Atom快捷键整理/</id>
+    <published>2016-06-08T03:27:29.000Z</published>
+    <updated>2016-06-09T05:09:01.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键&lt;br&gt;这里只针对平时用的频率比较高的Atom的一些快捷键做整理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-U&lt;/code&gt; 调出切换编码选项 &lt;em&gt;&lt;u&gt;切换编码哦&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;文件切换&quot;&gt;&lt;a href=&quot;#文件切换&quot; class=&quot;headerlink&quot; title=&quot;文件切换&quot;&gt;&lt;/a&gt;文件切换&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-s&lt;/code&gt; 保存所有打开的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-o&lt;/code&gt; 打开文件目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-\&lt;/code&gt; 显示或隐藏目录树&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-t&lt;/code&gt; 查找文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-b&lt;/code&gt; 在打开的文件之间切换&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-c&lt;/code&gt; 复制当前文件绝对路径&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;目录树操作&quot;&gt;&lt;a href=&quot;#目录树操作&quot; class=&quot;headerlink&quot; title=&quot;目录树操作&quot;&gt;&lt;/a&gt;目录树操作&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-0&lt;/code&gt; 焦点切换到目录树(再按一次或者Esc退出目录树)&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;a&lt;/code&gt; 添加文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d&lt;/code&gt; 将当前文件另存为(duplicate)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt; 显示(隐藏)版本控制忽略的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-right 和 alt-left&lt;/code&gt; 展开(隐藏)所有目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-al-] 和 ctrl-al-[&lt;/code&gt; 同上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-[ 和 ctrl-]&lt;/code&gt; 展开(隐藏)当前目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-f 和 ctrl-b&lt;/code&gt; 同上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;delete&lt;/code&gt; 删除文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-p&lt;/code&gt; 前一行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-n&lt;/code&gt; 后一行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-f&lt;/code&gt; 前进一个字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-b&lt;/code&gt; 后退一个字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-right, ctrl-E&lt;/code&gt; 移动到一行结束&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-left, ctrl-A&lt;/code&gt; 移动到一行开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-up&lt;/code&gt; 移动到文件开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-down&lt;/code&gt; 移动到文件结束&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-g&lt;/code&gt; 移动到指定行 &lt;code&gt;行号&lt;/code&gt; 处&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-r&lt;/code&gt; 在方法之间跳转&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;文本选取&quot;&gt;&lt;a href=&quot;#文本选取&quot; class=&quot;headerlink&quot; title=&quot;文本选取&quot;&gt;&lt;/a&gt;文本选取&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-P&lt;/code&gt; 选取至上一行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-N&lt;/code&gt; 选取至下一样&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-E, cmd-shift-right&lt;/code&gt; 选取至本行结束&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-A, cmd-shift-left&lt;/code&gt; 选取至本行开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-shift-up&lt;/code&gt; 选取至文件开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-shift-down&lt;/code&gt; 选取至文件结尾&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-click&lt;/code&gt; 增加新光标 &lt;em&gt;&lt;u&gt;这个帅气&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-shift-L&lt;/code&gt; 将多行选取改为多行光标 &lt;em&gt;&lt;u&gt;可以利用这个搞多行编辑&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-D&lt;/code&gt; 选取文档中和当前单词相同的下一处 &lt;em&gt;&lt;u&gt;黑科技啊&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-cmd-G&lt;/code&gt; 选取文档中所有和当前光标单词相同的位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;文本编辑&quot;&gt;&lt;a href=&quot;#文本编辑&quot; class=&quot;headerlink&quot; title=&quot;文本编辑&quot;&gt;&lt;/a&gt;文本编辑&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cmd-K, cmd-U&lt;/code&gt; 使当前字符大写&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-K, cmd-L&lt;/code&gt; 使当前字符小写&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-K&lt;/code&gt; 删除当前行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-backspace&lt;/code&gt; 删除到当前行开始&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-fn-backspace&lt;/code&gt; 删除到当前行结束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;括号跳转&quot;&gt;&lt;a href=&quot;#括号跳转&quot; class=&quot;headerlink&quot; title=&quot;括号跳转&quot;&gt;&lt;/a&gt;括号跳转&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-m&lt;/code&gt; 相应括号之间，html tag之间等跳转&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-cmd-m&lt;/code&gt; 括号(tag)之间文本选取&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-.&lt;/code&gt; 关闭当前XML/HTML tag&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;查找&quot;&gt;&lt;a href=&quot;#查找&quot; class=&quot;headerlink&quot; title=&quot;查找&quot;&gt;&lt;/a&gt;查找&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cmd-F&lt;/code&gt; 在buffer中查找&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-shift-f&lt;/code&gt; 在整个工程中查找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;代码操作&quot;&gt;&lt;a href=&quot;#代码操作&quot; class=&quot;headerlink&quot; title=&quot;代码操作&quot;&gt;&lt;/a&gt;代码操作&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-[&lt;/code&gt; 折叠&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-]&lt;/code&gt; 展开&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-shift-{&lt;/code&gt; 折叠全部&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-cmd-shift-}&lt;/code&gt; 展开全部&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cmd-k cmd-N&lt;/code&gt; 指定折叠层级 N为层级数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-space&lt;/code&gt; 提示补全信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;文件类型选择&quot;&gt;&lt;a href=&quot;#文件类型选择&quot; class=&quot;headerlink&quot; title=&quot;文件类型选择&quot;&gt;&lt;/a&gt;文件类型选择&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-L&lt;/code&gt; 选择文本类型  &lt;em&gt;&lt;u&gt;选择当前文件的文本类型哦&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-shift-M&lt;/code&gt; Markdown预览&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt-shift-S&lt;/code&gt; 代码片段查找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;格式化beautify&quot;&gt;&lt;a href=&quot;#格式化beautify&quot; class=&quot;headerlink&quot; title=&quot;格式化beautify&quot;&gt;&lt;/a&gt;格式化beautify&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-alt-b&lt;/code&gt; 格式化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;MacOS快捷键&quot;&gt;&lt;a href=&quot;#MacOS快捷键&quot; class=&quot;headerlink&quot; title=&quot;MacOS快捷键&quot;&gt;&lt;/a&gt;MacOS快捷键&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;mac系统上的快捷键做了一次整理，方便自己&lt;br&gt;鼠标扔掉 ?&lt;br&gt;触摸板扔掉 ？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;系统标示符&quot;&gt;&lt;a href=&quot;#系统标示符&quot; class=&quot;headerlink&quot; title=&quot;系统标示符&quot;&gt;&lt;/a&gt;系统标示符&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;Mac 菜单和键盘通常使用符号来代表某些按键，其中包括以下修饰键：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Command ⌘&lt;/li&gt;
+&lt;li&gt;Shift ⇧&lt;/li&gt;
+&lt;li&gt;Option ⌥&lt;/li&gt;
+&lt;li&gt;Control ⌃&lt;/li&gt;
+&lt;li&gt;Caps Lock ⇪&lt;/li&gt;
+&lt;li&gt;Fn&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;系统常用快捷键&quot;&gt;&lt;a href=&quot;#系统常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;系统常用快捷键&quot;&gt;&lt;/a&gt;系统常用快捷键&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Command-G&lt;/td&gt;
+&lt;td&gt;再次查找：查找之前所找到项目出现的下一个位置。要查找其出现的上一个位置，请按 Command-Shift-G。&lt;/td&gt;
+&lt;td&gt;这个有用啊&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Command-M&lt;/td&gt;
+&lt;td&gt;将最前端的窗口最小化至 Dock。要最小化最前端应用的所有窗口，请按 Command-Option-M。&lt;/td&gt;
+&lt;td&gt;看片的时候有用哦&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Command-H&lt;/td&gt;
+&lt;td&gt;隐藏最前端应用的窗口。要查看最前端的应用但隐藏所有其他应用，请按 Command-Option-H。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Option-Command-Esc&lt;/td&gt;
+&lt;td&gt;强制退出：选择要强制退出的应用。或者，按住 Command-Shift-Option-Esc 3 秒钟可仅强制最前端的应用退出。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift-Command-3&lt;/td&gt;
+&lt;td&gt;屏幕快照：拍摄整个屏幕的屏幕快照&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Command-逗号 (,)&lt;/td&gt;
+&lt;td&gt;偏好设置：打开最前端应用的偏好设置&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;系统设置快捷键&quot;&gt;&lt;a href=&quot;#系统设置快捷键&quot; class=&quot;headerlink&quot; title=&quot;系统设置快捷键&quot;&gt;&lt;/a&gt;系统设置快捷键&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;快捷键&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;电源按钮&lt;/td&gt;
+&lt;td&gt;轻按可打开 Mac 或将 Mac 从睡眠状态唤醒。 按住此按钮 5 秒钟会强制 Mac 关机。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Control–Command–电源按钮&lt;/td&gt;
+&lt;td&gt;强制 Mac 重新启动。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Control–Shift–（电源按钮或介质推出键）&lt;/td&gt;
+&lt;td&gt;将显示器置于睡眠状态。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Control–Command–介质推出键&lt;/td&gt;
+&lt;td&gt;退出所有应用，然后重新启动 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Control–Option–Command–（电源按钮或介质推出键）&lt;/td&gt;
+&lt;td&gt;退出所有应用，然后关闭 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift-Command-Q&lt;/td&gt;
+&lt;td&gt;注销您的 OS X 用户帐户。系统将提示您确认。&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键&lt;b
+    
+    </summary>
+    
+      <category term="工具" scheme="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="http://kriswan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>分布式事物(－)</title>
@@ -135,7 +337,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-&lt;h3 id=&quot;mail-to-me&quot;&gt;&lt;a href=&quot;#mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;mail to me&quot;&gt;&lt;/a&gt;mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#107;&amp;#x72;&amp;#105;&amp;#x73;&amp;#x77;&amp;#97;&amp;#110;&amp;#115;&amp;#102;&amp;#x40;&amp;#103;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#111;&amp;#109;&quot;&gt;&amp;#107;&amp;#x72;&amp;#105;&amp;#x73;&amp;#x77;&amp;#97;&amp;#110;&amp;#115;&amp;#102;&amp;#x40;&amp;#103;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;</content>
+&lt;h3 id=&quot;mail-to-me&quot;&gt;&lt;a href=&quot;#mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;mail to me&quot;&gt;&lt;/a&gt;mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#58;&amp;#x6b;&amp;#114;&amp;#105;&amp;#115;&amp;#x77;&amp;#x61;&amp;#x6e;&amp;#115;&amp;#102;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#x6b;&amp;#114;&amp;#105;&amp;#115;&amp;#x77;&amp;#x61;&amp;#x6e;&amp;#115;&amp;#102;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;</content>
     
     <summary type="html">
     
