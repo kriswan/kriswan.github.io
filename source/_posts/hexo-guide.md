@@ -81,17 +81,17 @@ Do not just seek happiness for yourself. Seek happiness for all. Through kindnes
 {% endblockquote %}
 
 ### 插入图片
-- `![/images/IMG_6322.JPG](/images/IMG_6322.JPG)`  这个是标准的markdown的插入图片的语法
+- `![/images/blank-tags.png](/images/blank-tags.png)`  这个是标准的markdown的插入图片的语法
 - {% raw %} {% asset_img water-flow.jpg water is comming ! %} {% endraw %} 这种标签标示的时候`water-flow.jpg`必须要在文章同级目录下的同名文件夹下
-
-![/images/IMG_6322.JPG](/images/IMG_6322.JPG)
+图片：
+![/images/blank-tags.jpg](/images/blank-tags.jpg)
 
 ### 插入视频 add a youtubu video
 {% raw %} {% youtube wgdBVIX9ifA %} {% endraw %}
 这里是视频id=wgdBVIX9ifA:
 {% youtube wgdBVIX9ifA %}
 
-### 嵌入一段代码,代码是跟路径下的文件：gulpfile.js
+### 嵌入一段代码,代码是根路径下的文件：gulpfile.js
 {% raw %} {% include_code [gulpfile] [lang:javascript] gulpfile.js %} {% endraw %}
 {% include_code [gulpfile] [lang:javascript] gulpfile.js %}
 
@@ -108,15 +108,17 @@ _.compact([0, 1, false, 2, '', 3]);
 {% endcodeblock %}
 
 ### 普通段落引言
+{% raw %} {% pullquote [qut] %}{% endpullquote %}{% endraw %}
+
 {% pullquote [qut] %}
 you wanna quote something, you'd better place it here!
 {% endpullquote %}
 
 
 ### 嵌入一个网页 add a iframe
-{% raw %} {% iframe http://baidu.com 100% 100% %} {% endraw %}
-
-{% iframe http://baidu.com 100% 100% %}
+{% raw %} {% iframe http://www.bing.com 100% 100% %} {% endraw %}
+页面：
+{% iframe http://www.bing.com 100% 100% %}
 
 ### 原始文字 raw
 {% raw %} {% raw %} what ever you put here {% endraw %} {% endraw %}
