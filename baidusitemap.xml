@@ -4,49 +4,8 @@
 
     
   <url>
-    <loc>http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2016-06-09T05:16:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>Atom快捷键整理</title>
-        <pubTime>2016-06-08T03:27:29.000Z</pubTime>
-        
-        <tag>工具</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://kriswan.github.io/2016/06/02/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9-%EF%BC%8D/</loc>
-    <lastmod>2016-06-02T11:15:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>分布式事物(－)</title>
-        <pubTime>2016-06-02T11:08:29.000Z</pubTime>
-        
-        <tag>分布式</tag>
-         
-         
-           
-             
-              <breadCrumb title="分布式" url="http://kriswan.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://kriswan.github.io/2016/05/13/hexo-guide/</loc>
-    <lastmod>2016-05-23T11:19:49.000Z</lastmod>
+    <loc>http://kriswan.github.io/2016/05/13/Hexo-guide/</loc>
+    <lastmod>2016-06-09T17:00:25.000Z</lastmod>
     <data>
         <display>
         <title>Hexo-Guide</title>
@@ -65,34 +24,14 @@
 
     
   <url>
-    <loc>http://kriswan.github.io/2016/05/13/hexo-tags/</loc>
-    <lastmod>2016-05-23T09:37:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo-Tags</title>
-        <pubTime>2016-05-13T10:54:15.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="hexo" url="http://kriswan.github.io/categories/hexo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://kriswan.github.io/2016/05/22/%E5%85%B3%E4%BA%8E%E6%B5%81%E6%8E%A7RateLimit/</loc>
-    <lastmod>2016-05-23T09:37:32.000Z</lastmod>
+    <lastmod>2016-06-09T16:05:47.000Z</lastmod>
     <data>
         <display>
         <title>关于流控RateLimit</title>
         <pubTime>2016-05-22T14:51:43.000Z</pubTime>
         
-        <tag>java</tag>
+        <tag>java guava</tag>
          
          
            
@@ -103,6 +42,67 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://kriswan.github.io/2016/06/09/Alfred%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2016-06-09T15:57:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Alfred介绍</title>
+        <pubTime>2016-06-09T13:43:07.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2016-06-09T14:18:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>Atom快捷键整理</title>
+        <pubTime>2016-06-08T03:27:29.000Z</pubTime>
+        
+        <tag>工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://kriswan.github.io/2016/06/02/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9-%EF%BC%8D/</loc>
+    <lastmod>2016-06-09T05:19:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>分布式事物(－)</title>
+        <pubTime>2016-06-02T11:08:29.000Z</pubTime>
+        
+        <tag>分布式</tag>
+         
+         
+           
+             
+              <breadCrumb title="分布式" url="http://kriswan.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
     

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kriswan.github.io/"/>
-  <updated>2016-06-09T05:16:41.000Z</updated>
+  <updated>2016-06-09T15:57:44.000Z</updated>
   <id>http://kriswan.github.io/</id>
   
   <author>
@@ -16,13 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Alfred介绍</title>
+    <link href="http://kriswan.github.io/2016/06/09/Alfred%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://kriswan.github.io/2016/06/09/Alfred介绍/</id>
+    <published>2016-06-09T13:43:07.000Z</published>
+    <updated>2016-06-09T15:57:44.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Alfred-icon.jpg&quot; alt=&quot;/images/Alfred-icon.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !&lt;/p&gt;
+&lt;p&gt;Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;基础功能&quot;&gt;&lt;a href=&quot;#基础功能&quot; class=&quot;headerlink&quot; title=&quot;基础功能&quot;&gt;&lt;/a&gt;基础功能&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;打开应用程序&lt;/code&gt;, 覆盖了spotlight的所有功能， and there is more&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;简单搜索&lt;/code&gt;，直接在输入框里面输入你需要的关键词，回车即提交Google搜索&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;定位文件&lt;/code&gt;，ctrl-space 呼出Alfred后，键入空格，输入你要查找文件名，即可定位文件，回车打开，command+回车打开文件所在文件夹&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;复杂操作文件&lt;/code&gt;：通过find、open、in等关键词搜索文件。find是定位文件，open是定位并打开文件，in是在文件中进行全文检索，三种检索方式基本上可以找到任何你想找的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;操作Shell&lt;/code&gt;：输入&lt;code&gt;&amp;gt;&lt;/code&gt;即可直接运行shell命令。比如&lt;code&gt;&amp;gt; cat *.py | grep print，可以直接打开终端并查找当前py文件中包含 print 的语句。&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;控制itunes播放&lt;/code&gt;，输入iTunes，会出现一个 iTunes mini play，打开可以通过 Alfred 控制音乐播放。用快捷键也能完成这个功能：shift+option+command+p&lt;/li&gt;
+&lt;li&gt;输入email，后面跟邮件地址，可以直接打开写邮件的界面&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;定义文字片段和粘贴板&lt;/code&gt;，在 Alfred 的设置-Features 选中Clipboard，在Snippets里定义自己常用的文字片段，比如代码、地址等等等，之后以&lt;code&gt;option+command+l&lt;/code&gt; (&lt;em&gt;这个快捷键是我自己定义的，原先的和其他的快捷键有冲突&lt;/em&gt;)呼出界面，输入文字片段的关键字回车即可。&lt;em&gt;&lt;u&gt;这里可以保存很长时间的粘贴板的内容，赞！！！&lt;/u&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;自定义搜索&lt;/code&gt;，这个稍微复杂些，打开设置窗口，点击Features-Custom Search，在右侧栏添加自定义搜索。举几个例子帮助大家理解下规则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;搜索iOS App：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Search URL：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;itunes://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?term=&amp;#123;query&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Title：iOS App&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;搜索Mac app:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Search URL:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;macappstore://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?q=&amp;#123;query&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Title: mac app&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keywords: mac&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;workflow-插件&quot;&gt;&lt;a href=&quot;#workflow-插件&quot; class=&quot;headerlink&quot; title=&quot;workflow 插件&quot;&gt;&lt;/a&gt;workflow 插件&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;alfred给予了用户很大的自由度去对其进行扩展，这就是workflow插件机制，用户可以按照一定的开发规范，开发各自的任务插件，比如打电话、发短信、播放音乐，搜索天气等等…是不是非常的强大！&lt;/p&gt;
+&lt;p&gt;With Alfred’s Powerpack and workflows, you can extend Alfred and get things done in your own way. Replace repetitive tasks with workflows, and boost your productivity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;先看看我的workflow&quot;&gt;&lt;a href=&quot;#先看看我的workflow&quot; class=&quot;headerlink&quot; title=&quot;先看看我的workflow&quot;&gt;&lt;/a&gt;先看看我的workflow&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/myalfred_workflow.png&quot; alt=&quot;myalfredworkflow&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫&lt;code&gt;workflow search&lt;/code&gt;的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：&lt;br&gt;&lt;a href=&quot;https://www.alfredapp.com/workflows&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.alfredapp.com/workflows&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.alfredworkflow.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.alfredworkflow.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;workflow-search&quot;&gt;&lt;a href=&quot;#workflow-search&quot; class=&quot;headerlink&quot; title=&quot;workflow search&quot;&gt;&lt;/a&gt;workflow search&lt;/h4&gt;&lt;p&gt;这个插件可以随时直接在搜索框中搜索可用的workflow,并下载，关键字是：&lt;code&gt;wf&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/workflow_search.png&quot; alt=&quot;workflow_search&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;baidu-weather&quot;&gt;&lt;a href=&quot;#baidu-weather&quot; class=&quot;headerlink&quot; title=&quot;baidu weather&quot;&gt;&lt;/a&gt;baidu weather&lt;/h4&gt;&lt;p&gt;直接查看当前城市的天气状况，关键字：&lt;code&gt;tq&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/baidu_weather.png&quot; alt=&quot;baidu_weather&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;air-quality&quot;&gt;&lt;a href=&quot;#air-quality&quot; class=&quot;headerlink&quot; title=&quot;air quality&quot;&gt;&lt;/a&gt;air quality&lt;/h4&gt;&lt;p&gt;查看当前城市的空气质量, 关键字： &lt;code&gt;air&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/air_quality.png&quot; alt=&quot;air_quality&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;copy-path&quot;&gt;&lt;a href=&quot;#copy-path&quot; class=&quot;headerlink&quot; title=&quot;copy path&quot;&gt;&lt;/a&gt;copy path&lt;/h4&gt;&lt;p&gt;这个workflow 直接做成快捷键的方式，在finder里面选中文件后，直接快捷键：&lt;code&gt;ctrl-shift-c&lt;/code&gt; 即可拷贝当前文件的绝对路径&lt;br&gt;&lt;img src=&quot;/images/copy_path.png&quot; alt=&quot;copy_path&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;有道翻译&quot;&gt;&lt;a href=&quot;#有道翻译&quot; class=&quot;headerlink&quot; title=&quot;有道翻译&quot;&gt;&lt;/a&gt;有道翻译&lt;/h4&gt;&lt;p&gt;直接在搜索框中翻译，自动转换中英文， 关键字： &lt;code&gt;yd&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/youdao.png&quot; alt=&quot;youdao&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;知乎日报&quot;&gt;&lt;a href=&quot;#知乎日报&quot; class=&quot;headerlink&quot; title=&quot;知乎日报&quot;&gt;&lt;/a&gt;知乎日报&lt;/h4&gt;&lt;p&gt;直接查看知乎日报的热门文章列表， 关键字： &lt;code&gt;zh&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/zhihudaily.png&quot; alt=&quot;zhihudaily&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;人民币金额大写&quot;&gt;&lt;a href=&quot;#人民币金额大写&quot; class=&quot;headerlink&quot; title=&quot;人民币金额大写&quot;&gt;&lt;/a&gt;人民币金额大写&lt;/h4&gt;&lt;p&gt;直接转换人民币金额的大写中文， 关键字： &lt;code&gt;cny&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/cny.png&quot; alt=&quot;cny&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;stackoverflow-搜索&quot;&gt;&lt;a href=&quot;#stackoverflow-搜索&quot; class=&quot;headerlink&quot; title=&quot;stackoverflow 搜索&quot;&gt;&lt;/a&gt;stackoverflow 搜索&lt;/h4&gt;&lt;p&gt;直接搜索stackoverflow上的相关答案信息，关键字： &lt;code&gt;.so&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/stackoverflow_wf.png&quot; alt=&quot;stackoverflow&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;电话呼叫&quot;&gt;&lt;a href=&quot;#电话呼叫&quot; class=&quot;headerlink&quot; title=&quot;电话呼叫&quot;&gt;&lt;/a&gt;电话呼叫&lt;/h4&gt;&lt;p&gt;直接呼叫iphone上的联系人： 关键字: &lt;code&gt;call&lt;/code&gt; 这个貌似不支持电话薄的查询，需要每次都输入电话号码，比较麻烦&lt;br&gt;&lt;img src=&quot;/images/call.png&quot; alt=&quot;call&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/calling.png&quot; alt=&quot;calling&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;evernote-搜索&quot;&gt;&lt;a href=&quot;#evernote-搜索&quot; class=&quot;headerlink&quot; title=&quot;evernote 搜索&quot;&gt;&lt;/a&gt;evernote 搜索&lt;/h4&gt;&lt;p&gt;搜索印象笔记中的内容，同时可以新建笔记，&lt;br&gt;关键字：en 搜索笔记，ennew 新建笔记&lt;br&gt;&lt;img src=&quot;/images/evernote.png&quot; alt=&quot;evernote&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;百度地图搜索&quot;&gt;&lt;a href=&quot;#百度地图搜索&quot; class=&quot;headerlink&quot; title=&quot;百度地图搜索&quot;&gt;&lt;/a&gt;百度地图搜索&lt;/h4&gt;&lt;p&gt;搜索百度地图，&lt;br&gt;关键字： setl: 设置当前城市， bmap 定位具体地点&lt;br&gt;&lt;img src=&quot;/images/baidumap.png&quot; alt=&quot;baidumap&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h4&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;alfred 的一般基本功能已经能满足日常大部分的使用了，而且比spotlight要好用的多，付费的powerpak－workflow进一步提升了这个工具的逼格，把玩过后，我只想说，不要太牛掰啊！&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/Alfred-icon.jpg&quot; alt=&quot;/images/Alfred-icon.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到
+    
+    </summary>
+    
+      <category term="工具" scheme="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="http://kriswan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Atom快捷键整理</title>
     <link href="http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
     <id>http://kriswan.github.io/2016/06/08/Atom快捷键整理/</id>
     <published>2016-06-08T03:27:29.000Z</published>
-    <updated>2016-06-09T05:16:41.000Z</updated>
+    <updated>2016-06-09T14:18:46.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/atom-light-640x360.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键&lt;br&gt;这里只针对平时用的频率比较高的Atom的一些快捷键做整理&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
@@ -108,6 +179,7 @@
 &lt;h2 id=&quot;MacOS快捷键&quot;&gt;&lt;a href=&quot;#MacOS快捷键&quot; class=&quot;headerlink&quot; title=&quot;MacOS快捷键&quot;&gt;&lt;/a&gt;MacOS快捷键&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;mac系统上的快捷键做了一次整理，方便自己&lt;br&gt;鼠标扔掉 ?&lt;br&gt;触摸板扔掉 ？&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/images/macbookpro.jpg&quot; alt=&quot;macbookpro&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;系统标示符&quot;&gt;&lt;a href=&quot;#系统标示符&quot; class=&quot;headerlink&quot; title=&quot;系统标示符&quot;&gt;&lt;/a&gt;系统标示符&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;Mac 菜单和键盘通常使用符号来代表某些按键，其中包括以下修饰键：&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -205,8 +277,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;最近在用文本编辑器Atom, 这里整理下这个工具的一些比较常用的快捷键&lt;b
+      &lt;p&gt;&lt;img src=&quot;/images/atom-light-640x360.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom
     
     </summary>
     
@@ -222,9 +294,10 @@
     <link href="http://kriswan.github.io/2016/06/02/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E7%89%A9-%EF%BC%8D/"/>
     <id>http://kriswan.github.io/2016/06/02/分布式事物-－/</id>
     <published>2016-06-02T11:08:29.000Z</published>
-    <updated>2016-06-02T11:15:18.000Z</updated>
+    <updated>2016-06-09T05:19:26.000Z</updated>
     
-    <content type="html">&lt;blockquote&gt;&lt;p&gt;关于分布式事务的一点学习总结&lt;/p&gt;
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;关于分布式事务的一点学习总结&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;设计模型&quot;&gt;&lt;a href=&quot;#设计模型&quot; class=&quot;headerlink&quot; title=&quot;设计模型&quot;&gt;&lt;/a&gt;设计模型&lt;/h3&gt;&lt;p&gt;采用类似TCC的事务模型，每个事务参与者都提供try, confirm, cancel的逻辑。在每个事务参与者的业务库的同一个实例都放一个事务所使用的库，简称事务库。&lt;/p&gt;
 &lt;h4 id=&quot;Try状态&quot;&gt;&lt;a href=&quot;#Try状态&quot; class=&quot;headerlink&quot; title=&quot;Try状态&quot;&gt;&lt;/a&gt;Try状态&lt;/h4&gt;&lt;p&gt;尝试执行，比如对数据进行校验，检查事务是否可以进行等。并且在事务库里创建一条记录。此时记录中的状态字段记录为PENDING&lt;/p&gt;
@@ -239,9 +312,10 @@
     
     <summary type="html">
     
-      &lt;blockquote&gt;&lt;p&gt;关于分布式事务的一点学习总结&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;关于分布式事务的一点学习总结&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;设计模型&quot;&gt;&lt;a href=&quot;#设计模型&quot; class=&quot;headerlink&quot; title=&quot;设计模型&quot;&gt;&lt;/a&gt;设计模型&lt;/h3&gt;&lt;p&gt;采用类似TCC的事务模型，每
+&lt;h3 id=&quot;设计模型&quot;&gt;&lt;a href=&quot;#设计模型&quot; class=&quot;headerlink&quot; title=&quot;设计模型&quot;&gt;&lt;/a&gt;设计模型&lt;/h3&gt;&lt;p&gt;采用类似TCC的事务模型，
     
     </summary>
     
@@ -257,91 +331,96 @@
     <link href="http://kriswan.github.io/2016/05/22/%E5%85%B3%E4%BA%8E%E6%B5%81%E6%8E%A7RateLimit/"/>
     <id>http://kriswan.github.io/2016/05/22/关于流控RateLimit/</id>
     <published>2016-05-22T14:51:43.000Z</published>
-    <updated>2016-05-23T09:37:32.000Z</updated>
+    <updated>2016-06-09T16:05:47.000Z</updated>
     
-    <content type="html">&lt;blockquote&gt;&lt;p&gt;关于流控的一点总结&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/SmoothWarmingUpRatelimit.png&quot; alt=&quot;SmoothWarmingUpRatelimit&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;关于流控的一点总结&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;water-is-comming-…&quot;&gt;&lt;a href=&quot;#water-is-comming-…&quot; class=&quot;headerlink&quot; title=&quot;water is comming !!!…&quot;&gt;&lt;/a&gt;water is comming !!!…&lt;/h3&gt;&lt;img src=&quot;/2016/05/22/关于流控RateLimit/water-flow.jpg&quot; alt=&quot;water is comming !&quot; title=&quot;water is comming !&quot;&gt;
+&lt;h3 id=&quot;flow-need-to-be-controled&quot;&gt;&lt;a href=&quot;#flow-need-to-be-controled&quot; class=&quot;headerlink&quot; title=&quot;flow need to be controled&quot;&gt;&lt;/a&gt;flow need to be controled&lt;/h3&gt;&lt;img src=&quot;/2016/05/22/关于流控RateLimit/water-flow.jpg&quot; alt=&quot;water is comming !&quot; title=&quot;water is comming !&quot;&gt;
 </content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;&lt;p&gt;关于流控的一点总结&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;/images/SmoothWarmingUpRatelimit.png&quot; alt=&quot;SmoothWarmingUpRatelimit&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;关于流控的一点总结&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;water-is-comming-…&quot;&gt;&lt;a href=&quot;#water-is-comming-…&quot; class=&quot;headerlink&quot; title=&quot;water is comm
+&lt;h3 id=&quot;fl
     
     </summary>
     
       <category term="java" scheme="http://kriswan.github.io/categories/java/"/>
     
     
-      <category term="java" scheme="http://kriswan.github.io/tags/java/"/>
+      <category term="java guava" scheme="http://kriswan.github.io/tags/java-guava/"/>
     
   </entry>
   
   <entry>
     <title>Hexo-Guide</title>
-    <link href="http://kriswan.github.io/2016/05/13/hexo-guide/"/>
-    <id>http://kriswan.github.io/2016/05/13/hexo-guide/</id>
+    <link href="http://kriswan.github.io/2016/05/13/Hexo-guide/"/>
+    <id>http://kriswan.github.io/2016/05/13/Hexo-guide/</id>
     <published>2016-05-13T10:54:15.000Z</published>
-    <updated>2016-05-23T11:19:49.000Z</updated>
+    <updated>2016-06-09T17:00:25.000Z</updated>
     
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;引言… &lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/hexo_logo.png&quot; alt=&quot;hexo_logo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentatoin&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;hexo-一些相关的命令&quot;&gt;&lt;a href=&quot;#hexo-一些相关的命令&quot; class=&quot;headerlink&quot; title=&quot;hexo 一些相关的命令&quot;&gt;&lt;/a&gt;hexo 一些相关的命令&lt;/h2&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;这里会介绍一些hexo相关的命令 &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;引言…short version &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一些博客链接&quot;&gt;&lt;a href=&quot;#一些博客链接&quot; class=&quot;headerlink&quot; title=&quot;一些博客链接&quot;&gt;&lt;/a&gt;一些博客链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建博客连接&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###test 图片&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/IMG_6322.JPG&quot; alt=&quot;/images/IMG_6322.JPG&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;一些博客链接&quot;&gt;&lt;a href=&quot;#一些博客链接&quot; class=&quot;headerlink&quot; title=&quot;一些博客链接&quot;&gt;&lt;/a&gt;一些博客链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建博客连接:http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;p&gt;新建一篇文章&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;p&gt;本地服务器启动，可以在本地看到博客的情况，方便测试&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;p&gt;生成hexo静态文件&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Clean-public-folder-files&quot;&gt;&lt;a href=&quot;#Clean-public-folder-files&quot; class=&quot;headerlink&quot; title=&quot;Clean public folder files&quot;&gt;&lt;/a&gt;Clean public folder files&lt;/h3&gt;&lt;p&gt;清除public文件夹下的已经生成的静态文件&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo clean&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;p&gt;部署到github上的master分支上去&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Hexo-的一些独特的标签-tag&quot;&gt;&lt;a href=&quot;#Hexo-的一些独特的标签-tag&quot; class=&quot;headerlink&quot; title=&quot;Hexo 的一些独特的标签 tag&quot;&gt;&lt;/a&gt;Hexo 的一些独特的标签 tag&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/tags.gif&quot; alt=&quot;blank-tags&quot;&gt;&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;Now, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;剧中引言-centerquote&quot;&gt;&lt;a href=&quot;#剧中引言-centerquote&quot; class=&quot;headerlink&quot; title=&quot;剧中引言 centerquote&quot;&gt;&lt;/a&gt;剧中引言 centerquote&lt;/h3&gt;
+{% centerquote %} 引言放这里 {% endcenterquote %}
+
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;引言放这里 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;左对齐引言-blockquote&quot;&gt;&lt;a href=&quot;#左对齐引言-blockquote&quot; class=&quot;headerlink&quot; title=&quot;左对齐引言 blockquote&quot;&gt;&lt;/a&gt;左对齐引言 blockquote&lt;/h3&gt;
+{% blockquote David Levithan, Wide Awake http://wanders.com.cn 万的个人网站 %}
+摘要引言放这里
+{% endblockquote %}
+
+&lt;p&gt;引言：&lt;br&gt;&lt;blockquote&gt;&lt;p&gt;Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.&lt;/p&gt;
+&lt;footer&gt;&lt;strong&gt;David Levithan, Wide Awake&lt;/strong&gt;&lt;cite&gt;&lt;a href=&quot;http://wanders.com.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;万的个人网站&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h3 id=&quot;插入图片&quot;&gt;&lt;a href=&quot;#插入图片&quot; class=&quot;headerlink&quot; title=&quot;插入图片&quot;&gt;&lt;/a&gt;插入图片&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;![/images/IMG_6322.JPG](/images/IMG_6322.JPG)&lt;/code&gt;  这个是标准的markdown的插入图片的语法&lt;/li&gt;
+&lt;li&gt; {% asset_img water-flow.jpg water is comming ! %}  这种标签标示的时候&lt;code&gt;water-flow.jpg&lt;/code&gt;必须要在文章同级目录下的同名文件夹下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/IMG_6322.JPG&quot; alt=&quot;/images/IMG_6322.JPG&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;插入视频-add-a-youtubu-video&quot;&gt;&lt;a href=&quot;#插入视频-add-a-youtubu-video&quot; class=&quot;headerlink&quot; title=&quot;插入视频 add a youtubu video&quot;&gt;&lt;/a&gt;插入视频 add a youtubu video&lt;/h3&gt; {% youtube wgdBVIX9ifA %} 
+&lt;p&gt;这里是视频id=wgdBVIX9ifA:&lt;br&gt;&lt;div class=&quot;video-container&quot;&gt;&lt;iframe src=&quot;//www.youtube.com/embed/wgdBVIX9ifA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&quot;嵌入一段代码-代码是跟路径下的文件：gulpfile-js&quot;&gt;&lt;a href=&quot;#嵌入一段代码-代码是跟路径下的文件：gulpfile-js&quot; class=&quot;headerlink&quot; title=&quot;嵌入一段代码,代码是跟路径下的文件：gulpfile.js&quot;&gt;&lt;/a&gt;嵌入一段代码,代码是跟路径下的文件：gulpfile.js&lt;/h3&gt; {% include_code [gulpfile] [lang:javascript] gulpfile.js %} 
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;figcaption&gt;&lt;span&gt;[gulpfile] []&lt;/span&gt;&lt;a href=&quot;/downloads/code/gulpfile.js&quot;&gt;view raw&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; gulp = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; minifycss = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-minify-css&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; uglify = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-uglify&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; htmlmin = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-htmlmin&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; htmlclean = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-htmlclean&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public 目录 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-css&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.css&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(minifycss())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public 目录 html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-html&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.html&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(htmlclean())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(htmlmin({&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         removeComments: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyJS: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyCSS: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyURLs: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    }))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public/js 目录 js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-js&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.js&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(uglify())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 执行 gulp 命令时执行的任务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;default&#39;&lt;/span&gt;, [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;minify-html&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;minify-css&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;minify-js&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;给代码片段加入一个URL-codeblock&quot;&gt;&lt;a href=&quot;#给代码片段加入一个URL-codeblock&quot; class=&quot;headerlink&quot; title=&quot;给代码片段加入一个URL codeblock&quot;&gt;&lt;/a&gt;给代码片段加入一个URL codeblock&lt;/h3&gt;
+  {% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
+    code put here
+  {% endcodeblock %}
+
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_.compact&lt;/span&gt;&lt;a href=&quot;http://underscorejs.org/#compact&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Underscore.js&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_.compact([0, 1, false, 2, &amp;apos;&amp;apos;, 3]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;=&amp;gt; [1, 2, 3]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;普通段落引言&quot;&gt;&lt;a href=&quot;#普通段落引言&quot; class=&quot;headerlink&quot; title=&quot;普通段落引言&quot;&gt;&lt;/a&gt;普通段落引言&lt;/h3&gt;&lt;blockquote class=&quot;pullquote [qut]&quot;&gt;&lt;p&gt;you wanna quote something, you’d better place it here!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;嵌入一个网页-add-a-iframe&quot;&gt;&lt;a href=&quot;#嵌入一个网页-add-a-iframe&quot; class=&quot;headerlink&quot; title=&quot;嵌入一个网页 add a iframe&quot;&gt;&lt;/a&gt;嵌入一个网页 add a iframe&lt;/h3&gt; {% iframe http://baidu.com 100% 100% %} 
+&lt;iframe src=&quot;http://baidu.com&quot; width=&quot;100%&quot; height=&quot;100%&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;h3 id=&quot;原始文字-raw&quot;&gt;&lt;a href=&quot;#原始文字-raw&quot; class=&quot;headerlink&quot; title=&quot;原始文字 raw&quot;&gt;&lt;/a&gt;原始文字 raw&lt;/h3&gt; {% raw %} what ever you put here {% endraw %} 
+
+ If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
+
+&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#109;&amp;#97;&amp;#x69;&amp;#108;&amp;#116;&amp;#x6f;&amp;#58;&amp;#x6b;&amp;#x72;&amp;#105;&amp;#115;&amp;#119;&amp;#97;&amp;#x6e;&amp;#115;&amp;#102;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x6b;&amp;#x72;&amp;#105;&amp;#115;&amp;#119;&amp;#97;&amp;#x6e;&amp;#115;&amp;#102;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://kriswan.github.io/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="http://kriswan.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-Tags</title>
-    <link href="http://kriswan.github.io/2016/05/13/hexo-tags/"/>
-    <id>http://kriswan.github.io/2016/05/13/hexo-tags/</id>
-    <published>2016-05-13T10:54:15.000Z</published>
-    <updated>2016-05-23T09:37:32.000Z</updated>
-    
-    <content type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;In this article, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily! &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;add-a-quote&quot;&gt;&lt;a href=&quot;#add-a-quote&quot; class=&quot;headerlink&quot; title=&quot;add a quote&quot;&gt;&lt;/a&gt;add a quote&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.&lt;/p&gt;
-&lt;footer&gt;&lt;strong&gt;David Levithan, Wide Awake&lt;/strong&gt;&lt;cite&gt;&lt;a href=&quot;http://wanders.com.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;万的个人网站&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;
-&lt;h3 id=&quot;add-a-youtubu-video&quot;&gt;&lt;a href=&quot;#add-a-youtubu-video&quot; class=&quot;headerlink&quot; title=&quot;add a youtubu video&quot;&gt;&lt;/a&gt;add a youtubu video&lt;/h3&gt;&lt;div class=&quot;video-container&quot;&gt;&lt;iframe src=&quot;//www.youtube.com/embed/wgdBVIX9ifA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
-&lt;h3 id=&quot;include-a-code-file&quot;&gt;&lt;a href=&quot;#include-a-code-file&quot; class=&quot;headerlink&quot; title=&quot;include a code file&quot;&gt;&lt;/a&gt;include a code file&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;figcaption&gt;&lt;span&gt;[gulpfile] []&lt;/span&gt;&lt;a href=&quot;/downloads/code/gulpfile.js&quot;&gt;view raw&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; gulp = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; minifycss = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-minify-css&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; uglify = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-uglify&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; htmlmin = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-htmlmin&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; htmlclean = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-htmlclean&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public 目录 css&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-css&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.css&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(minifycss())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public 目录 html&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-html&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.html&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(htmlclean())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(htmlmin({&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         removeComments: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyJS: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyCSS: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         minifyURLs: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    }))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 压缩 public/js 目录 js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;minify-js&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;./public/**/*.js&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(uglify())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;./public&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;});&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 执行 gulp 命令时执行的任务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;default&#39;&lt;/span&gt;, [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;minify-html&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;minify-css&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;minify-js&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;adding-a-caption-and-a-URL-to-a-codeblock&quot;&gt;&lt;a href=&quot;#adding-a-caption-and-a-URL-to-a-codeblock&quot; class=&quot;headerlink&quot; title=&quot;adding a caption and a URL to a codeblock&quot;&gt;&lt;/a&gt;adding a caption and a URL to a codeblock&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_.compact&lt;/span&gt;&lt;a href=&quot;http://underscorejs.org/#compact&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Underscore.js&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_.compact([0, 1, false, 2, &amp;apos;&amp;apos;, 3]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;=&amp;gt; [1, 2, 3]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote class=&quot;pullquote [qut]&quot;&gt;&lt;p&gt;you wanna quote something, you’d better place it here!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;add-a-iframe&quot;&gt;&lt;a href=&quot;#add-a-iframe&quot; class=&quot;headerlink&quot; title=&quot;add a iframe&quot;&gt;&lt;/a&gt;add a iframe&lt;/h3&gt;&lt;iframe src=&quot;http://baidu.com&quot; width=&quot;100%&quot; height=&quot;100%&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
- If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
-
-&lt;h3 id=&quot;mail-to-me&quot;&gt;&lt;a href=&quot;#mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;mail to me&quot;&gt;&lt;/a&gt;mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#x3a;&amp;#107;&amp;#114;&amp;#x69;&amp;#115;&amp;#119;&amp;#x61;&amp;#x6e;&amp;#115;&amp;#102;&amp;#x40;&amp;#103;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;&quot;&gt;&amp;#107;&amp;#114;&amp;#x69;&amp;#115;&amp;#119;&amp;#x61;&amp;#x6e;&amp;#115;&amp;#102;&amp;#x40;&amp;#103;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;&lt;/a&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;In this article, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily! 
+      &lt;p&gt;&lt;img src=&quot;/images/hexo_logo.png&quot; alt=&quot;hexo_logo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! T
     
     </summary>
     
