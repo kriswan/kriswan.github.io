@@ -61,7 +61,7 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
  Now, We'll talk a little bit hexo tag plugins, To help you munipulate you blog easily!
 {% endcenterquote %}
 
-### 剧中引言 centerquote
+### 居中引言 centerquote
 {% raw %}
 {% centerquote %} 引言放这里 {% endcenterquote %}
 {% endraw %}
@@ -122,6 +122,7 @@ you wanna quote something, you'd better place it here!
 
 ### 原始文字 raw
 {% raw %} {% raw %} what ever you put here {% endraw %} {% endraw %}
+
 {% raw %}
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 {% endraw %}
