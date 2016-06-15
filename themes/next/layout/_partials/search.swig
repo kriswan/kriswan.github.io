@@ -2,6 +2,6 @@
   {% include 'search/swiftype.swig' %}
 {% elseif theme.tinysou_Key %}
   {% include 'search/tinysou.swig' %}
-{% elseif config.search.path %}
-  {% include 'search/localsearch.swig' %}
+{% elseif config.algolia.applicationID %}
+  {% include 'search/algolia.swig' %}
 {% endif %}

@@ -55,9 +55,16 @@ default_category: uncategorized
 category_map:
 tag_map:
 
-search:
-  path: search.xml
-  field: post
+algolia:
+  applicationID: J5OWVCC0MZ
+  apiKey: d73585bd198eaf7155b7089f5b8bd06a
+  adminApiKey: 8117feb017284457efb355bb9e072f3a
+  indexName: hexo_search
+  chunkSize: 5000
+
+# search:
+  # path: search.xml
+  # field: post
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
