@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kriswan.github.io/"/>
-  <updated>2016-06-09T15:57:44.000Z</updated>
+  <updated>2016-06-25T09:32:36.000Z</updated>
   <id>http://kriswan.github.io/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一次踩坑</title>
+    <link href="http://kriswan.github.io/2016/06/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%B8%A9%E5%9D%91/"/>
+    <id>http://kriswan.github.io/2016/06/25/记录一次踩坑/</id>
+    <published>2016-06-25T08:47:33.000Z</published>
+    <updated>2016-06-25T09:32:36.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/hole.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记录一次去年底的踩坑过程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;起因介绍&quot;&gt;&lt;a href=&quot;#起因介绍&quot; class=&quot;headerlink&quot; title=&quot;起因介绍&quot;&gt;&lt;/a&gt;起因介绍&lt;/h3&gt;&lt;p&gt;业务系统正在稳当的跑着，结果半夜报警电话不停，机器load报警，起来看到cpu使用率很低，报警是由于内存导致的，非常奇怪本身系统的逻辑很简单，&lt;br&gt;就是保险系统的生单和出保逻辑对外提供一套dubbo的api服务。&lt;/p&gt;
+&lt;h3 id=&quot;逐层分析&quot;&gt;&lt;a href=&quot;#逐层分析&quot; class=&quot;headerlink&quot; title=&quot;逐层分析&quot;&gt;&lt;/a&gt;逐层分析&lt;/h3&gt;&lt;p&gt;按理推断即便系统有问题有也应该是业务系统应该报警才对，怎么会是机器在报警，为了验证自己的想法，&lt;br&gt;去看tomcat的gc日志，和自己预期一致，没有发现有fullgc, 系统日志也没有OOM异常，那就奇怪，4g内存，&lt;br&gt;jvm申请3g最大的堆内存，按道理机器不应该报内存不够啊，折腾了半天还是没有发现有什么异常的地方，&lt;br&gt;但是load的报警还在持续，回到刚刚的gc日志，忽然意识到一个问题居然一天之内一次fullgc都没发现，&lt;br&gt;很奇怪啊，按道理系统稳定运行一段时间后，fullgc应该是按照一个稳定的频率出现才对，&lt;br&gt;到服务器上sudo jstat -gcutil pid看了下gc统计日志，居然真是一次都木有啊&lt;/p&gt;
+&lt;h3 id=&quot;推理演变&quot;&gt;&lt;a href=&quot;#推理演变&quot; class=&quot;headerlink&quot; title=&quot;推理演变&quot;&gt;&lt;/a&gt;推理演变&lt;/h3&gt;&lt;p&gt;把自己收集到的素材整理下： &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统没有&lt;code&gt;FullGC&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;tomcat 内存足够&lt;/li&gt;
+&lt;li&gt;虚机load报警&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这么说来推测一下，一定是有什么地方申请了一块内存但是没有释放，最起码是System.gc()没起效果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果系统本身一直是在年轻代进行垃圾回收,那就意味着一定不会触发fullGC, 通过观察gc日志和对系统本身使用的&lt;br&gt;了解,我推断是由于使用了堆外内存导致的, 公司所有的中间件里面底层都是依赖netty来构建的,dubbo,asynchttp,&lt;br&gt;而系统本身就是犹如一个高速公路一样,只是做数据的传输工作,应用本身基本上没有本地缓存,而且强依赖外部接口(保险平台),&lt;br&gt;dubbo,asynchttp这些中间件的使用率非常频繁, &lt;/p&gt;
+&lt;p&gt;netty本身是会显式的调用System.gc()进行垃圾回收的,再联想到公司默认的jvm配置-XX:+DisableExplicitGC,这就不奇怪了,&lt;br&gt;本身如果系统自己有fullGC的话,那就是系统自身的fullGC来回收,但是这条路也不同,这就导致来堆外内存没有释放, &lt;/p&gt;
+&lt;p&gt;所以结论是: netty不停的申请堆外内存,而又得不到释放,导致系统load压力一致在涨&lt;/p&gt;
+&lt;h3 id=&quot;验证&quot;&gt;&lt;a href=&quot;#验证&quot; class=&quot;headerlink&quot; title=&quot;验证&quot;&gt;&lt;/a&gt;验证&lt;/h3&gt;&lt;p&gt;&lt;code&gt;-XX:+DisableExplicitGC&lt;/code&gt; 将这个参数去掉, 观察系统10分钟,&lt;code&gt;sudo jstat -gcutil pid&lt;/code&gt; 发现有fullGC了, 系统的load慢慢也下来了&lt;/p&gt;
+&lt;h3 id=&quot;批评自己&quot;&gt;&lt;a href=&quot;#批评自己&quot; class=&quot;headerlink&quot; title=&quot;批评自己&quot;&gt;&lt;/a&gt;批评自己&lt;/h3&gt;&lt;p&gt;其实上面的验证方法不太符合工程学实现的要求, 我们是通过推理来验证自己的想法, 还应该讲tomcat的gc dump出来,通过分析工具分析系统的哪一个线程和代码会有可能有问题,这才是比较科学的分析方法&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/hole.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记录一次去年底的踩坑过程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;起因介绍&quot;&gt;&lt;a href=&quot;#起因介绍&quot; class=&quot;headerlin
+    
+    </summary>
+    
+      <category term="java" scheme="http://kriswan.github.io/categories/java/"/>
+    
+    
+      <category term="jvm gc" scheme="http://kriswan.github.io/tags/jvm-gc/"/>
+    
+  </entry>
   
   <entry>
     <title>Alfred介绍</title>
@@ -414,7 +460,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#102;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;&quot;&gt;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#102;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6d;&lt;/a&gt;
+&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#x61;&amp;#110;&amp;#115;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#x61;&amp;#110;&amp;#115;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;
 </content>
     
     <summary type="html">
