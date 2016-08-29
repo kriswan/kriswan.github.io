@@ -1,8 +1,8 @@
 ---
 title: Alfred介绍
 date: 2016-06-09 21:43:07
-tags: 工具
-categories: 工具
+tags: DevTools
+categories: DevTools
 ---
 
 ![/images/Alfred-icon.jpg](/images/Alfred-icon.jpg)
@@ -90,3 +90,5 @@ categories: 工具
 {% centerquote %}
 alfred 的一般基本功能已经能满足日常大部分的使用了，而且比spotlight要好用的多，付费的powerpak－workflow进一步提升了这个工具的逼格，把玩过后，我只想说，不要太牛掰啊！
 {% endcenterquote %}
+
+

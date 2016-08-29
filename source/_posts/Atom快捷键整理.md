@@ -1,8 +1,8 @@
 ---
 title: Atom快捷键整理
 date: 2016-06-08T11:27:29.000Z
-tags: 工具
-categories: 工具
+tags: DevTools
+categories: DevTools
 ---
 
 ![atom](/images/atom-light-640x360.jpg)
@@ -135,3 +135,5 @@ Control–Shift–（电源按钮或介质推出键）  |  将显示器置于睡
 Control–Command–介质推出键	  |  退出所有应用，然后重新启动 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。 |  
 Control–Option–Command–（电源按钮或介质推出键）	  | 退出所有应用，然后关闭 Mac。如果任何打开的文稿有未存储的更改，系统将询问您是否要存储这些更改。  |  
 Shift-Command-Q	  |  注销您的 OS X 用户帐户。系统将提示您确认。 |  
+
+

@@ -1,8 +1,8 @@
 ---
 title: 关于流控RateLimit
 date: 2016-05-22 22:51:43
-tags: java guava
-categories: java
+tags: [Java,Guava]
+categories: Java
 ---
 ![SmoothWarmingUpRatelimit](/images/SmoothWarmingUpRatelimit.png)
 
@@ -12,3 +12,5 @@ categories: java
 
 ### flow need to be controled
 {% asset_img water-flow.jpg water is comming ! %}
+
+
