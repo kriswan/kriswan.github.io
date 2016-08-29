@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kriswan.github.io/"/>
-  <updated>2016-06-25T09:32:36.000Z</updated>
+  <updated>2016-08-29T13:54:55.000Z</updated>
   <id>http://kriswan.github.io/</id>
   
   <author>
@@ -16,11 +16,339 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java并发结构</title>
+    <link href="http://kriswan.github.io/2016/08/29/Java%E5%B9%B6%E5%8F%91%E7%BB%93%E6%9E%84/"/>
+    <id>http://kriswan.github.io/2016/08/29/Java并发结构/</id>
+    <published>2016-08-29T10:11:52.000Z</published>
+    <updated>2016-08-29T13:54:55.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&lt;/a&gt;&lt;br&gt;声明： 个人英文水平有限，翻译的不对的地方请重拍！&lt;br&gt;Doug Lee的书：Concurrent Programming In Java(shorten as CPJ) 的网上地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;线程&quot;&gt;&lt;a href=&quot;#线程&quot; class=&quot;headerlink&quot; title=&quot;线程&quot;&gt;&lt;/a&gt;线程&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;线程是一个可以彼此间独立执行、同时共享底层系统资源(如文件、共享对象)的调用序列，Thread对象是控制和记录线程活动的类。&lt;/li&gt;
+&lt;li&gt;每个应用至少包含一个线程（即启动JVM的那个线程）， 其他的内部后台线程也会在JVM初始化的时候启动，线程数量和特性随各个JVM不同会有很大差异，但是，所有的用户线程都是由主线程（或者说它们的父线程）明确构建和启动的。&lt;/li&gt;
+&lt;li&gt;以下是一些与线程类Thread相关的重要方法、属性以及使用注意事项的总结， 所有这些都会在本书的其他章节进行讨论和解读。 针对JLS和公开的相关API文档应当咨询更详细和权威的描述。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;构造&quot;&gt;&lt;a href=&quot;#构造&quot; class=&quot;headerlink&quot; title=&quot;构造&quot;&gt;&lt;/a&gt;构造&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;不同的构造方法接受不同组合的构造参数如下: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个Runnable对象，这种情况下，接下来调用Thread.start()方法会调用Runnable对象的run方法，默认的Thread本身就是实现了Runnable接口的对象，只不过默认的run方法是空；&lt;/li&gt;
+&lt;li&gt;一个标示一个线程的字符串，这个可以用来追踪和调试，除此之外没什么其他用处；&lt;/li&gt;
+&lt;li&gt;接受一个ThreadGroup，新线程都会放在这个线程组里，注意，如果没有访问当前线程组的权限，会抛出SecurityException异常；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Thread类自身实现了Runnable接口，所以除了构造函数里传入一个Runnable对象，你还可以通过继承Thread类实现一个带有run方法的子类来实现一个线程。但是最好的策略还是定义一个单独的Runnable接口的实现类并作为构造函数的参数传递给Thread类。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在一个单独的Runnable实现类里面实现代码逻辑可以免去潜在的Thread类和Runnable实现类中的同步代码块和同步方法交互的问题。 更具普遍意义的是，这种类型的代码分离有助于我们对具体的处理过程和对应的线程上下文做单独的控制。&lt;/li&gt;
+&lt;li&gt;同时，针对同一个Runnable可以提供给多个有不同实例化方式的线程，也可以提供给其他轻量级的线程池框架处理。&lt;/li&gt;
+&lt;li&gt;继承Thread类的方式会使得子类无法继承其他的类，不利于扩展。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Thread类有一个可以通过构造函数设置的&lt;code&gt;daemon&lt;/code&gt;属性(但是只能在一个线程启动之前设置)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;setDaemon方法的意思是设置当前线程为&lt;strong&gt;后台驻留线程&lt;/strong&gt;，如果JVM会判断，当所有的非&lt;code&gt;daemon&lt;/code&gt;线程都结束时，立即停止所有&lt;code&gt;daemon&lt;/code&gt;线程并退出JVM。&lt;/li&gt;
+&lt;li&gt;isDaemon方法会返回当前线程是否是&lt;code&gt;daemon&lt;/code&gt;线程，这个方法的作用不大，几遍后台线程在程序退出时经常需要做一些清理工作(&lt;code&gt;daemon&lt;/code&gt;读成&lt;strong&gt;day-mon&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;线程启动&quot;&gt;&lt;a href=&quot;#线程启动&quot; class=&quot;headerlink&quot; title=&quot;线程启动&quot;&gt;&lt;/a&gt;线程启动&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;调用start方法后，会触发Thread实例启动一个独立的活动流去执行实例的run方法。 调用线程(父线程)所持有的同步锁不会被新的线程持有。&lt;/li&gt;
+&lt;li&gt;当线程的run方法无论是正常返回还是抛出一个未受检异常(如RuntimeException),线程都会终止。 线程即便终止之后也是==不可重启==，调用start方法多次会抛出InvalidThreadStateException异常。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isAlive&lt;/code&gt;方法返回&lt;strong&gt;true&lt;/strong&gt;代表线程已经启动但还没有终止。 如果当前线程阻塞了，该方法会返回&lt;code&gt;true&lt;/code&gt;，在这个点上不同的JVM实现会有不同，有的JVM在线程被取消&lt;code&gt;cancelled&lt;/code&gt;的情况下会返回&lt;code&gt;false&lt;/code&gt;。没有方法可以判断一个是&lt;code&gt;is not alive&lt;/code&gt;状态的线程是否曾经被启动过，同样的，一个线程也不能很轻易的判断出是由哪个&lt;strong&gt;父&lt;/strong&gt;线程启动的，虽然可以知道其他在同一个线程组&lt;code&gt;ThreadGroup&lt;/code&gt;里面的线程是谁。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ThreadPoolExecutor.java&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//runWorker(Worker w)方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (task != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt; || (task = getTask()) != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//这里会循环判断队列里面的任务数是否为空，不为空的情况下，线程池里面的线程一直是为终止状态，达到池化得效果&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;processWorkerExit(w, completedAbruptly);&lt;span class=&quot;comment&quot;&gt;//如果队列里面的任务数为空，在这里面释放线程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;优先级&quot;&gt;&lt;a href=&quot;#优先级&quot; class=&quot;headerlink&quot; title=&quot;优先级&quot;&gt;&lt;/a&gt;优先级&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;为了可以使得JVM实现跨越不同硬件平台和操作系统，Java语言对线程调度和公平性不做保证，甚至不严格保证线程会一直执行。但是线程是支持通过启发式的设置线程优先级方法来影响线程调度器的执行&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个线程都有一个优先级，优先级序号处在&lt;code&gt;Thread.MIN_PRIORITY&lt;/code&gt; 和 &lt;code&gt;Thread.MAX_PRIORITY&lt;/code&gt;之间。&lt;/li&gt;
+&lt;li&gt;默认请情况下，每一个新线程都拥有和其创建线程一致的优先级。初始执行main方法的线程默认情况下的优先级为&lt;code&gt;Thread.NORM_PRIORITY&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;可以通过&lt;code&gt;getPriority&lt;/code&gt;方法获取任意线程的当前优先级。&lt;/li&gt;
+&lt;li&gt;可以通过&lt;code&gt;setPriority&lt;/code&gt;方法动态设置任意线程的优先级，最大优先级由其所在的线程组的大小限定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当存在超过可用CPU核心数的可执行线程时，CPU线程调度器更倾向于优先执行高优先级的线程。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;具体的策略在不同的平台可能会有不同，例如，一些JVM的实现总是会选择最高优先级的线程执行，其他一些JVM会匹配线程的十个优先级到一些系统支持的更小(&amp;lt;10)的优先级类别，这样就会使得不同优先级的线程有可能会被JVM当做同等优先级对待。其他一些混淆声明的优先级或其他的调度策略会保证即便低优先级的线程最终也会有机会得到执行。 同样的，由于计算机系统中其他应用的存在，设置JVM线程的优先级，可能会，但不一定会影响调度器的执行策略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;优先级并不承载其他的计算机语义和正确性方面的义务。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;尤其是不能用优先级控制来替代线程执行中的锁，优先级只能被用来表示不同线程间的重要性和紧急程度，在线程间竞争获取执行机会非常激烈的的场合下优先级会显得非常有用。程序应该优先按照运行正确的设计理念来设计，即便设置优先级的方法&lt;code&gt;setPriority&lt;/code&gt;被定义为无操作的方法.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下面的表格列出了一些约定俗成的优先级设置策略的任务类型。 在存在很多并发场景的应用中，相对来说只有非常少的一部分线程在任何时候都是可执行状态(其他的线程都由于各种原因被阻塞了)， 这种场合下控制线程的优先级显得没有多大意义。其他的并发系统的场景中，微小的优先级设置的变化会对最终的执行产生影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;Range&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;Use&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;Remark&lt;/code&gt;&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;10&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Crisis management&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;危机处理，最高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;7-9&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Interactive, event-dirven&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;交互，事件驱动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;4-6&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;IO-bound&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;IO类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;2-3&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Background computation&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;后台运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;strong&gt;&lt;code&gt;1&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Run only if noting else on&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;仅当其他线程都不执行的情况下&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;控制方法&quot;&gt;&lt;a href=&quot;#控制方法&quot; class=&quot;headerlink&quot; title=&quot;控制方法&quot;&gt;&lt;/a&gt;控制方法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;只有很少的几个方法可以用来做线程间的交互：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;每个线程都有一个关联的&lt;code&gt;boolean&lt;/code&gt;变量&lt;code&gt;interruption status&lt;/code&gt;标示出线程的中断状体。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;调用线程的&lt;code&gt;interrupt&lt;/code&gt;方法会把线程的中断状态设置成&lt;code&gt;true&lt;/code&gt;，除非线程正处以下方法的执行状&lt;br&gt;  态中：&lt;code&gt;Object.wait(),Thread.sleep(),Thread.join()&lt;/code&gt;，&lt;br&gt;这些情况下&lt;code&gt;interrupt()&lt;/code&gt;方法会导致线程抛出异常&lt;code&gt;InterruptException&lt;/code&gt;，&lt;br&gt;  但是线程的&lt;code&gt;interrupt&lt;/code&gt;状态会设置为&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;任何线程的中断状态都可以通过&lt;code&gt;isInterrupt&lt;/code&gt;方法来检测。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果是通过调用&lt;code&gt;interrupt&lt;/code&gt;方法来中断线程的话，该方法会返回&lt;code&gt;true&lt;/code&gt;，&lt;br&gt;  但是&lt;code&gt;status&lt;/code&gt;状态为false，因为无论是通过调用&lt;code&gt;Thread.interrupted&lt;/code&gt;方法还是处在&lt;br&gt;  &lt;code&gt;Object.wait(),Thread.sleep(),Thread.join()&lt;/code&gt;等方法的处理中系统都会抛出中断异常&lt;br&gt;  &lt;code&gt;InterruptException&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调用&lt;code&gt;thread.join()&lt;/code&gt;方法会将调用线程挂起&lt;code&gt;suspend&lt;/code&gt;，并等待目标线程&lt;code&gt;thread&lt;/code&gt;完成。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当线程的&lt;code&gt;thread.isAlive()&lt;/code&gt;返回&lt;code&gt;false&lt;/code&gt;时，&lt;code&gt;thread.join()&lt;/code&gt;会立即返回。&lt;br&gt;还有一个带有超时时间版本的&lt;code&gt;join(time)&lt;/code&gt;方法，这个方法会在超时时间之后强制返回，即便线程          还有没有处理完成。&lt;br&gt;由&lt;code&gt;isAlive()&lt;/code&gt;方法的定义可以看出，对一个还未开始的线程&lt;code&gt;join()&lt;/code&gt;是没有任何意义的。&lt;br&gt;同样的理由，&lt;code&gt;join&lt;/code&gt;一个不是你创建的线程也是不明智的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最开始的时候，&lt;code&gt;Thread&lt;/code&gt;类是支持一些额外的控制方法的，如&lt;code&gt;suspend,stop,resume,destroy&lt;/code&gt;. 现在方法&lt;code&gt;suspend,resume,stop&lt;/code&gt;已经被废弃了，&lt;code&gt;destroy&lt;/code&gt;方法从来就没在任何的发行版本的JDK中实现过，以后估计也不会了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;现在可以通过&lt;code&gt;wating\notification&lt;/code&gt;技术实现和&lt;code&gt;suspend\resume&lt;/code&gt;方法一样的效果，并且更加安全，后续还会围绕&lt;code&gt;stop&lt;/code&gt;方法产生的问题继续展开讨论。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;静态方法&quot;&gt;&lt;a href=&quot;#静态方法&quot; class=&quot;headerlink&quot; title=&quot;静态方法&quot;&gt;&lt;/a&gt;静态方法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;一些线程的方法被设计成只适用于当前运行的线程(例如，调用这些方法的的线程，即当前线程)。 为了强化这个意义，这些方法被定义成静态方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Thread.currentThread&lt;/code&gt;方法返回一个当前线程的引用，这个引用随后可以用于调用其他的非静态方法会。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Thread.interrupted&lt;/code&gt;方法会清除当前线程的中断状态并返回之前的状态(这也说明，一个线程的中断状态不可能被其他的线程清除)。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Thread.sleep(long millseconds)&lt;/code&gt;方法会导致当前线程挂起一段时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Thread.yield&lt;/code&gt;方法仅仅是提示虚拟机如果有其他的可执行但是不在执行中的线程存在，线程调度器应该优先调度运行这些线程。但是不同的虚拟机可能对这个操作提示有任意的不同的解读。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;尽管没有强制的保证，&lt;code&gt;yield&lt;/code&gt;方法在一些不使用时间分片提前抢占式调度策略的单核CPU的JVM实现版本中可能会非常有效果。&lt;br&gt;在这种情况下，只有当一个线程阻塞(执行IO或者sleep)了其他线程才有可能会被重新调度，在这些系统中，执行时间消耗非阻塞计算的线程会一直占用线程执行周期，降低应用的响应响应速度。&lt;br&gt;作为一个安全保护机制，执行非阻塞的可能会超过时间处理器的可接受的响应时间的计算的线程或者其他的响应式线程可以插入执行&lt;code&gt;yield&lt;/code&gt;方法(甚至执行sleep)，当然同样可以设置低的优先级，来让出CPU的执行时间。&lt;br&gt;为了尽可能的减少不必要的影响，你还可以偶尔的时不时的调用一下&lt;code&gt;yield&lt;/code&gt;方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;在其他一些拥有预抢占式策略的虚拟机实现中，尤其是对于多核CPU来说，调度器可能甚至是提倡忽略&lt;code&gt;yield&lt;/code&gt;方法给出的提醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;线程组&quot;&gt;&lt;a href=&quot;#线程组&quot; class=&quot;headerlink&quot; title=&quot;线程组&quot;&gt;&lt;/a&gt;线程组&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;每一个线程都是作为一个线程组的成员来构造的，默认情况下，这个线程组就是调用线程构造器的线程所在的线程组，线程组嵌套类似于树状结构。 当一个对象构造一个新的线程组时，这个线程组是嵌套在当前线程组下的，&lt;code&gt;getThreadGroup&lt;/code&gt;方法返回任何线程的线程组。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设计线程组的目的是用来支持动态地限制对线程访问操作的安全策略。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例如，&lt;code&gt;interrupt&lt;/code&gt;中断一个和当前线程不是同一个线程组的线程是非法的，这个是虚拟机保护机制的一部分，有些问题，例如一个&lt;code&gt;applet&lt;/code&gt;想杀掉一个主屏幕的显示更新线程，通过限制不同线程组之间的访问权限可以阻止发生。&lt;br&gt;线程组同样可以设置一个最大的优先级，所有组内的线程都不能超过这个优先级。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不提倡直接将线程组用于线程编程模型中，大部分的应用中，为达到独立于应用的目的，使用一般的集合类来追踪一组线程对象是更好的选择。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;在并发编程中极少用到的几个线程组的方法中，有一个方法&lt;code&gt;uncaughtException&lt;/code&gt;， 这个方法是当一个线程由于抛出一个未受检异常的时候调用，这个方法一般是会打印出异常栈。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;同步&quot;&gt;&lt;a href=&quot;#同步&quot; class=&quot;headerlink&quot; title=&quot;同步&quot;&gt;&lt;/a&gt;同步&lt;/h2&gt;&lt;h3 id=&quot;对象和锁&quot;&gt;&lt;a href=&quot;#对象和锁&quot; class=&quot;headerlink&quot; title=&quot;对象和锁&quot;&gt;&lt;/a&gt;对象和锁&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;每个&lt;code&gt;Object&lt;/code&gt;和其子类的对象实例都拥有一个锁。&lt;/li&gt;
+&lt;li&gt;基础类型如：&lt;code&gt;int,float,long&lt;/code&gt;等不适对象，基础类型只有通过他们的包装类才能被锁住。&lt;/li&gt;
+&lt;li&gt;单独的变量不能被同步关键字修饰。&lt;/li&gt;
+&lt;li&gt;锁操作只能在方法内使用。&lt;/li&gt;
+&lt;li&gt;被&lt;code&gt;volatile&lt;/code&gt;关键字修饰的的字段，执行时会在原子性、可见性、和顺序执行上得到保障。&lt;/li&gt;
+&lt;li&gt;基础数据类型的数组对象可以持有锁，但是数组内单个的元素是不能的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Class&lt;/code&gt;实例是对象，和&lt;code&gt;Class&lt;/code&gt;对象关联的锁一般被用在静态方法中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;同步方法和同步块&quot;&gt;&lt;a href=&quot;#同步方法和同步块&quot; class=&quot;headerlink&quot; title=&quot;同步方法和同步块&quot;&gt;&lt;/a&gt;同步方法和同步块&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;synchronized&lt;/code&gt;关键字有两种语法形式，同步方法和同步代码块。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;同步块有一个对象参数，这个对象就是需要锁定的对象。&lt;br&gt;最常用的同步块参数是&lt;code&gt;this&lt;/code&gt;当前对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;同步关键字不作为方法签名的一部分。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所以同步修饰关键字在重写父类的方法时不会自动的继承&lt;br&gt;并且接口内的方法无法用同步修饰符修饰，构造方法也不可以用同步修饰符修饰&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;同步修饰的子类实例方法和父类拥有同样的锁。但是内部类的同步方法和外部类是不同的锁。然而，一个非静态内部类方法可以锁住其外部类。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Class Inner&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(OuterClass.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   &lt;span class=&quot;comment&quot;&gt;/* body */&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;test Inner sync&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;获取和释放锁&quot;&gt;&lt;a href=&quot;#获取和释放锁&quot; class=&quot;headerlink&quot; title=&quot;获取和释放锁&quot;&gt;&lt;/a&gt;获取和释放锁&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;当使用&lt;code&gt;sychronized&lt;/code&gt;关键字的时候，锁操作遵循一个获取和释放协议。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所有的锁操作都是块结构的，只有当要进入一个同步块或者同步方法的时候才会需要获取锁，退出的时候释放锁，即便是由于异常导致的退出也不能忘记释放锁的操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;锁操作是基于一个线程维度的，不是针对每个调用来说的。&lt;blockquote&gt;
+&lt;p&gt;当一个线程抵达同步临界点，如果线程本就持有该对象的锁或者该对象的锁没有被其他线程持有，就占有锁并执行通过，否则就阻塞当前的线程执行。&lt;br&gt;重入锁和递归锁和默认的POSIX线程默认的锁策略不同。&lt;br&gt;这种机制对于同样的一个对象，允许一个同步方法针对同样的锁定对象&lt;code&gt;调用&lt;/code&gt;另外一个同步方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;针对同一个对象，不同线程的同步块同步方法之间遵循同样的对锁的获取和释放协议。即便一个同步方法在执行，另一个线程也可以同时调用同一个对象的其他非同步方法。也就是说，同步不等于原子操作，但是同步可以用来实现原子操作。&lt;/li&gt;
+&lt;li&gt;当一个线程释放一个锁的时候，其他线程就可以获取到这个锁(有可能是同一个线程哦，如果线程释放后立即进入另外一个同步方法中)。&lt;em&gt;&lt;strong&gt;但是对于接下来哪个线程会获取到锁或什么时候一个线程能获取到锁虚拟机对此不作保证&lt;/strong&gt;&lt;/em&gt;。 也即是没有公平性的保证，&lt;em&gt;同样的，也没有一种机制去确定对于一个给定的锁，当前正在被哪个线程锁持有&lt;/em&gt;。&lt;/li&gt;
+&lt;li&gt;接下来会讨论到，除了控制锁，同步同样也对底层的内存模型有副作用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;静态&quot;&gt;&lt;a href=&quot;#静态&quot; class=&quot;headerlink&quot; title=&quot;静态&quot;&gt;&lt;/a&gt;静态&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;锁定一个对象的意思不是说会对该对象的类和父类的静态字段做访问限制。要对静态字段做访问限制需要通过静态方法和静态块来实现。静态同步锁是通过类对象关联的静态方法来实现的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;类C的静态锁也可以通过以下方式在实例方法中访问：&lt;code&gt;synchronized(C.class) { /* body */ }&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;JVM内部获取和释放类对象的锁是在类加载和初始化的阶段之间完成的，使用普通类方法和类对象的同步块是不会影响这些JVM的内部机制的，除非是你自己写的一个特殊的类加载器或是你在静态序列初始化阶段同时持多个类对象的锁。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;没有其他的内部JVM的动作会单独的为你使用和创建的类获取锁。但是如果你的子类是&lt;code&gt;java.*&lt;/code&gt;包的，你    需要注意在这些包中的类的锁的策略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;静态锁关联的类和其他类包括其父类都是不相关的。想通过在子类中增加一个静态方法来实现对父类中静态字段的访问现在是无效的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;推荐使用明确的类名的静态块实现方式代替&lt;code&gt;getClass()&lt;/code&gt;的方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(C.class) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* 推荐使用 */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(getClass()) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* 不推荐使用，这里其实锁的是实际运行时的类，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	不是你想要的类 */&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;监视器&quot;&gt;&lt;a href=&quot;#监视器&quot; class=&quot;headerlink&quot; title=&quot;监视器&quot;&gt;&lt;/a&gt;监视器&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;同每个对象都有一把锁一样，每个对象都有一个只能被这些方法：&lt;code&gt;wait, notify, notifyAll, and Thread.interrupt&lt;/code&gt;操控的&lt;strong&gt;等待集合&lt;/strong&gt;。我们称这些被锁和等待集合所持有的对象为：&lt;strong&gt;监视器&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大部分的其他语言对这个的细节定义都有所不同，java中，任何对象都可以作为一个监视器。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每一个对象的等待集合都是在内部被JVM操控的。每个集合中都包含了一个被&lt;code&gt;wait&lt;/code&gt;方法阻塞住的线程列表，只有当其他线程调用了对象的&lt;em&gt;通知&lt;/em&gt;方法或wait被释放了之后这些线程才有可能继续执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;由于对象的等待集合和同步锁的交互方式决定了，这些方法&lt;code&gt;wait, notify, and notifyAll&lt;/code&gt;只能在对象的同步锁被占有的情况下才能被调用。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这些约定机制无法在编译期由编译器去校验，所以如果在运行时不遵从这个机制的话会抛出一个运行时的    异常&lt;code&gt;IllegalMonitorStateException&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这些方法的执行解释如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;wait&lt;/code&gt;&lt;/strong&gt; 这个方法会产生下列影响&lt;ol&gt;
+&lt;li&gt;如果当前线程被打断，则这个方法会立即退出，抛出&lt;code&gt;InterruptedException&lt;/code&gt;异常，否则该方法一直阻塞。&lt;/li&gt;
+&lt;li&gt;JVM会把这个线程放在内部的针对该对象的一个等待队列集合中，否则放在一个不可访问的等待队列中。&lt;/li&gt;
+&lt;li&gt;目标对象的同步锁被释放，但是所有该线程下持有的其他的锁还是会继续持有。即便这个目标对象的锁由于嵌套同步调用的原因被重入，也照样会被释放，再后者恢复后，锁的状态会被完全重置。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;notify&lt;/code&gt;&lt;/strong&gt; 这个方法会导致下列结果&lt;ol&gt;
+&lt;li&gt;如果在该对象的监视器等待集合中存在线程，JVM任务选择一个线程&lt;code&gt;T&lt;/code&gt;并从等待集合中移除。如果等待集合中存在超过一个的线程的话，JVM对具体选择哪个进行移除操作不做保证。&lt;/li&gt;
+&lt;li&gt;被选择的线程&lt;code&gt;T&lt;/code&gt;必须重新去竞争获取目标对象的同步锁，这样总是会导致线程&lt;code&gt;T&lt;/code&gt;阻塞一直到调用&lt;code&gt;notify&lt;/code&gt;的线程释放目标对象的锁为止。这期间如果其他的线程先抢占到这个锁的话，阻塞会一直继续。&lt;/li&gt;
+&lt;li&gt;最后线程&lt;code&gt;T&lt;/code&gt;被从等待的点唤醒。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;notifyAll&lt;/code&gt;&lt;/strong&gt; 这个方法和&lt;code&gt;notify&lt;/code&gt;方法的工作机制是一样的，不同之处是，这个方法是针对等待集合中的所有线程都有效果，但是同样的，由于需要竞争获取目标对象的同步锁，所以实际上是一个一个线程串行执行的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;interrupt&lt;/code&gt;&lt;/strong&gt;  &lt;ol&gt;
+&lt;li&gt;如果一个线程正在挂起等待状态，这时候调用&lt;code&gt;Thread.interrupt&lt;/code&gt;方法，&lt;code&gt;notify&lt;/code&gt;的机制同样适用，事不过在重新获取到锁之后会抛出一个&lt;code&gt;InterruptedException&lt;/code&gt;异常，并且线程的&lt;code&gt;wait&lt;/code&gt;的线程的中断状态会被置成&lt;code&gt;false&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;如果&lt;code&gt;interrupt&lt;/code&gt;和&lt;code&gt;notify&lt;/code&gt;在同一时间发生，JVM不保证哪一个会先得到执行，所以两个结果都是有可能的(以后的Java语言规范(JLS)可能对这种情况的结果会有一个确定的保证)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;timed waits&lt;/code&gt;&lt;/strong&gt; 带过期时间的wait方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;带过期时间的wait方法：&lt;code&gt;wait(long msecs), wait(long msecs, int nanosecs)&lt;/code&gt;会在设置的最大时间内将线程维持在等待队列中。这个的执行效果和不带时间限制的wait方法的执行效果是基本一致的，只是说，带过期时间的wait方法会在过期时间到之后还没有被&lt;code&gt;notify&lt;/code&gt;的话，等待线程会自动被从等待集合中释放。这两个版本的方法并没有其他的状态上的区别。&lt;/li&gt;
+&lt;li&gt;超时时间版的wait方法会在超时时间到之后，随机的一个时间点被唤醒，这是由于线程竞争和CPU调度策略以及定时器的时间粒度等决定的。(对于定时器的时间粒度的影响，JVM并不给出保证，大部分的JVM我们观察到的是，当时间参数设置的小于1毫秒的情况下，响应时间大约在1-20毫秒之内)。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Thread.sleep(long msecs)&lt;/code&gt;方法内部其实使用的是&lt;code&gt;wait(long msecs)&lt;/code&gt;方法，但是这个睡眠方法并没有绑定到当前同步块或者同步方法对应的对象的锁。它的实现可以用以下代码来展现：&lt;/p&gt;
+  &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (msecs != &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Object s = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Object(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(s) &amp;#123; s.wait(msecs); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  当然了，各个系统不必非得按照这种方式实现&lt;code&gt;sleep&lt;/code&gt;方法，同时请注意，&lt;code&gt;sleep(0)&lt;/code&gt;的意思是线            程至少暂停0毫秒，鬼知道这是什么意思！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj
+    
+    </summary>
+    
+      <category term="翻译" scheme="http://kriswan.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="Java" scheme="http://kriswan.github.io/tags/Java/"/>
+    
+      <category term="翻译" scheme="http://kriswan.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="DougLee" scheme="http://kriswan.github.io/tags/DougLee/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java阻塞队列(BlockingQueue)</title>
+    <link href="http://kriswan.github.io/2016/08/15/Java%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97-BlockingQueue/"/>
+    <id>http://kriswan.github.io/2016/08/15/Java阻塞队列-BlockingQueue/</id>
+    <published>2016-08-15T10:45:01.000Z</published>
+    <updated>2016-08-29T13:52:35.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;队列-Queue&quot;&gt;&lt;a href=&quot;#队列-Queue&quot; class=&quot;headerlink&quot; title=&quot;队列 Queue&quot;&gt;&lt;/a&gt;队列 Queue&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;队列是专门设计为存储需要优先处理的对象的集合, 队列中的集合操作方法有两种形式: &lt;strong&gt;&lt;em&gt;1:抛出异常,2:返回特定值&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;异常&lt;/th&gt;
+&lt;th&gt;特定值&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;add(e)&lt;/td&gt;
+&lt;td&gt;offer(e)&lt;/td&gt;
+&lt;td&gt;插入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;remove(e)&lt;/td&gt;
+&lt;td&gt;poll()&lt;/td&gt;
+&lt;td&gt;删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;element()&lt;/td&gt;
+&lt;td&gt;peek&lt;/td&gt;
+&lt;td&gt;获取队列头部元素,但是不删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;队列-Queue&quot;&gt;&lt;a href=&quot;#队列-Queue&quot; class=&quot;headerlink&quot; title=&quot;队列 Queue&quot;&gt;&lt;/a&gt;队列 Queue&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;队列是专门设计为存储需要优先处理的对象的集合, 队列中的集合操作方
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://kriswan.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="Java" scheme="http://kriswan.github.io/tags/Java/"/>
+    
+      <category term="数据结构" scheme="http://kriswan.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>记录一次踩坑</title>
     <link href="http://kriswan.github.io/2016/06/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%B8%A9%E5%9D%91/"/>
     <id>http://kriswan.github.io/2016/06/25/记录一次踩坑/</id>
     <published>2016-06-25T08:47:33.000Z</published>
-    <updated>2016-06-25T09:32:36.000Z</updated>
+    <updated>2016-08-29T13:52:06.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/hole.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -54,10 +382,10 @@
     
     </summary>
     
-      <category term="java" scheme="http://kriswan.github.io/categories/java/"/>
+      <category term="Java" scheme="http://kriswan.github.io/categories/Java/"/>
     
     
-      <category term="jvm gc" scheme="http://kriswan.github.io/tags/jvm-gc/"/>
+      <category term="Java" scheme="http://kriswan.github.io/tags/Java/"/>
     
   </entry>
   
@@ -66,7 +394,7 @@
     <link href="http://kriswan.github.io/2016/06/09/Alfred%E4%BB%8B%E7%BB%8D/"/>
     <id>http://kriswan.github.io/2016/06/09/Alfred介绍/</id>
     <published>2016-06-09T13:43:07.000Z</published>
-    <updated>2016-06-09T15:57:44.000Z</updated>
+    <updated>2016-08-29T13:52:24.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Alfred-icon.jpg&quot; alt=&quot;/images/Alfred-icon.jpg&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -124,10 +452,10 @@
     
     </summary>
     
-      <category term="工具" scheme="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="DevTools" scheme="http://kriswan.github.io/categories/DevTools/"/>
     
     
-      <category term="工具" scheme="http://kriswan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="DevTools" scheme="http://kriswan.github.io/tags/DevTools/"/>
     
   </entry>
   
@@ -136,7 +464,7 @@
     <link href="http://kriswan.github.io/2016/06/08/Atom%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86/"/>
     <id>http://kriswan.github.io/2016/06/08/Atom快捷键整理/</id>
     <published>2016-06-08T03:27:29.000Z</published>
-    <updated>2016-06-09T14:18:46.000Z</updated>
+    <updated>2016-08-29T13:52:29.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/atom-light-640x360.jpg&quot; alt=&quot;atom&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Atom快捷键&quot;&gt;&lt;a href=&quot;#Atom快捷键&quot; class=&quot;headerlink&quot; title=&quot;Atom快捷键&quot;&gt;&lt;/a&gt;Atom快捷键&lt;/h2&gt;&lt;blockquote&gt;
@@ -328,10 +656,10 @@
     
     </summary>
     
-      <category term="工具" scheme="http://kriswan.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="DevTools" scheme="http://kriswan.github.io/categories/DevTools/"/>
     
     
-      <category term="工具" scheme="http://kriswan.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="DevTools" scheme="http://kriswan.github.io/tags/DevTools/"/>
     
   </entry>
   
@@ -377,7 +705,7 @@
     <link href="http://kriswan.github.io/2016/05/22/%E5%85%B3%E4%BA%8E%E6%B5%81%E6%8E%A7RateLimit/"/>
     <id>http://kriswan.github.io/2016/05/22/关于流控RateLimit/</id>
     <published>2016-05-22T14:51:43.000Z</published>
-    <updated>2016-06-09T16:05:47.000Z</updated>
+    <updated>2016-08-29T13:51:59.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/SmoothWarmingUpRatelimit.png&quot; alt=&quot;SmoothWarmingUpRatelimit&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;关于流控的一点总结&lt;/p&gt;
@@ -394,10 +722,12 @@
     
     </summary>
     
-      <category term="java" scheme="http://kriswan.github.io/categories/java/"/>
+      <category term="Java" scheme="http://kriswan.github.io/categories/Java/"/>
     
     
-      <category term="java guava" scheme="http://kriswan.github.io/tags/java-guava/"/>
+      <category term="Java" scheme="http://kriswan.github.io/tags/Java/"/>
+    
+      <category term="Guava" scheme="http://kriswan.github.io/tags/Guava/"/>
     
   </entry>
   
@@ -460,7 +790,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x74;&amp;#x6f;&amp;#58;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#x61;&amp;#110;&amp;#115;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#107;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#x61;&amp;#110;&amp;#115;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#109;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;
+&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#x74;&amp;#111;&amp;#58;&amp;#107;&amp;#x72;&amp;#x69;&amp;#115;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#107;&amp;#x72;&amp;#x69;&amp;#115;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#x66;&amp;#x40;&amp;#x67;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;
 </content>
     
     <summary type="html">

@@ -4,6 +4,294 @@
   
     
     <entry>
+      <title><![CDATA[Java并发结构]]></title>
+      <url>http://kriswan.github.io/2016/08/29/Java%E5%B9%B6%E5%8F%91%E7%BB%93%E6%9E%84/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书：Concurrent Programming In Java(shorten as CPJ) 的网上地址：<a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
+</blockquote>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
+<li>线程是一个可以彼此间独立执行、同时共享底层系统资源(如文件、共享对象)的调用序列，Thread对象是控制和记录线程活动的类。</li>
+<li>每个应用至少包含一个线程（即启动JVM的那个线程）， 其他的内部后台线程也会在JVM初始化的时候启动，线程数量和特性随各个JVM不同会有很大差异，但是，所有的用户线程都是由主线程（或者说它们的父线程）明确构建和启动的。</li>
+<li>以下是一些与线程类Thread相关的重要方法、属性以及使用注意事项的总结， 所有这些都会在本书的其他章节进行讨论和解读。 针对JLS和公开的相关API文档应当咨询更详细和权威的描述。</li>
+</ol>
+<h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><ol>
+<li><p>不同的构造方法接受不同组合的构造参数如下: </p>
+<ul>
+<li>一个Runnable对象，这种情况下，接下来调用Thread.start()方法会调用Runnable对象的run方法，默认的Thread本身就是实现了Runnable接口的对象，只不过默认的run方法是空；</li>
+<li>一个标示一个线程的字符串，这个可以用来追踪和调试，除此之外没什么其他用处；</li>
+<li>接受一个ThreadGroup，新线程都会放在这个线程组里，注意，如果没有访问当前线程组的权限，会抛出SecurityException异常；</li>
+</ul>
+</li>
+<li><p>Thread类自身实现了Runnable接口，所以除了构造函数里传入一个Runnable对象，你还可以通过继承Thread类实现一个带有run方法的子类来实现一个线程。但是最好的策略还是定义一个单独的Runnable接口的实现类并作为构造函数的参数传递给Thread类。</p>
+<ul>
+<li>在一个单独的Runnable实现类里面实现代码逻辑可以免去潜在的Thread类和Runnable实现类中的同步代码块和同步方法交互的问题。 更具普遍意义的是，这种类型的代码分离有助于我们对具体的处理过程和对应的线程上下文做单独的控制。</li>
+<li>同时，针对同一个Runnable可以提供给多个有不同实例化方式的线程，也可以提供给其他轻量级的线程池框架处理。</li>
+<li>继承Thread类的方式会使得子类无法继承其他的类，不利于扩展。</li>
+</ul>
+</li>
+<li><p>Thread类有一个可以通过构造函数设置的<code>daemon</code>属性(但是只能在一个线程启动之前设置)</p>
+<ul>
+<li>setDaemon方法的意思是设置当前线程为<strong>后台驻留线程</strong>，如果JVM会判断，当所有的非<code>daemon</code>线程都结束时，立即停止所有<code>daemon</code>线程并退出JVM。</li>
+<li>isDaemon方法会返回当前线程是否是<code>daemon</code>线程，这个方法的作用不大，几遍后台线程在程序退出时经常需要做一些清理工作(<code>daemon</code>读成<strong>day-mon</strong>)</li>
+</ul>
+</li>
+</ol>
+<h3 id="线程启动"><a href="#线程启动" class="headerlink" title="线程启动"></a>线程启动</h3><ol>
+<li>调用start方法后，会触发Thread实例启动一个独立的活动流去执行实例的run方法。 调用线程(父线程)所持有的同步锁不会被新的线程持有。</li>
+<li>当线程的run方法无论是正常返回还是抛出一个未受检异常(如RuntimeException),线程都会终止。 线程即便终止之后也是==不可重启==，调用start方法多次会抛出InvalidThreadStateException异常。</li>
+<li><code>isAlive</code>方法返回<strong>true</strong>代表线程已经启动但还没有终止。 如果当前线程阻塞了，该方法会返回<code>true</code>，在这个点上不同的JVM实现会有不同，有的JVM在线程被取消<code>cancelled</code>的情况下会返回<code>false</code>。没有方法可以判断一个是<code>is not alive</code>状态的线程是否曾经被启动过，同样的，一个线程也不能很轻易的判断出是由哪个<strong>父</strong>线程启动的，虽然可以知道其他在同一个线程组<code>ThreadGroup</code>里面的线程是谁。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ThreadPoolExecutor.java</span></span><br><span class="line"><span class="comment">//runWorker(Worker w)方法</span></span><br><span class="line"><span class="keyword">while</span> (task != <span class="keyword">null</span> || (task = getTask()) != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="comment">//这里会循环判断队列里面的任务数是否为空，不为空的情况下，线程池里面的线程一直是为终止状态，达到池化得效果</span></span><br><span class="line">&#125;</span><br><span class="line">processWorkerExit(w, completedAbruptly);<span class="comment">//如果队列里面的任务数为空，在这里面释放线程</span></span><br></pre></td></tr></table></figure>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><ol>
+<li><p>为了可以使得JVM实现跨越不同硬件平台和操作系统，Java语言对线程调度和公平性不做保证，甚至不严格保证线程会一直执行。但是线程是支持通过启发式的设置线程优先级方法来影响线程调度器的执行</p>
+<ul>
+<li>每个线程都有一个优先级，优先级序号处在<code>Thread.MIN_PRIORITY</code> 和 <code>Thread.MAX_PRIORITY</code>之间。</li>
+<li>默认请情况下，每一个新线程都拥有和其创建线程一致的优先级。初始执行main方法的线程默认情况下的优先级为<code>Thread.NORM_PRIORITY</code>。</li>
+<li>可以通过<code>getPriority</code>方法获取任意线程的当前优先级。</li>
+<li>可以通过<code>setPriority</code>方法动态设置任意线程的优先级，最大优先级由其所在的线程组的大小限定。</li>
+</ul>
+</li>
+<li><p>当存在超过可用CPU核心数的可执行线程时，CPU线程调度器更倾向于优先执行高优先级的线程。</p>
+<blockquote>
+<p>具体的策略在不同的平台可能会有不同，例如，一些JVM的实现总是会选择最高优先级的线程执行，其他一些JVM会匹配线程的十个优先级到一些系统支持的更小(&lt;10)的优先级类别，这样就会使得不同优先级的线程有可能会被JVM当做同等优先级对待。其他一些混淆声明的优先级或其他的调度策略会保证即便低优先级的线程最终也会有机会得到执行。 同样的，由于计算机系统中其他应用的存在，设置JVM线程的优先级，可能会，但不一定会影响调度器的执行策略。</p>
+</blockquote>
+</li>
+<li><p>优先级并不承载其他的计算机语义和正确性方面的义务。</p>
+<blockquote>
+<p>尤其是不能用优先级控制来替代线程执行中的锁，优先级只能被用来表示不同线程间的重要性和紧急程度，在线程间竞争获取执行机会非常激烈的的场合下优先级会显得非常有用。程序应该优先按照运行正确的设计理念来设计，即便设置优先级的方法<code>setPriority</code>被定义为无操作的方法.</p>
+</blockquote>
+</li>
+<li><p>下面的表格列出了一些约定俗成的优先级设置策略的任务类型。 在存在很多并发场景的应用中，相对来说只有非常少的一部分线程在任何时候都是可执行状态(其他的线程都由于各种原因被阻塞了)， 这种场合下控制线程的优先级显得没有多大意义。其他的并发系统的场景中，微小的优先级设置的变化会对最终的执行产生影响。</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong><code>Range</code></strong></th>
+<th style="text-align:center"><strong><code>Use</code></strong></th>
+<th style="text-align:center"><strong><code>Remark</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong><code>10</code></strong></td>
+<td style="text-align:center">Crisis management</td>
+<td style="text-align:center">危机处理，最高</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong><code>7-9</code></strong></td>
+<td style="text-align:center">Interactive, event-dirven</td>
+<td style="text-align:center">交互，事件驱动</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong><code>4-6</code></strong></td>
+<td style="text-align:center">IO-bound</td>
+<td style="text-align:center">IO类型</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong><code>2-3</code></strong></td>
+<td style="text-align:center">Background computation</td>
+<td style="text-align:center">后台运行</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong><code>1</code></strong></td>
+<td style="text-align:center">Run only if noting else on</td>
+<td style="text-align:center">仅当其他线程都不执行的情况下</td>
+</tr>
+</tbody>
+</table>
+<h3 id="控制方法"><a href="#控制方法" class="headerlink" title="控制方法"></a>控制方法</h3><ol>
+<li><p>只有很少的几个方法可以用来做线程间的交互：</p>
+<ul>
+<li><p>每个线程都有一个关联的<code>boolean</code>变量<code>interruption status</code>标示出线程的中断状体。</p>
+<blockquote>
+<p>调用线程的<code>interrupt</code>方法会把线程的中断状态设置成<code>true</code>，除非线程正处以下方法的执行状<br>  态中：<code>Object.wait(),Thread.sleep(),Thread.join()</code>，<br>这些情况下<code>interrupt()</code>方法会导致线程抛出异常<code>InterruptException</code>，<br>  但是线程的<code>interrupt</code>状态会设置为<code>false</code>。</p>
+</blockquote>
+</li>
+<li><p>任何线程的中断状态都可以通过<code>isInterrupt</code>方法来检测。</p>
+<blockquote>
+<p>如果是通过调用<code>interrupt</code>方法来中断线程的话，该方法会返回<code>true</code>，<br>  但是<code>status</code>状态为false，因为无论是通过调用<code>Thread.interrupted</code>方法还是处在<br>  <code>Object.wait(),Thread.sleep(),Thread.join()</code>等方法的处理中系统都会抛出中断异常<br>  <code>InterruptException</code>。</p>
+</blockquote>
+</li>
+<li><p>调用<code>thread.join()</code>方法会将调用线程挂起<code>suspend</code>，并等待目标线程<code>thread</code>完成。</p>
+<blockquote>
+<p>当线程的<code>thread.isAlive()</code>返回<code>false</code>时，<code>thread.join()</code>会立即返回。<br>还有一个带有超时时间版本的<code>join(time)</code>方法，这个方法会在超时时间之后强制返回，即便线程          还有没有处理完成。<br>由<code>isAlive()</code>方法的定义可以看出，对一个还未开始的线程<code>join()</code>是没有任何意义的。<br>同样的理由，<code>join</code>一个不是你创建的线程也是不明智的。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>最开始的时候，<code>Thread</code>类是支持一些额外的控制方法的，如<code>suspend,stop,resume,destroy</code>. 现在方法<code>suspend,resume,stop</code>已经被废弃了，<code>destroy</code>方法从来就没在任何的发行版本的JDK中实现过，以后估计也不会了。</p>
+<blockquote>
+<p>现在可以通过<code>wating\notification</code>技术实现和<code>suspend\resume</code>方法一样的效果，并且更加安全，后续还会围绕<code>stop</code>方法产生的问题继续展开讨论。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ol>
+<li><p>一些线程的方法被设计成只适用于当前运行的线程(例如，调用这些方法的的线程，即当前线程)。 为了强化这个意义，这些方法被定义成静态方法</p>
+<ul>
+<li><code>Thread.currentThread</code>方法返回一个当前线程的引用，这个引用随后可以用于调用其他的非静态方法会。</li>
+<li><code>Thread.interrupted</code>方法会清除当前线程的中断状态并返回之前的状态(这也说明，一个线程的中断状态不可能被其他的线程清除)。</li>
+<li><code>Thread.sleep(long millseconds)</code>方法会导致当前线程挂起一段时间。</li>
+</ul>
+</li>
+<li><p><code>Thread.yield</code>方法仅仅是提示虚拟机如果有其他的可执行但是不在执行中的线程存在，线程调度器应该优先调度运行这些线程。但是不同的虚拟机可能对这个操作提示有任意的不同的解读。</p>
+<blockquote>
+<p>尽管没有强制的保证，<code>yield</code>方法在一些不使用时间分片提前抢占式调度策略的单核CPU的JVM实现版本中可能会非常有效果。<br>在这种情况下，只有当一个线程阻塞(执行IO或者sleep)了其他线程才有可能会被重新调度，在这些系统中，执行时间消耗非阻塞计算的线程会一直占用线程执行周期，降低应用的响应响应速度。<br>作为一个安全保护机制，执行非阻塞的可能会超过时间处理器的可接受的响应时间的计算的线程或者其他的响应式线程可以插入执行<code>yield</code>方法(甚至执行sleep)，当然同样可以设置低的优先级，来让出CPU的执行时间。<br>为了尽可能的减少不必要的影响，你还可以偶尔的时不时的调用一下<code>yield</code>方法。</p>
+</blockquote>
+</li>
+<li>在其他一些拥有预抢占式策略的虚拟机实现中，尤其是对于多核CPU来说，调度器可能甚至是提倡忽略<code>yield</code>方法给出的提醒。</li>
+</ol>
+<h3 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h3><ol>
+<li>每一个线程都是作为一个线程组的成员来构造的，默认情况下，这个线程组就是调用线程构造器的线程所在的线程组，线程组嵌套类似于树状结构。 当一个对象构造一个新的线程组时，这个线程组是嵌套在当前线程组下的，<code>getThreadGroup</code>方法返回任何线程的线程组。</li>
+<li><p>设计线程组的目的是用来支持动态地限制对线程访问操作的安全策略。</p>
+<blockquote>
+<p>例如，<code>interrupt</code>中断一个和当前线程不是同一个线程组的线程是非法的，这个是虚拟机保护机制的一部分，有些问题，例如一个<code>applet</code>想杀掉一个主屏幕的显示更新线程，通过限制不同线程组之间的访问权限可以阻止发生。<br>线程组同样可以设置一个最大的优先级，所有组内的线程都不能超过这个优先级。</p>
+</blockquote>
+</li>
+<li><p>不提倡直接将线程组用于线程编程模型中，大部分的应用中，为达到独立于应用的目的，使用一般的集合类来追踪一组线程对象是更好的选择。</p>
+</li>
+<li>在并发编程中极少用到的几个线程组的方法中，有一个方法<code>uncaughtException</code>， 这个方法是当一个线程由于抛出一个未受检异常的时候调用，这个方法一般是会打印出异常栈。</li>
+</ol>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><h3 id="对象和锁"><a href="#对象和锁" class="headerlink" title="对象和锁"></a>对象和锁</h3><ol>
+<li>每个<code>Object</code>和其子类的对象实例都拥有一个锁。</li>
+<li>基础类型如：<code>int,float,long</code>等不适对象，基础类型只有通过他们的包装类才能被锁住。</li>
+<li>单独的变量不能被同步关键字修饰。</li>
+<li>锁操作只能在方法内使用。</li>
+<li>被<code>volatile</code>关键字修饰的的字段，执行时会在原子性、可见性、和顺序执行上得到保障。</li>
+<li>基础数据类型的数组对象可以持有锁，但是数组内单个的元素是不能的。</li>
+<li><code>Class</code>实例是对象，和<code>Class</code>对象关联的锁一般被用在静态方法中。</li>
+</ol>
+<h3 id="同步方法和同步块"><a href="#同步方法和同步块" class="headerlink" title="同步方法和同步块"></a>同步方法和同步块</h3><ol>
+<li><p><code>synchronized</code>关键字有两种语法形式，同步方法和同步代码块。</p>
+<blockquote>
+<p>同步块有一个对象参数，这个对象就是需要锁定的对象。<br>最常用的同步块参数是<code>this</code>当前对象。</p>
+</blockquote>
+</li>
+<li><p>同步关键字不作为方法签名的一部分。</p>
+<blockquote>
+<p>所以同步修饰关键字在重写父类的方法时不会自动的继承<br>并且接口内的方法无法用同步修饰符修饰，构造方法也不可以用同步修饰符修饰</p>
+</blockquote>
+</li>
+<li>同步修饰的子类实例方法和父类拥有同样的锁。但是内部类的同步方法和外部类是不同的锁。然而，一个非静态内部类方法可以锁住其外部类。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Class Inner&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span>(OuterClass.<span class="keyword">this</span>) &#123; </span><br><span class="line">		   <span class="comment">/* body */</span> </span><br><span class="line">		   System.out.println(<span class="string">"test Inner sync"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取和释放锁"><a href="#获取和释放锁" class="headerlink" title="获取和释放锁"></a>获取和释放锁</h3><ol>
+<li><p>当使用<code>sychronized</code>关键字的时候，锁操作遵循一个获取和释放协议。</p>
+<blockquote>
+<p>所有的锁操作都是块结构的，只有当要进入一个同步块或者同步方法的时候才会需要获取锁，退出的时候释放锁，即便是由于异常导致的退出也不能忘记释放锁的操作。</p>
+</blockquote>
+</li>
+<li>锁操作是基于一个线程维度的，不是针对每个调用来说的。<blockquote>
+<p>当一个线程抵达同步临界点，如果线程本就持有该对象的锁或者该对象的锁没有被其他线程持有，就占有锁并执行通过，否则就阻塞当前的线程执行。<br>重入锁和递归锁和默认的POSIX线程默认的锁策略不同。<br>这种机制对于同样的一个对象，允许一个同步方法针对同样的锁定对象<code>调用</code>另外一个同步方法。</p>
+</blockquote>
+</li>
+<li>针对同一个对象，不同线程的同步块同步方法之间遵循同样的对锁的获取和释放协议。即便一个同步方法在执行，另一个线程也可以同时调用同一个对象的其他非同步方法。也就是说，同步不等于原子操作，但是同步可以用来实现原子操作。</li>
+<li>当一个线程释放一个锁的时候，其他线程就可以获取到这个锁(有可能是同一个线程哦，如果线程释放后立即进入另外一个同步方法中)。<em><strong>但是对于接下来哪个线程会获取到锁或什么时候一个线程能获取到锁虚拟机对此不作保证</strong></em>。 也即是没有公平性的保证，<em>同样的，也没有一种机制去确定对于一个给定的锁，当前正在被哪个线程锁持有</em>。</li>
+<li>接下来会讨论到，除了控制锁，同步同样也对底层的内存模型有副作用。</li>
+</ol>
+<h3 id="静态"><a href="#静态" class="headerlink" title="静态"></a>静态</h3><ol>
+<li><p>锁定一个对象的意思不是说会对该对象的类和父类的静态字段做访问限制。要对静态字段做访问限制需要通过静态方法和静态块来实现。静态同步锁是通过类对象关联的静态方法来实现的。</p>
+<blockquote>
+<p>类C的静态锁也可以通过以下方式在实例方法中访问：<code>synchronized(C.class) { /* body */ }</code></p>
+</blockquote>
+</li>
+<li><p>JVM内部获取和释放类对象的锁是在类加载和初始化的阶段之间完成的，使用普通类方法和类对象的同步块是不会影响这些JVM的内部机制的，除非是你自己写的一个特殊的类加载器或是你在静态序列初始化阶段同时持多个类对象的锁。</p>
+<blockquote>
+<p>没有其他的内部JVM的动作会单独的为你使用和创建的类获取锁。但是如果你的子类是<code>java.*</code>包的，你    需要注意在这些包中的类的锁的策略。</p>
+</blockquote>
+</li>
+<li><p>静态锁关联的类和其他类包括其父类都是不相关的。想通过在子类中增加一个静态方法来实现对父类中静态字段的访问现在是无效的。</p>
+<blockquote>
+<p>推荐使用明确的类名的静态块实现方式代替<code>getClass()</code>的方式</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(C.class) &#123; <span class="comment">/* 推荐使用 */</span> &#125;</span><br><span class="line"><span class="keyword">synchronized</span>(getClass()) &#123; </span><br><span class="line">	<span class="comment">/* 不推荐使用，这里其实锁的是实际运行时的类，</span><br><span class="line">	不是你想要的类 */</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="监视器"><a href="#监视器" class="headerlink" title="监视器"></a>监视器</h3><ol>
+<li><p>同每个对象都有一把锁一样，每个对象都有一个只能被这些方法：<code>wait, notify, notifyAll, and Thread.interrupt</code>操控的<strong>等待集合</strong>。我们称这些被锁和等待集合所持有的对象为：<strong>监视器</strong>。</p>
+<blockquote>
+<p>大部分的其他语言对这个的细节定义都有所不同，java中，任何对象都可以作为一个监视器。</p>
+</blockquote>
+</li>
+<li><p>每一个对象的等待集合都是在内部被JVM操控的。每个集合中都包含了一个被<code>wait</code>方法阻塞住的线程列表，只有当其他线程调用了对象的<em>通知</em>方法或wait被释放了之后这些线程才有可能继续执行。</p>
+</li>
+<li><p>由于对象的等待集合和同步锁的交互方式决定了，这些方法<code>wait, notify, and notifyAll</code>只能在对象的同步锁被占有的情况下才能被调用。</p>
+<blockquote>
+<p>这些约定机制无法在编译期由编译器去校验，所以如果在运行时不遵从这个机制的话会抛出一个运行时的    异常<code>IllegalMonitorStateException</code>。</p>
+</blockquote>
+</li>
+<li><p>这些方法的执行解释如下：</p>
+<ul>
+<li><strong><code>wait</code></strong> 这个方法会产生下列影响<ol>
+<li>如果当前线程被打断，则这个方法会立即退出，抛出<code>InterruptedException</code>异常，否则该方法一直阻塞。</li>
+<li>JVM会把这个线程放在内部的针对该对象的一个等待队列集合中，否则放在一个不可访问的等待队列中。</li>
+<li>目标对象的同步锁被释放，但是所有该线程下持有的其他的锁还是会继续持有。即便这个目标对象的锁由于嵌套同步调用的原因被重入，也照样会被释放，再后者恢复后，锁的状态会被完全重置。</li>
+</ol>
+</li>
+<li><strong><code>notify</code></strong> 这个方法会导致下列结果<ol>
+<li>如果在该对象的监视器等待集合中存在线程，JVM任务选择一个线程<code>T</code>并从等待集合中移除。如果等待集合中存在超过一个的线程的话，JVM对具体选择哪个进行移除操作不做保证。</li>
+<li>被选择的线程<code>T</code>必须重新去竞争获取目标对象的同步锁，这样总是会导致线程<code>T</code>阻塞一直到调用<code>notify</code>的线程释放目标对象的锁为止。这期间如果其他的线程先抢占到这个锁的话，阻塞会一直继续。</li>
+<li>最后线程<code>T</code>被从等待的点唤醒。</li>
+</ol>
+</li>
+<li><strong><code>notifyAll</code></strong> 这个方法和<code>notify</code>方法的工作机制是一样的，不同之处是，这个方法是针对等待集合中的所有线程都有效果，但是同样的，由于需要竞争获取目标对象的同步锁，所以实际上是一个一个线程串行执行的。</li>
+<li><strong><code>interrupt</code></strong>  <ol>
+<li>如果一个线程正在挂起等待状态，这时候调用<code>Thread.interrupt</code>方法，<code>notify</code>的机制同样适用，事不过在重新获取到锁之后会抛出一个<code>InterruptedException</code>异常，并且线程的<code>wait</code>的线程的中断状态会被置成<code>false</code>。</li>
+<li>如果<code>interrupt</code>和<code>notify</code>在同一时间发生，JVM不保证哪一个会先得到执行，所以两个结果都是有可能的(以后的Java语言规范(JLS)可能对这种情况的结果会有一个确定的保证)。</li>
+</ol>
+</li>
+<li><p><strong><code>timed waits</code></strong> 带过期时间的wait方法</p>
+<ul>
+<li>带过期时间的wait方法：<code>wait(long msecs), wait(long msecs, int nanosecs)</code>会在设置的最大时间内将线程维持在等待队列中。这个的执行效果和不带时间限制的wait方法的执行效果是基本一致的，只是说，带过期时间的wait方法会在过期时间到之后还没有被<code>notify</code>的话，等待线程会自动被从等待集合中释放。这两个版本的方法并没有其他的状态上的区别。</li>
+<li>超时时间版的wait方法会在超时时间到之后，随机的一个时间点被唤醒，这是由于线程竞争和CPU调度策略以及定时器的时间粒度等决定的。(对于定时器的时间粒度的影响，JVM并不给出保证，大部分的JVM我们观察到的是，当时间参数设置的小于1毫秒的情况下，响应时间大约在1-20毫秒之内)。</li>
+<li><p><code>Thread.sleep(long msecs)</code>方法内部其实使用的是<code>wait(long msecs)</code>方法，但是这个睡眠方法并没有绑定到当前同步块或者同步方法对应的对象的锁。它的实现可以用以下代码来展现：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msecs != <span class="number">0</span>)  &#123;</span><br><span class="line">    Object s = <span class="keyword">new</span> Object(); </span><br><span class="line">    <span class="keyword">synchronized</span>(s) &#123; s.wait(msecs); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  当然了，各个系统不必非得按照这种方式实现<code>sleep</code>方法，同时请注意，<code>sleep(0)</code>的意思是线            程至少暂停0毫秒，鬼知道这是什么意思！</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java阻塞队列(BlockingQueue)]]></title>
+      <url>http://kriswan.github.io/2016/08/15/Java%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97-BlockingQueue/</url>
+      <content type="html"><![CDATA[<h3 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列 Queue"></a>队列 Queue</h3><blockquote>
+<p>队列是专门设计为存储需要优先处理的对象的集合, 队列中的集合操作方法有两种形式: <strong><em>1:抛出异常,2:返回特定值</em></strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>特定值</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add(e)</td>
+<td>offer(e)</td>
+<td>插入</td>
+</tr>
+<tr>
+<td>remove(e)</td>
+<td>poll()</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>element()</td>
+<td>peek</td>
+<td>获取队列头部元素,但是不删除</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[记录一次踩坑]]></title>
       <url>http://kriswan.github.io/2016/06/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%B8%A9%E5%9D%91/</url>
       <content type="html"><![CDATA[<p><img src="/images/hole.jpg" alt="atom"></p>
@@ -351,7 +639,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#107;&#114;&#105;&#115;&#119;&#x61;&#110;&#115;&#x66;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#107;&#114;&#105;&#115;&#119;&#x61;&#110;&#115;&#x66;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a>
+<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#107;&#x72;&#x69;&#115;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#107;&#x72;&#x69;&#115;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>
 ]]></content>
     </entry>
     

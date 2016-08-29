@@ -305,6 +305,260 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/分布式事物-－/" itemprop="url">
+                  分布式事物(－)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T19:08:29+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/分布式/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/分布式事物-－/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/分布式事物-－/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>关于分布式事务的一点学习总结</p>
+</blockquote>
+<h3 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h3><p>采用类似TCC的事务模型，每个事务参与者都提供try, confirm, cancel的逻辑。在每个事务参与者的业务库的同一个实例都放一个事务所使用的库，简称事务库。</p>
+<h4 id="Try状态"><a href="#Try状态" class="headerlink" title="Try状态"></a>Try状态</h4><p>尝试执行，比如对数据进行校验，检查事务是否可以进行等。并且在事务库里创建一条记录。此时记录中的状态字段记录为PENDING</p>
+<h4 id="Confirm状态"><a href="#Confirm状态" class="headerlink" title="Confirm状态"></a>Confirm状态</h4><p>如果所有事务参与者的TRY都返回则表示可以进行，则提交事务。提交事务时在同一个本地事务里修改TRY阶段创建记录的状态为CONFIRM</p>
+<h4 id="Cancel状态"><a href="#Cancel状态" class="headerlink" title="Cancel状态"></a>Cancel状态</h4><p>如果有任何一个事务参与者TRY阶段失败则发起CANCEL操作，并且在同一个本地事务里修改事务记录为CANCEL</p>
+<h3 id="事物冲突"><a href="#事物冲突" class="headerlink" title="事物冲突"></a>事物冲突</h3><p>在分布式环境中，可能对同一个数据进行并发操作，这样就会带来冲突。比如两个并发执行的事务可能对同一个订单进行修改，这可能造成冲突。这里的解决办法是我们给每种业务都分配一个business id，然后每个操作的资源都有一个resource id(比如这里就是订单号)。当一个事务要执行的时候我们可以判断对于同一个business id和resource id，是不是有未完成的事务(状态是PENDING)，如果有则拒绝事务执行。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li>每个事务开始时候会获取一个全局唯一的事务号(transaction id)，该id会传递给所有的事务参与者并记录到事务参与者的事务记录中</li>
+<li>事务协调器会根据事务记录中的状态对各事务参与者进行重试操作。比如主事务记录中状态是CONFIRM，则要重试到所有事务参与者的状态都到CONFIRM为止</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/22/关于流控RateLimit/" itemprop="url">
+                  关于流控RateLimit
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-22T22:51:43+08:00" content="2016-05-22">
+              2016-05-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/22/关于流控RateLimit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/22/关于流控RateLimit/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/SmoothWarmingUpRatelimit.png" alt="SmoothWarmingUpRatelimit"></p>
+<blockquote><p>关于流控的一点总结</p>
+</blockquote>
+<h3 id="flow-need-to-be-controled"><a href="#flow-need-to-be-controled" class="headerlink" title="flow need to be controled"></a>flow need to be controled</h3><img src="/2016/05/22/关于流控RateLimit/water-flow.jpg" alt="water is comming !" title="water is comming !">
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/13/Hexo介绍/" itemprop="url">
                   Hexo介绍
                 </a>
@@ -427,7 +681,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#107;&#114;&#105;&#115;&#119;&#x61;&#110;&#115;&#x66;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#107;&#114;&#105;&#115;&#119;&#x61;&#110;&#115;&#x66;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a>
+<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#107;&#x72;&#x69;&#115;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#107;&#x72;&#x69;&#115;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>
 
           
         
@@ -501,7 +755,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -509,7 +763,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -518,7 +772,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

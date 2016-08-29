@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Java,Scala" />
 
 
 
@@ -104,27 +104,15 @@
 
 
 
-<meta name="description" content="记录一次去年底的踩坑过程
-
-起因介绍业务系统正在稳当的跑着，结果半夜报警电话不停，机器load报警，起来看到cpu使用率很低，报警是由于内存导致的，非常奇怪本身系统的逻辑很简单，就是保险系统的生单和出保逻辑对外提供一套dubbo的api服务。
-逐层分析按理推断即便系统有问题有也应该是业务系统应该报警才对，怎么会是机器在报警，为了验证自己的想法，去看tomcat的gc日志，和自己预期一致，没有发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="记录一次踩坑">
-<meta property="og:url" content="http://kriswan.github.io/2016/06/25/记录一次踩坑/index.html">
+<meta name="description" content="You&apos;ll live through your pain.Know it will pass,And strength you will gain">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kris's Blog">
+<meta property="og:url" content="http://kriswan.github.io/tags/DougLee/index.html">
 <meta property="og:site_name" content="Kris's Blog">
-<meta property="og:description" content="记录一次去年底的踩坑过程
-
-起因介绍业务系统正在稳当的跑着，结果半夜报警电话不停，机器load报警，起来看到cpu使用率很低，报警是由于内存导致的，非常奇怪本身系统的逻辑很简单，就是保险系统的生单和出保逻辑对外提供一套dubbo的api服务。
-逐层分析按理推断即便系统有问题有也应该是业务系统应该报警才对，怎么会是机器在报警，为了验证自己的想法，去看tomcat的gc日志，和自己预期一致，没有发">
-<meta property="og:image" content="http://kriswan.github.io/images/hole.jpg">
-<meta property="og:updated_time" content="2016-08-29T13:52:06.000Z">
+<meta property="og:description" content="You&apos;ll live through your pain.Know it will pass,And strength you will gain">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录一次踩坑">
-<meta name="twitter:description" content="记录一次去年底的踩坑过程
-
-起因介绍业务系统正在稳当的跑着，结果半夜报警电话不停，机器load报警，起来看到cpu使用率很低，报警是由于内存导致的，非常奇怪本身系统的逻辑很简单，就是保险系统的生单和出保逻辑对外提供一套dubbo的api服务。
-逐层分析按理推断即便系统有问题有也应该是业务系统应该报警才对，怎么会是机器在报警，为了验证自己的想法，去看tomcat的gc日志，和自己预期一致，没有发">
-<meta name="twitter:image" content="http://kriswan.github.io/images/hole.jpg">
+<meta name="twitter:title" content="Kris's Blog">
+<meta name="twitter:description" content="You&apos;ll live through your pain.Know it will pass,And strength you will gain">
 
 
 
@@ -142,7 +130,7 @@
   };
 </script>
 
-  <title> 记录一次踩坑 | Kris's Blog </title>
+  <title> 标签: DougLee | Kris's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -188,7 +176,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,239 +281,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        DougLee
+        <small>标签</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/08/29/Java并发结构/" itemprop="url">
               
-                记录一次踩坑
+                <span itemprop="name">Java并发结构</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-25T16:47:33+08:00" content="2016-06-25">
-              2016-06-25
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-08-29T18:11:52+08:00"
+              content="2016-08-29" >
+          08-29
+        </time>
+      </div>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/25/记录一次踩坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/25/记录一次踩坑/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><img src="/images/hole.jpg" alt="atom"></p>
-<blockquote>
-<p>记录一次去年底的踩坑过程</p>
-</blockquote>
-<h3 id="起因介绍"><a href="#起因介绍" class="headerlink" title="起因介绍"></a>起因介绍</h3><p>业务系统正在稳当的跑着，结果半夜报警电话不停，机器load报警，起来看到cpu使用率很低，报警是由于内存导致的，非常奇怪本身系统的逻辑很简单，<br>就是保险系统的生单和出保逻辑对外提供一套dubbo的api服务。</p>
-<h3 id="逐层分析"><a href="#逐层分析" class="headerlink" title="逐层分析"></a>逐层分析</h3><p>按理推断即便系统有问题有也应该是业务系统应该报警才对，怎么会是机器在报警，为了验证自己的想法，<br>去看tomcat的gc日志，和自己预期一致，没有发现有fullgc, 系统日志也没有OOM异常，那就奇怪，4g内存，<br>jvm申请3g最大的堆内存，按道理机器不应该报内存不够啊，折腾了半天还是没有发现有什么异常的地方，<br>但是load的报警还在持续，回到刚刚的gc日志，忽然意识到一个问题居然一天之内一次fullgc都没发现，<br>很奇怪啊，按道理系统稳定运行一段时间后，fullgc应该是按照一个稳定的频率出现才对，<br>到服务器上sudo jstat -gcutil pid看了下gc统计日志，居然真是一次都木有啊</p>
-<h3 id="推理演变"><a href="#推理演变" class="headerlink" title="推理演变"></a>推理演变</h3><p>把自己收集到的素材整理下： </p>
-<ul>
-<li>系统没有<code>FullGC</code></li>
-<li>tomcat 内存足够</li>
-<li>虚机load报警</li>
-</ul>
-<blockquote>
-<p>这么说来推测一下，一定是有什么地方申请了一块内存但是没有释放，最起码是System.gc()没起效果</p>
-</blockquote>
-<p>如果系统本身一直是在年轻代进行垃圾回收,那就意味着一定不会触发fullGC, 通过观察gc日志和对系统本身使用的<br>了解,我推断是由于使用了堆外内存导致的, 公司所有的中间件里面底层都是依赖netty来构建的,dubbo,asynchttp,<br>而系统本身就是犹如一个高速公路一样,只是做数据的传输工作,应用本身基本上没有本地缓存,而且强依赖外部接口(保险平台),<br>dubbo,asynchttp这些中间件的使用率非常频繁, </p>
-<p>netty本身是会显式的调用System.gc()进行垃圾回收的,再联想到公司默认的jvm配置-XX:+DisableExplicitGC,这就不奇怪了,<br>本身如果系统自己有fullGC的话,那就是系统自身的fullGC来回收,但是这条路也不同,这就导致来堆外内存没有释放, </p>
-<p>所以结论是: netty不停的申请堆外内存,而又得不到释放,导致系统load压力一致在涨</p>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p><code>-XX:+DisableExplicitGC</code> 将这个参数去掉, 观察系统10分钟,<code>sudo jstat -gcutil pid</code> 发现有fullGC了, 系统的load慢慢也下来了</p>
-<h3 id="批评自己"><a href="#批评自己" class="headerlink" title="批评自己"></a>批评自己</h3><p>其实上面的验证方法不太符合工程学实现的要求, 我们是通过推理来验证自己的想法, 还应该讲tomcat的gc dump出来,通过分析工具分析系统的哪一个线程和代码会有可能有问题,这才是比较科学的分析方法</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>鼓励一下</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat_payqrcode.jpg" alt="Kris Wan WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay_qcode12x12.png" alt="Kris Wan Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
-
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag">#Java</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/09/Alfred介绍/" rel="next" title="Alfred介绍">
-                <i class="fa fa-chevron-left"></i> Alfred介绍
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/15/Java阻塞队列-BlockingQueue/" rel="prev" title="Java阻塞队列(BlockingQueue)">
-                Java阻塞队列(BlockingQueue) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
           
 
-  <br/>
-  <hr />
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="daily" data-num-items="3"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/06/25/记录一次踩坑/"
-           data-title="记录一次踩坑" data-url="http://kriswan.github.io/2016/06/25/记录一次踩坑/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -545,17 +347,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar_2.png"
@@ -650,17 +443,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#起因介绍"><span class="nav-number">1.</span> <span class="nav-text">起因介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逐层分析"><span class="nav-number">2.</span> <span class="nav-text">逐层分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推理演变"><span class="nav-number">3.</span> <span class="nav-text">推理演变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">4.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批评自己"><span class="nav-number">5.</span> <span class="nav-text">批评自己</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -773,10 +555,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
