@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4c4cbbc2-c83c-4657-94d8-1d4d99724024" name="Default" comment="s">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.deploy_git" afterPath="$PROJECT_DIR$/.deploy_git" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/Alfred介绍.md" afterPath="$PROJECT_DIR$/source/_posts/Alfred介绍.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/Atom快捷键整理.md" afterPath="$PROJECT_DIR$/source/_posts/Atom快捷键整理.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/关于流控RateLimit.md" afterPath="$PROJECT_DIR$/source/_posts/关于流控RateLimit.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/记录一次踩坑.md" afterPath="$PROJECT_DIR$/source/_posts/记录一次踩坑.md" />
-    </list>
-    <list id="7fd292dd-66b1-48c7-b396-98b41d626511" name="New changelist" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/Java并发结构.md" afterPath="$PROJECT_DIR$/source/_posts/Java并发结构.md" />
     </list>
+    <list id="7fd292dd-66b1-48c7-b396-98b41d626511" name="New changelist" comment="" />
     <ignored path="kriswan.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -37,78 +33,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="记录一次踩坑.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/记录一次踩坑.md">
+      <file leaf-file-name="Java并发结构.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_posts/Java并发结构.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="154">
-                <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Java阻塞队列-BlockingQueue.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/Java阻塞队列-BlockingQueue.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="330">
-                <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="关于流控RateLimit.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/关于流控RateLimit.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="分布式事物-－.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/分布式事物-－.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Alfred介绍.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/Alfred介绍.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Atom快捷键整理.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/Atom快捷键整理.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="163">
-                <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
-                <folding />
+              <first_editor relative-caret-position="132">
+                <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                <folding>
+                  <marker date="1472528991000" expanded="true" signature="1898:1947" ph="/.../" />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -155,6 +88,7 @@
         <option value="$PROJECT_DIR$/source/_posts/记录一次踩坑.md" />
         <option value="$PROJECT_DIR$/source/_posts/Java阻塞队列-BlockingQueue.md" />
         <option value="$PROJECT_DIR$/source/_posts/Atom快捷键整理.md" />
+        <option value="$PROJECT_DIR$/source/_posts/Java并发结构.md" />
       </list>
     </option>
   </component>
@@ -284,24 +218,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tags" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kriswan.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kriswan.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -875,7 +791,7 @@
       <workItem from="1466844387902" duration="3392000" />
       <workItem from="1470209261777" duration="63000" />
       <workItem from="1471257738157" duration="4687000" />
-      <workItem from="1472477416889" duration="416000" />
+      <workItem from="1472477416889" duration="1593000" />
     </task>
     <task id="LOCAL-00001" summary="s">
       <created>1463024158386</created>
@@ -944,7 +860,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26867000" />
+    <option name="totallyTimeSpent" value="28044000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1019,11 +935,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/next/source/images/searchicon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/images/winteriscomming.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1300,28 +1211,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/记录一次踩坑.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="154">
-            <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/Java阻塞队列-BlockingQueue.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="330">
-            <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <first_editor relative-caret-position="396">
+            <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1375,9 +1269,39 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="163">
-            <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
+          <first_editor relative-caret-position="2508">
+            <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
             <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/记录一次踩坑.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="147">
+            <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/Java并发结构.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="132">
+            <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <folding>
+              <marker date="1472528991000" expanded="true" signature="1898:1947" ph="/.../" />
+            </folding>
           </first_editor>
           <second_editor />
         </state>
