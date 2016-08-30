@@ -7,7 +7,7 @@ categories: 翻译
 
 > 原文地址：http://gee.cs.oswego.edu/dl/cpj/mechanics.html
 > 声明： 个人英文水平有限，翻译的不对的地方请重拍！
-> Doug Lee的书:Concurrent Programming In Java(shorten as CPJ)的网上地址：
+> Doug Lee的书:Concurrent Programming In Java的网上地址：
 > http://gee.cs.oswego.edu/dl/cpj/index.html
 
 ![](/images/14724796235520.jpg)
