@@ -11,6 +11,7 @@ categories: Java
 {% endblockquote %}
 
 ### flow need to be controled
-{% asset_img water-flow.jpg water is comming ! %}
+![water-flow](/images/water-flow.jpg)
+
 
 

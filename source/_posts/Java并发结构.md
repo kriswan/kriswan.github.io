@@ -10,7 +10,7 @@ categories: 翻译
 > Doug Lee的书:Concurrent Programming In Java的网上地址：
 > http://gee.cs.oswego.edu/dl/cpj/index.html
 
-![](/images/14724796235520.jpg)
+![](/images/java-thread-lock.jpg)
 
 ## 线程
 1. 线程是一个可以彼此间独立执行、同时共享底层系统资源(如文件、共享对象)的调用序列，Thread类是控制和记录线程活动的类。
