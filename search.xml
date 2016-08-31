@@ -7,7 +7,7 @@
       <title><![CDATA[Java并发结构]]></title>
       <url>http://kriswan.github.io/2016/08/29/Java%E5%B9%B6%E5%8F%91%E7%BB%93%E6%9E%84/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<br><a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
+<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
 </blockquote>
 <p><img src="/images/java-thread-lock.jpg" alt=""></p>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
@@ -641,7 +641,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#107;&#114;&#x69;&#115;&#x77;&#97;&#110;&#115;&#x66;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#107;&#114;&#x69;&#115;&#x77;&#97;&#110;&#115;&#x66;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>
+<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x6b;&#114;&#105;&#115;&#119;&#97;&#x6e;&#115;&#x66;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x6b;&#114;&#105;&#115;&#119;&#97;&#x6e;&#115;&#x66;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a>
 ]]></content>
     </entry>
     
