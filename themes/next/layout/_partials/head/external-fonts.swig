@@ -45,7 +45,8 @@
   {% if font_families !== '' %}
     {% set font_families += '&subset=latin,latin-ext' %}
     {% set font_host = font_config.host | default('//fonts.googleapis.com') %}
-    <link href="{{ font_host }}/css?family={{ font_families }}" rel="stylesheet" type="text/css">
+    <link href="/css/google-font.css" rel="stylesheet" type="text/css">
+    {# 这里是原先的font css设置 '<link href="{{ font_host }}/css?family={{ font_families }}" rel="stylesheet" type="text/css">' Disable Baidu tranformation #}
   {% endif %}
 
 {% endif %}
