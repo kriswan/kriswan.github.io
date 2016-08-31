@@ -9,7 +9,7 @@
       <content type="html"><![CDATA[<blockquote>
 <p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<br><a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
 </blockquote>
-<p><img src="/images/14724796235520.jpg" alt=""></p>
+<p><img src="/images/java-thread-lock.jpg" alt=""></p>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
 <li>线程是一个可以彼此间独立执行、同时共享底层系统资源(如文件、共享对象)的调用序列，Thread类是控制和记录线程活动的类。</li>
 <li>每个应用至少包含一个线程（即启动JVM的那个线程）， 其他的内部后台线程也会在JVM初始化的时候启动，线程数量和特性随各个JVM不同会有很大差异，但是，所有的用户线程都是由主线程（或者说它们的父线程）明确构建和启动的。</li>
@@ -263,7 +263,7 @@
       <content type="html"><![CDATA[<h3 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列 Queue"></a>队列 Queue</h3><blockquote>
 <p>队列是专门设计为存储需要优先处理的对象的集合, 队列中的集合操作方法有两种形式: <strong><em>1:抛出异常,2:返回特定值</em></strong></p>
 </blockquote>
-<p><img src="/images/14724800810004.jpg" alt=""></p>
+<p><img src="/images/java-blocking-queue.jpg" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -582,7 +582,7 @@
       <content type="html"><![CDATA[<p><img src="/images/SmoothWarmingUpRatelimit.png" alt="SmoothWarmingUpRatelimit"></p>
 <blockquote><p>关于流控的一点总结</p>
 </blockquote>
-<h3 id="flow-need-to-be-controled"><a href="#flow-need-to-be-controled" class="headerlink" title="flow need to be controled"></a>flow need to be controled</h3><img src="/2016/05/22/关于流控RateLimit/water-flow.jpg" alt="water is comming !" title="water is comming !">
+<h3 id="flow-need-to-be-controled"><a href="#flow-need-to-be-controled" class="headerlink" title="flow need to be controled"></a>flow need to be controled</h3><p><img src="/images/water-flow.jpg" alt="water-flow"></p>
 ]]></content>
     </entry>
     
@@ -641,7 +641,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x6b;&#114;&#x69;&#x73;&#x77;&#97;&#110;&#x73;&#x66;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#x6b;&#114;&#x69;&#x73;&#x77;&#97;&#110;&#x73;&#x66;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;</a>
+<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#107;&#114;&#x69;&#115;&#x77;&#97;&#110;&#115;&#x66;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#107;&#114;&#x69;&#115;&#x77;&#97;&#110;&#115;&#x66;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>
 ]]></content>
     </entry>
     
