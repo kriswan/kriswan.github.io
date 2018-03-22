@@ -4,10 +4,54 @@
   
     
     <entry>
+      <title><![CDATA[同步和Java内存模型]]></title>
+      <url>http://kriswan.github.io/2016/09/01/%E5%90%8C%E6%AD%A5%E5%92%8CJava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/jmm.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/cpj/jmm.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/cpj/index.html</a><br>References: <a href="http://www.infoq.com/cn/articles/java-memory-model-1" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/java-memory-model-1</a></p>
+</blockquote>
+<p><img src="/images/Java-Memory-Model.jpg" alt="Java-Memory-Mode"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> 考虑下面的不带同步的一个小类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SetCheck</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span>  a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    a =  <span class="number">1</span>;</span><br><span class="line">    b = -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((b ==  <span class="number">0</span>) ||</span><br><span class="line">            (b == -<span class="number">1</span> &amp;&amp; a == <span class="number">1</span>)); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在一个单纯的顺序执行的语言中，这个方法<code>check</code>永远不可能返回<code>false</code>。 即使编译器、运行时系统甚至硬件都有可能会用一种违反直觉的方式执行这段代码，这个结果也不会改变。例如，以下的任何一种情形都可能是方法<code>set</code>的执行情况：</p>
+<ol>
+<li>编译器有可能会重排语句的执行顺序，所以：b有可能会在a之前被赋值。如果这个方法是内联的，编译器甚至还有可能会根据其他的语句的执行情况来重排序当前的语句。</li>
+<li>处理器也可能会重排序这些语句对应的机器码的执行顺序，甚至有可能是同时执行。</li>
+<li>内存系统(由缓存控制单元管理)可能会对提交给变量对应的内存单元的写操作进行重排序。这些写操作可能会和其他的计算和内存操作重叠。</li>
+<li>编译器、处理器和内存系统都可能会交错影响这两句代码在机器码层面的执行。 例如，在一个32位的机器上，变量<strong><code>b</code></strong>的高阶位的字符可能会先被写入，然后是写入变量<strong><code>a</code></strong>，最后才是写入<strong><code>b</code></strong>的低位字符。</li>
+<li>编译器、处理器和内存系统也可能会将变量对应的内存单元的值放置在某个能让代码有同样执行效果的非内存区域的地方(如CPU寄存器)，直到后续的对变量触发校验动作的时刻才会被真正的更新到主存。</li>
+</ol>
+</li>
+<li><p>在一个单纯的顺序执行的语言中，以上任何一种情况只要代码遵循<code>as-if-serial</code>顺序执行语义都不会有问题，顺序执行的程序不依赖于代码块内部的底层处理细节，所以他们很好的应对以上任意一种执行情况，这就为编译器和底层系统提供了很好的伸缩性，充分利用这些便利和机会使得过去的十年间计算机的执行速度得到了大幅度的提升。遵循<code>as-if-serial</code>顺序执行语义的所有的这些控制方法使得程序员可以不需要知道底层具体发生了什么，那些从来没有创建过线程的程序员们对这些变化和影响几乎不会有任何的感知。</p>
+</li>
+<li>但是在并发编程中事情是完全不同的。这种情形下，完全有可能<code>set</code>是在一个线程中被调用而<code>check</code>是在另一个线程中被执行，也就是说<code>check</code>可能在<code>监听</code>另一个线程中<code>set</code>的执行情况。并且前面说的任何一种控制手段的执行都有可能会导致<code>check</code>返回<code>false</code>，例如下面会描述的细节中，<code>check</code>会读取一个既不是0也不是-1的值给<code>b</code>,而是一个中间的半写入的值。同样的，<code>set</code>方法中的乱序执行可能导致<code>check</code>方法读取到的<code>b</code>是-1然后读取到<code>a</code>还是0。</li>
+<li>换句话说，不单单是并发执行可能会导致执行的错乱，它们同样也可能会被重排序或为了获得某种形式的优化提升而做一些几乎和源代码没有任何关联的的优化操作。随着编译器和运行时技术的成熟和多核处理器的普及，这种现象也越加的普遍，这对那些只具备单线程顺序执行编程背景并且从来没有接触过底层的所谓的顺序执行代码的程序员来说，程序往往会出现让他们很吃惊的结果。这有可能就是那些<strong>狡猾</strong>的并发编程错误的根源。</li>
+<li>在几乎所有可能的情况下，有一种很显然的简单的方式去避免由于代码执行优化机制导致的在并发编程中的复杂的问题，那就是<strong>使用同步</strong>。 例如，如果<code>SetCheck</code>类中的两个方法都声明成<code>synchronized</code>，你就可以确认不会有任何的底层的处理细节会影响代码最终的想要的执行结果。</li>
+<li>但有时候你不能或不想使用同步，又或者也许由于其他人的代码没有使用同步，在这些情形下，你务必要依赖于Java内存模型规定的关于执行结果的最小保证的语义。这个模型允许上面列出的各种的底层操作，但是模型对这些底层操作对执行语义的潜在的影响做了限制，同时提供给程序员一些附加的技术手段去控制这些语义。</li>
+<li>Java内存模型是<code>JavaTM</code>语言规范的一部分，主要讲解时在JLS的第17章。 在这里，我们只讨论这个模型基础的使用动机、相关属性和编程影响。</li>
+<li>我们可以把底层的内存模型假想成如下图的一个理想化的标准的<strong>SMP machine</strong>图：<br><img src="/images/14728112145517.jpg" alt=""><ol>
+<li>为便于理解这个模型，我们设想每个线程都运行在一个单独的CPU上。即便在多核的机器上，实际使用中这也是很少见的，但事实上为了让线程占用一些内存模型的初始的属性，这种一个线程一个CPU的匹配方式是合理的且符合这个内存模型的。例如，由于CPU的寄存器不可以别其他的CPU直接访问，这就使得模型就必须允许一个线程感知不到被其他线程操作的的变量的值。但是内存模型的这种影响绝不仅仅限于多核系统，即便在单核CPU上编译器和处理器的一些操作也会产生和多核上一样的担忧和问题。</li>
+<li>这个模型并没有明确的指出前面列出的各种底层的执行策略具体的是被编译器、CPU、缓存控制器获取其他的机制所执行的。它甚至没有以程序员们熟悉的类、对象或方法的形式介绍过。取而代之的是，这个模型是定义了一个线程和主存之间的抽象的关系。每个线程都有一个工作内存<code>**working memory**</code> (是一个缓存和寄存器的抽象概念)用来存储值。模型保证了围绕方法顺序执行交互环节的一些属性和变量的内存地址信息。大部分规则的措辞都是规定需要在什么时候应该对主内存和线程工作内存进行交换操作，这些规则产生了以下的一些交织的问题：<ul>
+<li>原子性，这条说明需要有不可分割的效果，为达到模型的要求，这些规则只应该对相应的实例变量、实例、静态变量、数组元素(不包括方法本地变量)的简单的读和写适用。</li>
+<li>可见性，在什么条件下一个线程的效果对其他的线程是可见的。这些效果包含：对一个实例变量的写入被另外一个线程的读取操作<strong><code>看见</code></strong>。</li>
+<li>顺序性，在什么情况下代码的执行顺序对任意的一个线程来说是乱序的。主要的顺序性问题是发生在读取和写入一些关联的顺序的执行一些赋值语句的变量的时候。<blockquote>
+<p>如果是使用同步，所有这些属性都都有一个简单的角色。在一个同步方法或者块内的所有的更新对其          他的持有同一个锁的同步方法和同步块都是原子的和可见的。并且任何线程内的同步方法和同步块的          执行都是顺序的。尽管程序块内的语句执行有可能是乱序的，但是这个对其他的使用同步的线程来说          不会有影响。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>当程序未使用同步或者同步不一致 </li>
+</ol>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java并发结构]]></title>
       <url>http://kriswan.github.io/2016/08/29/Java%E5%B9%B6%E5%8F%91%E7%BB%93%E6%9E%84/</url>
       <content type="html"><![CDATA[<blockquote>
-<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="external">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
+<p>原文地址：<a href="http://gee.cs.oswego.edu/dl/cpj/mechanics.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/cpj/mechanics.html</a><br>声明： 个人英文水平有限，翻译的不对的地方请重拍！<br>Doug Lee的书:Concurrent Programming In Java的网上地址：<a href="http://gee.cs.oswego.edu/dl/cpj/index.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/cpj/index.html</a></p>
 </blockquote>
 <p><img src="/images/java-thread-lock.jpg" alt=""></p>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
@@ -207,7 +251,7 @@
 </blockquote>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(C.class) &#123; <span class="comment">/* 推荐使用 */</span> &#125;</span><br><span class="line"><span class="keyword">synchronized</span>(getClass()) &#123; </span><br><span class="line">	<span class="comment">/* 不推荐使用，这里其实锁的是实际运行时的类，</span><br><span class="line">	不是你想要的类 */</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(C.class) &#123; <span class="comment">/* 推荐使用 */</span> &#125;</span><br><span class="line"><span class="keyword">synchronized</span>(getClass()) &#123; </span><br><span class="line">	<span class="comment">/* 不推荐使用，这里其实锁的是实际运行时的类，</span></span><br><span class="line"><span class="comment">	不是你想要的类 */</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="监视器"><a href="#监视器" class="headerlink" title="监视器"></a>监视器</h3><ol>
 <li><p>同每个对象都有一把锁一样，每个对象都有一个只能被这些方法：<code>wait, notify, notifyAll and Thread.interrupt</code>操控的<strong>线程等待集合</strong>。同时持有锁和等待集合的对象一般统称为：<strong>监视器</strong>。</p>
 <blockquote>
@@ -353,7 +397,7 @@
 </blockquote>
 <h3 id="先看看我的workflow"><a href="#先看看我的workflow" class="headerlink" title="先看看我的workflow"></a>先看看我的workflow</h3><p><img src="/images/myalfred_workflow.png" alt="myalfredworkflow"></p>
 <blockquote>
-<p>有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫<code>workflow search</code>的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：<br><a href="https://www.alfredapp.com/workflows" target="_blank" rel="external">https://www.alfredapp.com/workflows</a><br><a href="http://www.alfredworkflow.com" target="_blank" rel="external">http://www.alfredworkflow.com</a></p>
+<p>有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫<code>workflow search</code>的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：<br><a href="https://www.alfredapp.com/workflows" target="_blank" rel="noopener">https://www.alfredapp.com/workflows</a><br><a href="http://www.alfredworkflow.com" target="_blank" rel="noopener">http://www.alfredworkflow.com</a></p>
 </blockquote>
 <h4 id="workflow-search"><a href="#workflow-search" class="headerlink" title="workflow search"></a>workflow search</h4><p>这个插件可以随时直接在搜索框中搜索可用的workflow,并下载，关键字是：<code>wf</code><br><img src="/images/workflow_search.png" alt="workflow_search"></p>
 <h4 id="baidu-weather"><a href="#baidu-weather" class="headerlink" title="baidu weather"></a>baidu weather</h4><p>直接查看当前城市的天气状况，关键字：<code>tq</code><br><img src="/images/baidu_weather.png" alt="baidu_weather"></p>
@@ -590,19 +634,19 @@
       <title><![CDATA[Hexo介绍]]></title>
       <url>http://kriswan.github.io/2016/05/13/Hexo%E4%BB%8B%E7%BB%8D/</url>
       <content type="html"><![CDATA[<p><img src="/images/hexo_logo.png" alt="hexo_logo"></p>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentatoin</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentatoin</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="hexo-一些相关的命令"><a href="#hexo-一些相关的命令" class="headerlink" title="hexo 一些相关的命令"></a>hexo 一些相关的命令</h2><blockquote class="blockquote-center"><p>这里会介绍一些hexo相关的命令 </p>
 </blockquote>
-<h3 id="一些博客链接"><a href="#一些博客链接" class="headerlink" title="一些博客链接"></a>一些博客链接</h3><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">搭建博客连接:http://ibruce.info/2013/11/22/hexo-your-blog/</a></p>
+<h3 id="一些博客链接"><a href="#一些博客链接" class="headerlink" title="一些博客链接"></a>一些博客链接</h3><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">搭建博客连接:http://ibruce.info/2013/11/22/hexo-your-blog/</a></p>
 <h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>新建一篇文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><p>本地服务器启动，可以在本地看到博客的情况，方便测试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><p>生成hexo静态文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Server</a></p>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Clean-public-folder-files"><a href="#Clean-public-folder-files" class="headerlink" title="Clean public folder files"></a>Clean public folder files</h3><p>清除public文件夹下的已经生成的静态文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><p>部署到github上的master分支上去<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 <h2 id="Hexo-的一些独特的标签-tag"><a href="#Hexo-的一些独特的标签-tag" class="headerlink" title="Hexo 的一些独特的标签 tag"></a>Hexo 的一些独特的标签 tag</h2><p><img src="/images/tags.gif" alt="blank-tags"></p>
 <blockquote class="blockquote-center"><p>Now, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily!</p>
 </blockquote>
@@ -617,7 +661,7 @@
 {% endblockquote %}
 
 <p>引言：<br><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>David Levithan, Wide Awake</strong><cite><a href="http://wanders.com.cn" target="_blank" rel="external">万的个人网站</a></cite></footer></blockquote></p>
+<footer><strong>David Levithan, Wide Awake</strong><cite><a href="http://wanders.com.cn" target="_blank" rel="noopener">万的个人网站</a></cite></footer></blockquote></p>
 <h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><ul>
 <li><code>![/images/blank-tags.png](/images/blank-tags.png)</code>  这个是标准的markdown的插入图片的语法</li>
 <li> {% asset_img water-flow.jpg water is comming ! %}  这种标签标示的时候<code>water-flow.jpg</code>必须要在文章同级目录下的同名文件夹下<br>图片：<br><img src="/images/blank-tags.jpg" alt="/images/blank-tags.jpg"></li>
@@ -631,7 +675,7 @@
     code put here
   {% endcodeblock %}
 
-<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="noopener">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_.compact([0, 1, false, 2, &apos;&apos;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
 <h3 id="普通段落引言"><a href="#普通段落引言" class="headerlink" title="普通段落引言"></a>普通段落引言</h3> {% pullquote [qut] %}{% endpullquote %}
 <blockquote class="pullquote [qut]"><p>you wanna quote something, you’d better place it here!</p>
 </blockquote>
@@ -641,7 +685,7 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x6b;&#114;&#105;&#115;&#119;&#97;&#x6e;&#115;&#x66;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x6b;&#114;&#105;&#115;&#119;&#97;&#x6e;&#115;&#x66;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a>
+<h3 id="邮件-mail-to-me"><a href="#邮件-mail-to-me" class="headerlink" title="邮件 mail to me"></a>邮件 mail to me</h3><a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6b;&#114;&#105;&#x73;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x6b;&#114;&#105;&#x73;&#x77;&#97;&#x6e;&#x73;&#x66;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>
 ]]></content>
     </entry>
     

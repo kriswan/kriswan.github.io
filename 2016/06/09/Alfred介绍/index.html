@@ -1,7 +1,885 @@
-<!doctype html><html class="theme-next mist use-motion"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="Fw42hLJt-jpObOzc54Ir2jHmNj466D0lxgaQhcJdAGg"><link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css"><link href="/css/google-font.css" rel="stylesheet" type="text/css"><link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css"><meta name="keywords" content="DevTools,"><link rel="alternate" href="/atom.xml" title="Kris's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1"><meta name="description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !
-Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys"><meta property="og:type" content="article"><meta property="og:title" content="Alfred介绍"><meta property="og:url" content="http://kriswan.github.io/2016/06/09/Alfred介绍/index.html"><meta property="og:site_name" content="Kris's Blog"><meta property="og:description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !
-Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys"><meta property="og:image" content="http://kriswan.github.io/images/Alfred-icon.jpg"><meta property="og:image" content="http://kriswan.github.io/images/myalfred_workflow.png"><meta property="og:image" content="http://kriswan.github.io/images/workflow_search.png"><meta property="og:image" content="http://kriswan.github.io/images/baidu_weather.png"><meta property="og:image" content="http://kriswan.github.io/images/air_quality.png"><meta property="og:image" content="http://kriswan.github.io/images/copy_path.png"><meta property="og:image" content="http://kriswan.github.io/images/youdao.png"><meta property="og:image" content="http://kriswan.github.io/images/zhihudaily.png"><meta property="og:image" content="http://kriswan.github.io/images/cny.png"><meta property="og:image" content="http://kriswan.github.io/images/stackoverflow_wf.png"><meta property="og:image" content="http://kriswan.github.io/images/call.png"><meta property="og:image" content="http://kriswan.github.io/images/calling.png"><meta property="og:image" content="http://kriswan.github.io/images/evernote.png"><meta property="og:image" content="http://kriswan.github.io/images/baidumap.png"><meta property="og:updated_time" content="2016-08-29T13:52:24.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Alfred介绍"><meta name="twitter:description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !
-Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys"><meta name="twitter:image" content="http://kriswan.github.io/images/Alfred-icon.jpg"><script type="text/javascript" id="hexo.configuration">var NexT=window.NexT||{},CONFIG={scheme:"Mist",sidebar:{position:"left",display:"post"},fancybox:!0,motion:!0,duoshuo:{userId:9209638,author:"博主"}}</script><title> Alfred介绍 | Kris's Blog</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-77780292-1","auto"),ga("send","pageview")</script><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="//hm.baidu.com/hm.js?e18f4cb94e0d8682b5f94f689e9fe988";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div style="display:none"><script src="http://s6.cnzz.com/stat.php?id=1259154409&web_id=1259154409" type="text/javascript"></script></div><div class="container one-collumn sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Kris's Blog</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">分享</p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div><nav class="site-nav"><ul id="menu" class="menu menu-left"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> 关于</a></li></ul><div class="site-search"><form class="site-search-form"> <input type="text" id="search-input" class="st-search-input st-default-search-input"></form></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><header class="post-header"><h1 class="post-title" itemprop="name headline"> Alfred介绍</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time itemprop="dateCreated" datetime="2016-06-09T21:43:07+08:00" content="2016-06-09">2016-06-09</time></span> <span class="post-category">&nbsp; | &nbsp;<span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a></span></span> <span class="post-comments-count">&nbsp; | &nbsp;<a href="/2016/06/09/Alfred介绍/#comments" itemprop="discussionUrl"><span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/Alfred介绍/" itemprop="commentsCount"></span></a></span> &nbsp; | &nbsp; <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i><span class="busuanzi-value" id="busuanzi_value_page_pv"></span> 次</span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/images/Alfred-icon.jpg" alt="/images/Alfred-icon.jpg"></p><blockquote><p>以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !</p><p>Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac.</p></blockquote><h2 id="基础功能"><a href="#基础功能" class="headerlink" title="基础功能"></a>基础功能</h2><ul><li><code>打开应用程序</code>, 覆盖了spotlight的所有功能， and there is more</li><li><code>简单搜索</code>，直接在输入框里面输入你需要的关键词，回车即提交Google搜索</li><li><code>定位文件</code>，ctrl-space 呼出Alfred后，键入空格，输入你要查找文件名，即可定位文件，回车打开，command+回车打开文件所在文件夹</li><li><code>复杂操作文件</code>：通过find、open、in等关键词搜索文件。find是定位文件，open是定位并打开文件，in是在文件中进行全文检索，三种检索方式基本上可以找到任何你想找的文件</li><li><code>操作Shell</code>：输入<code>&gt;</code>即可直接运行shell命令。比如<code>&gt; cat *.py | grep print，可以直接打开终端并查找当前py文件中包含 print 的语句。</code></li><li><code>控制itunes播放</code>，输入iTunes，会出现一个 iTunes mini play，打开可以通过 Alfred 控制音乐播放。用快捷键也能完成这个功能：shift+option+command+p</li><li>输入email，后面跟邮件地址，可以直接打开写邮件的界面</li><li><code>定义文字片段和粘贴板</code>，在 Alfred 的设置-Features 选中Clipboard，在Snippets里定义自己常用的文字片段，比如代码、地址等等等，之后以<code>option+command+l</code> (<em>这个快捷键是我自己定义的，原先的和其他的快捷键有冲突</em>)呼出界面，输入文字片段的关键字回车即可。<em><u>这里可以保存很长时间的粘贴板的内容，赞！！！</u></em></li><li><p><code>自定义搜索</code>，这个稍微复杂些，打开设置窗口，点击Features-Custom Search，在右侧栏添加自定义搜索。举几个例子帮助大家理解下规则：</p><ul><li><p>搜索iOS App：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Search URL：</span><br><span class="line">itunes://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?term=&#123;query&#125;</span><br><span class="line">Title：iOS App</span><br></pre></td></tr></table></figure></li><li><p>搜索Mac app:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Search URL:</span><br><span class="line">macappstore://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?q=&#123;query&#125;</span><br><span class="line">Title: mac app</span><br><span class="line">keywords: mac</span><br></pre></td></tr></table></figure></li></ul></li></ul><h2 id="workflow-插件"><a href="#workflow-插件" class="headerlink" title="workflow 插件"></a>workflow 插件</h2><blockquote><p>alfred给予了用户很大的自由度去对其进行扩展，这就是workflow插件机制，用户可以按照一定的开发规范，开发各自的任务插件，比如打电话、发短信、播放音乐，搜索天气等等…是不是非常的强大！</p><p>With Alfred’s Powerpack and workflows, you can extend Alfred and get things done in your own way. Replace repetitive tasks with workflows, and boost your productivity.</p></blockquote><h3 id="先看看我的workflow"><a href="#先看看我的workflow" class="headerlink" title="先看看我的workflow"></a>先看看我的workflow</h3><p><img src="/images/myalfred_workflow.png" alt="myalfredworkflow"></p><blockquote><p>有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫<code>workflow search</code>的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：<br><a href="https://www.alfredapp.com/workflows" target="_blank" rel="external">https://www.alfredapp.com/workflows</a><br><a href="http://www.alfredworkflow.com" target="_blank" rel="external">http://www.alfredworkflow.com</a></p></blockquote><h4 id="workflow-search"><a href="#workflow-search" class="headerlink" title="workflow search"></a>workflow search</h4><p>这个插件可以随时直接在搜索框中搜索可用的workflow,并下载，关键字是：<code>wf</code><br><img src="/images/workflow_search.png" alt="workflow_search"></p><h4 id="baidu-weather"><a href="#baidu-weather" class="headerlink" title="baidu weather"></a>baidu weather</h4><p>直接查看当前城市的天气状况，关键字：<code>tq</code><br><img src="/images/baidu_weather.png" alt="baidu_weather"></p><h4 id="air-quality"><a href="#air-quality" class="headerlink" title="air quality"></a>air quality</h4><p>查看当前城市的空气质量, 关键字： <code>air</code><br><img src="/images/air_quality.png" alt="air_quality"></p><h4 id="copy-path"><a href="#copy-path" class="headerlink" title="copy path"></a>copy path</h4><p>这个workflow 直接做成快捷键的方式，在finder里面选中文件后，直接快捷键：<code>ctrl-shift-c</code> 即可拷贝当前文件的绝对路径<br><img src="/images/copy_path.png" alt="copy_path"></p><h4 id="有道翻译"><a href="#有道翻译" class="headerlink" title="有道翻译"></a>有道翻译</h4><p>直接在搜索框中翻译，自动转换中英文， 关键字： <code>yd</code><br><img src="/images/youdao.png" alt="youdao"></p><h4 id="知乎日报"><a href="#知乎日报" class="headerlink" title="知乎日报"></a>知乎日报</h4><p>直接查看知乎日报的热门文章列表， 关键字： <code>zh</code><br><img src="/images/zhihudaily.png" alt="zhihudaily"></p><h4 id="人民币金额大写"><a href="#人民币金额大写" class="headerlink" title="人民币金额大写"></a>人民币金额大写</h4><p>直接转换人民币金额的大写中文， 关键字： <code>cny</code><br><img src="/images/cny.png" alt="cny"></p><h4 id="stackoverflow-搜索"><a href="#stackoverflow-搜索" class="headerlink" title="stackoverflow 搜索"></a>stackoverflow 搜索</h4><p>直接搜索stackoverflow上的相关答案信息，关键字： <code>.so</code><br><img src="/images/stackoverflow_wf.png" alt="stackoverflow"></p><h4 id="电话呼叫"><a href="#电话呼叫" class="headerlink" title="电话呼叫"></a>电话呼叫</h4><p>直接呼叫iphone上的联系人： 关键字: <code>call</code> 这个貌似不支持电话薄的查询，需要每次都输入电话号码，比较麻烦<br><img src="/images/call.png" alt="call"><br><img src="/images/calling.png" alt="calling"></p><h4 id="evernote-搜索"><a href="#evernote-搜索" class="headerlink" title="evernote 搜索"></a>evernote 搜索</h4><p>搜索印象笔记中的内容，同时可以新建笔记，<br>关键字：en 搜索笔记，ennew 新建笔记<br><img src="/images/evernote.png" alt="evernote"></p><h4 id="百度地图搜索"><a href="#百度地图搜索" class="headerlink" title="百度地图搜索"></a>百度地图搜索</h4><p>搜索百度地图，<br>关键字： setl: 设置当前城市， bmap 定位具体地点<br><img src="/images/baidumap.png" alt="baidumap"></p><h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><blockquote class="blockquote-center"><p>alfred 的一般基本功能已经能满足日常大部分的使用了，而且比spotlight要好用的多，付费的powerpak－workflow进一步提升了这个工具的逼格，把玩过后，我只想说，不要太牛掰啊！</p></blockquote></div><div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>鼓励一下</div> <button id="rewardButton" disable="enable" onclick='var e=document.getElementById("QR");"none"===e.style.display?e.style.display="block":e.style.display="none"'> <span>赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechat_payqrcode.jpg" alt="Kris Wan WeChat Pay"><p>微信打赏</p></div><div id="alipay" style="display:inline-block"> <img id="alipay_qr" src="/images/alipay_qcode12x12.png" alt="Kris Wan Alipay"><p>支付宝打赏</p></div></div></div></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/DevTools/" rel="tag">#DevTools</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2016/06/08/Atom快捷键整理/" rel="next" title="Atom快捷键整理"><i class="fa fa-chevron-left"></i> Atom快捷键整理</a></div><div class="post-nav-prev post-nav-item"> <a href="/2016/06/25/记录一次踩坑/" rel="prev" title="记录一次踩坑">记录一次踩坑<i class="fa fa-chevron-right"></i></a></div></div></footer></article><div class="post-spread"><div class="jiathis_style"><a class="jiathis_button_tsina"></a><a class="jiathis_button_tqq"></a><a class="jiathis_button_weixin"></a><a class="jiathis_button_cqq"></a><a class="jiathis_button_douban"></a><a class="jiathis_button_renren"></a><a class="jiathis_button_qzone"></a><a class="jiathis_button_kaixin001"></a><a class="jiathis_button_copy"></a><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a><a class="jiathis_counter_style"></a></div><script type="text/javascript">var jiathis_config={hideMore:!1}</script><script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script></div></div></div><br><hr><p>热评文章</p><div class="ds-top-threads" data-range="daily" data-num-items="3"></div><div class="comments" id="comments"><div class="ds-thread" data-thread-key="2016/06/09/Alfred介绍/" data-title="Alfred介绍" data-url="http://kriswan.github.io/2016/06/09/Alfred介绍/"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview"> 站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar_2.png" alt="Kris Wan"><p class="site-author-name" itemprop="name">Kris Wan</p><p class="site-description motion-element" itemprop="description">You'll live through your pain.Know it will pass,And strength you will gain</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories"><span class="site-state-item-count">6</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags"><span class="site-state-item-count">8</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/kriswan" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="https://twitter.com/icanshutup" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i> Twitter</a></span><span class="links-of-author-item"><a href="http://weibo.com/ragingbullkris" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i> Weibo</a></span><span class="links-of-author-item"><a href="https://www.linkedin.com/in/%E9%A1%BA%E9%A3%9E-%E4%B8%87-909b78120" target="_blank" title="Linkedin"><i class="fa fa-fw fa-linkedin"></i> Linkedin</a></span></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础功能"><span class="nav-number">1.</span> <span class="nav-text">基础功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#workflow-插件"><span class="nav-number">2.</span> <span class="nav-text">workflow 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先看看我的workflow"><span class="nav-number">2.1.</span> <span class="nav-text">先看看我的workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#workflow-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">workflow search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#baidu-weather"><span class="nav-number">2.1.2.</span> <span class="nav-text">baidu weather</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#air-quality"><span class="nav-number">2.1.3.</span> <span class="nav-text">air quality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy-path"><span class="nav-number">2.1.4.</span> <span class="nav-text">copy path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有道翻译"><span class="nav-number">2.1.5.</span> <span class="nav-text">有道翻译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎日报"><span class="nav-number">2.1.6.</span> <span class="nav-text">知乎日报</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人民币金额大写"><span class="nav-number">2.1.7.</span> <span class="nav-text">人民币金额大写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stackoverflow-搜索"><span class="nav-number">2.1.8.</span> <span class="nav-text">stackoverflow 搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电话呼叫"><span class="nav-number">2.1.9.</span> <span class="nav-text">电话呼叫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evernote-搜索"><span class="nav-number">2.1.10.</span> <span class="nav-text">evernote 搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#百度地图搜索"><span class="nav-number">2.1.11.</span> <span class="nav-text">百度地图搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">2.1.12.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"> &copy; <span itemprop="copyrightYear">2016</span><span class="with-love"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Kris Wan</span></div><div class="powered-by"> 由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动</div><div class="theme-info"> 主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div><div class="busuanzi-count"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span> <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script><script type="text/javascript">var duoshuoQuery={short_name:"kriswan"};!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.id="duoshuo-script",t.src=("https:"==document.location.protocol?"https:":"http:")+"//static.duoshuo.com/embed.js",t.charset="UTF-8",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}()</script><script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script><script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script><script>var client=algoliasearch("J5OWVCC0MZ","d73585bd198eaf7155b7089f5b8bd06a"),index=client.initIndex("hexo_search");autocomplete("#search-input",{hint:!1},[{source:autocomplete.sources.hits(index,{hitsPerPage:10}),displayKey:"title",templates:{suggestion:function(e){var l=e._highlightResult.title.value,t=e._highlightResult.tags[0].name.value,a=e._highlightResult.slug.value;return l=l.replace('<em class="highlight">',"").replace("</em>",""),t=t.replace('<em class="highlight">',"").replace("</em>",""),a=a.replace('<em class="highlight">',"").replace("</em>",""),l+' | <b><font color="red">'+t+"</font></b>  |  <b>"+a+"</b>"}}}]).on("autocomplete:selected",function(e,l,t){var a=l._highlightResult.path.value;a=a.replace('<em class="highlight">',""),a=a.replace("</em>",""),window.open("http://"+window.location.host+"/"+a,"_self")})</script><script type="text/x-mathjax-config">
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Fw42hLJt-jpObOzc54Ir2jHmNj466D0lxgaQhcJdAGg" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="/css/google-font.css" rel="stylesheet" type="text/css">
+    
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DevTools," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kris's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful ! Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys">
+<meta name="keywords" content="DevTools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alfred介绍">
+<meta property="og:url" content="http://kriswan.github.io/2016/06/09/Alfred介绍/index.html">
+<meta property="og:site_name" content="Kris&#39;s Blog">
+<meta property="og:description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful ! Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kriswan.github.io/images/Alfred-icon.jpg">
+<meta property="og:image" content="http://kriswan.github.io/images/myalfred_workflow.png">
+<meta property="og:image" content="http://kriswan.github.io/images/workflow_search.png">
+<meta property="og:image" content="http://kriswan.github.io/images/baidu_weather.png">
+<meta property="og:image" content="http://kriswan.github.io/images/air_quality.png">
+<meta property="og:image" content="http://kriswan.github.io/images/copy_path.png">
+<meta property="og:image" content="http://kriswan.github.io/images/youdao.png">
+<meta property="og:image" content="http://kriswan.github.io/images/zhihudaily.png">
+<meta property="og:image" content="http://kriswan.github.io/images/cny.png">
+<meta property="og:image" content="http://kriswan.github.io/images/stackoverflow_wf.png">
+<meta property="og:image" content="http://kriswan.github.io/images/call.png">
+<meta property="og:image" content="http://kriswan.github.io/images/calling.png">
+<meta property="og:image" content="http://kriswan.github.io/images/evernote.png">
+<meta property="og:image" content="http://kriswan.github.io/images/baidumap.png">
+<meta property="og:updated_time" content="2016-08-29T13:52:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Alfred介绍">
+<meta name="twitter:description" content="以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful ! Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys">
+<meta name="twitter:image" content="http://kriswan.github.io/images/Alfred-icon.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 9209638,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Alfred介绍 | Kris's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77780292-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e18f4cb94e0d8682b5f94f689e9fe988";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1259154409&web_id=1259154409" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kris's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">分享</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="search-input" class="st-search-input st-default-search-input" />
+</form>
+
+
+    </div>
+  
+</nav>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Alfred介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-09T21:43:07+08:00" content="2016-06-09">
+              2016-06-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/DevTools/" itemprop="url" rel="index">
+                    <span itemprop="name">DevTools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/09/Alfred介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/Alfred介绍/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/Alfred-icon.jpg" alt="/images/Alfred-icon.jpg"></p>
+<blockquote>
+<p>以前只是听说alfred比mac自带的搜索工具spotlight要强大很多，下载下来发现其实也没体验到有多强大，最近这几天闲来无聊，把玩mac的时候尝试了下alfred的其他功能，不得不说太强大了，so powerful !</p>
+<p>Alfred is an award-winning app for Mac OS X which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac.</p>
+</blockquote>
+<h2 id="基础功能"><a href="#基础功能" class="headerlink" title="基础功能"></a>基础功能</h2><ul>
+<li><code>打开应用程序</code>, 覆盖了spotlight的所有功能， and there is more</li>
+<li><code>简单搜索</code>，直接在输入框里面输入你需要的关键词，回车即提交Google搜索</li>
+<li><code>定位文件</code>，ctrl-space 呼出Alfred后，键入空格，输入你要查找文件名，即可定位文件，回车打开，command+回车打开文件所在文件夹</li>
+<li><code>复杂操作文件</code>：通过find、open、in等关键词搜索文件。find是定位文件，open是定位并打开文件，in是在文件中进行全文检索，三种检索方式基本上可以找到任何你想找的文件</li>
+<li><code>操作Shell</code>：输入<code>&gt;</code>即可直接运行shell命令。比如<code>&gt; cat *.py | grep print，可以直接打开终端并查找当前py文件中包含 print 的语句。</code></li>
+<li><code>控制itunes播放</code>，输入iTunes，会出现一个 iTunes mini play，打开可以通过 Alfred 控制音乐播放。用快捷键也能完成这个功能：shift+option+command+p</li>
+<li>输入email，后面跟邮件地址，可以直接打开写邮件的界面</li>
+<li><code>定义文字片段和粘贴板</code>，在 Alfred 的设置-Features 选中Clipboard，在Snippets里定义自己常用的文字片段，比如代码、地址等等等，之后以<code>option+command+l</code> (<em>这个快捷键是我自己定义的，原先的和其他的快捷键有冲突</em>)呼出界面，输入文字片段的关键字回车即可。<em><u>这里可以保存很长时间的粘贴板的内容，赞！！！</u></em></li>
+<li><p><code>自定义搜索</code>，这个稍微复杂些，打开设置窗口，点击Features-Custom Search，在右侧栏添加自定义搜索。举几个例子帮助大家理解下规则：</p>
+<ul>
+<li><p>搜索iOS App：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Search URL：</span><br><span class="line">itunes://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?term=&#123;query&#125;</span><br><span class="line">Title：iOS App</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>搜索Mac app:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Search URL:</span><br><span class="line">macappstore://ax.search.itunes.apple.com/WebObjects/MZSearch.woa/wa/search?q=&#123;query&#125;</span><br><span class="line">Title: mac app</span><br><span class="line">keywords: mac</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="workflow-插件"><a href="#workflow-插件" class="headerlink" title="workflow 插件"></a>workflow 插件</h2><blockquote>
+<p>alfred给予了用户很大的自由度去对其进行扩展，这就是workflow插件机制，用户可以按照一定的开发规范，开发各自的任务插件，比如打电话、发短信、播放音乐，搜索天气等等…是不是非常的强大！</p>
+<p>With Alfred’s Powerpack and workflows, you can extend Alfred and get things done in your own way. Replace repetitive tasks with workflows, and boost your productivity.</p>
+</blockquote>
+<h3 id="先看看我的workflow"><a href="#先看看我的workflow" class="headerlink" title="先看看我的workflow"></a>先看看我的workflow</h3><p><img src="/images/myalfred_workflow.png" alt="myalfredworkflow"></p>
+<blockquote>
+<p>有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫<code>workflow search</code>的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：<br><a href="https://www.alfredapp.com/workflows" target="_blank" rel="noopener">https://www.alfredapp.com/workflows</a><br><a href="http://www.alfredworkflow.com" target="_blank" rel="noopener">http://www.alfredworkflow.com</a></p>
+</blockquote>
+<h4 id="workflow-search"><a href="#workflow-search" class="headerlink" title="workflow search"></a>workflow search</h4><p>这个插件可以随时直接在搜索框中搜索可用的workflow,并下载，关键字是：<code>wf</code><br><img src="/images/workflow_search.png" alt="workflow_search"></p>
+<h4 id="baidu-weather"><a href="#baidu-weather" class="headerlink" title="baidu weather"></a>baidu weather</h4><p>直接查看当前城市的天气状况，关键字：<code>tq</code><br><img src="/images/baidu_weather.png" alt="baidu_weather"></p>
+<h4 id="air-quality"><a href="#air-quality" class="headerlink" title="air quality"></a>air quality</h4><p>查看当前城市的空气质量, 关键字： <code>air</code><br><img src="/images/air_quality.png" alt="air_quality"></p>
+<h4 id="copy-path"><a href="#copy-path" class="headerlink" title="copy path"></a>copy path</h4><p>这个workflow 直接做成快捷键的方式，在finder里面选中文件后，直接快捷键：<code>ctrl-shift-c</code> 即可拷贝当前文件的绝对路径<br><img src="/images/copy_path.png" alt="copy_path"></p>
+<h4 id="有道翻译"><a href="#有道翻译" class="headerlink" title="有道翻译"></a>有道翻译</h4><p>直接在搜索框中翻译，自动转换中英文， 关键字： <code>yd</code><br><img src="/images/youdao.png" alt="youdao"></p>
+<h4 id="知乎日报"><a href="#知乎日报" class="headerlink" title="知乎日报"></a>知乎日报</h4><p>直接查看知乎日报的热门文章列表， 关键字： <code>zh</code><br><img src="/images/zhihudaily.png" alt="zhihudaily"></p>
+<h4 id="人民币金额大写"><a href="#人民币金额大写" class="headerlink" title="人民币金额大写"></a>人民币金额大写</h4><p>直接转换人民币金额的大写中文， 关键字： <code>cny</code><br><img src="/images/cny.png" alt="cny"></p>
+<h4 id="stackoverflow-搜索"><a href="#stackoverflow-搜索" class="headerlink" title="stackoverflow 搜索"></a>stackoverflow 搜索</h4><p>直接搜索stackoverflow上的相关答案信息，关键字： <code>.so</code><br><img src="/images/stackoverflow_wf.png" alt="stackoverflow"></p>
+<h4 id="电话呼叫"><a href="#电话呼叫" class="headerlink" title="电话呼叫"></a>电话呼叫</h4><p>直接呼叫iphone上的联系人： 关键字: <code>call</code> 这个貌似不支持电话薄的查询，需要每次都输入电话号码，比较麻烦<br><img src="/images/call.png" alt="call"><br><img src="/images/calling.png" alt="calling"></p>
+<h4 id="evernote-搜索"><a href="#evernote-搜索" class="headerlink" title="evernote 搜索"></a>evernote 搜索</h4><p>搜索印象笔记中的内容，同时可以新建笔记，<br>关键字：en 搜索笔记，ennew 新建笔记<br><img src="/images/evernote.png" alt="evernote"></p>
+<h4 id="百度地图搜索"><a href="#百度地图搜索" class="headerlink" title="百度地图搜索"></a>百度地图搜索</h4><p>搜索百度地图，<br>关键字： setl: 设置当前城市， bmap 定位具体地点<br><img src="/images/baidumap.png" alt="baidumap"></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><blockquote class="blockquote-center"><p>alfred 的一般基本功能已经能满足日常大部分的使用了，而且比spotlight要好用的多，付费的powerpak－workflow进一步提升了这个工具的逼格，把玩过后，我只想说，不要太牛掰啊！</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>鼓励一下</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat_payqrcode.jpg" alt="Kris Wan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay_qcode12x12.png" alt="Kris Wan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevTools/" rel="tag">#DevTools</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/08/Atom快捷键整理/" rel="next" title="Atom快捷键整理">
+                <i class="fa fa-chevron-left"></i> Atom快捷键整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/25/记录一次踩坑/" rel="prev" title="记录一次踩坑">
+                记录一次踩坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <br/>
+  <hr />
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="daily" data-num-items="3"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/09/Alfred介绍/"
+           data-title="Alfred介绍" data-url="http://kriswan.github.io/2016/06/09/Alfred介绍/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar_2.png"
+               alt="Kris Wan" />
+          <p class="site-author-name" itemprop="name">Kris Wan</p>
+          <p class="site-description motion-element" itemprop="description">You'll live through your pain.Know it will pass,And strength you will gain</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kriswan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/icanshutup" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ragingbullkris" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%A1%BA%E9%A3%9E-%E4%B8%87-909b78120" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础功能"><span class="nav-number">1.</span> <span class="nav-text">基础功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#workflow-插件"><span class="nav-number">2.</span> <span class="nav-text">workflow 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先看看我的workflow"><span class="nav-number">2.1.</span> <span class="nav-text">先看看我的workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#workflow-search"><span class="nav-number">2.1.1.</span> <span class="nav-text">workflow search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#baidu-weather"><span class="nav-number">2.1.2.</span> <span class="nav-text">baidu weather</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#air-quality"><span class="nav-number">2.1.3.</span> <span class="nav-text">air quality</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy-path"><span class="nav-number">2.1.4.</span> <span class="nav-text">copy path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有道翻译"><span class="nav-number">2.1.5.</span> <span class="nav-text">有道翻译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎日报"><span class="nav-number">2.1.6.</span> <span class="nav-text">知乎日报</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人民币金额大写"><span class="nav-number">2.1.7.</span> <span class="nav-text">人民币金额大写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stackoverflow-搜索"><span class="nav-number">2.1.8.</span> <span class="nav-text">stackoverflow 搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电话呼叫"><span class="nav-number">2.1.9.</span> <span class="nav-text">电话呼叫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evernote-搜索"><span class="nav-number">2.1.10.</span> <span class="nav-text">evernote 搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#百度地图搜索"><span class="nav-number">2.1.11.</span> <span class="nav-text">百度地图搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">2.1.12.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kris Wan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user">本站访客数</i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye">本站总访问量</i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kriswan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script>
+  var client = algoliasearch("J5OWVCC0MZ", "d73585bd198eaf7155b7089f5b8bd06a")
+  var index = client.initIndex('hexo_search');
+  autocomplete('#search-input', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'title',
+      templates: {
+        suggestion: function(suggestion) {
+            var title = suggestion._highlightResult.title.value
+            var tag = suggestion._highlightResult.tags[0].name.value
+            var slug = suggestion._highlightResult.slug.value
+            title = title.replace("<em class=\"highlight\">","").replace("</em>","")
+            tag = tag.replace("<em class=\"highlight\">","").replace("</em>","")
+            slug = slug.replace("<em class=\"highlight\">","").replace("</em>","")
+          return title + " | <b><font color=\"red\">" + tag + "</font></b>  |  <b>" + slug + "</b>";
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+    var str = suggestion._highlightResult.path.value
+    str = str.replace("<em class=\"highlight\">","")
+    str = str.replace("</em>","")
+    window.open("http://" + window.location.host + "/" + str, '_self');
+  });
+</script>
+
+
+
+  
+  <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
@@ -9,11 +887,22 @@ Alfred is an award-winning app for Mac OS X which boosts your efficiency with ho
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
       }
     });
-  </script><script type="text/x-mathjax-config">
+  </script>
+
+  <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
       var all = MathJax.Hub.getAllJax(), i;
       for (i=0; i < all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
       }
     });
-  </script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>

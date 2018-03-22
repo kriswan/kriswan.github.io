@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kriswan.github.io/"/>
-  <updated>2016-08-31T09:28:01.000Z</updated>
+  <updated>2016-09-23T07:42:20.000Z</updated>
   <id>http://kriswan.github.io/</id>
   
   <author>
@@ -16,6 +16,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>同步和Java内存模型</title>
+    <link href="http://kriswan.github.io/2016/09/01/%E5%90%8C%E6%AD%A5%E5%92%8CJava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://kriswan.github.io/2016/09/01/同步和Java内存模型/</id>
+    <published>2016-09-01T08:11:52.000Z</published>
+    <updated>2016-09-23T07:42:20.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/jmm.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/jmm.html&lt;/a&gt;&lt;br&gt;声明： 个人英文水平有限，翻译的不对的地方请重拍！&lt;br&gt;Doug Lee的书:Concurrent Programming In Java的网上地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/index.html&lt;/a&gt;&lt;br&gt;References: &lt;a href=&quot;http://www.infoq.com/cn/articles/java-memory-model-1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.infoq.com/cn/articles/java-memory-model-1&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Java-Memory-Model.jpg&quot; alt=&quot;Java-Memory-Mode&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt; 考虑下面的不带同步的一个小类：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SetCheck&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;  a = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a =  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b = -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ((b ==  &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) ||&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            (b == -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;amp;&amp;amp; a == &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在一个单纯的顺序执行的语言中，这个方法&lt;code&gt;check&lt;/code&gt;永远不可能返回&lt;code&gt;false&lt;/code&gt;。 即使编译器、运行时系统甚至硬件都有可能会用一种违反直觉的方式执行这段代码，这个结果也不会改变。例如，以下的任何一种情形都可能是方法&lt;code&gt;set&lt;/code&gt;的执行情况：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编译器有可能会重排语句的执行顺序，所以：b有可能会在a之前被赋值。如果这个方法是内联的，编译器甚至还有可能会根据其他的语句的执行情况来重排序当前的语句。&lt;/li&gt;
+&lt;li&gt;处理器也可能会重排序这些语句对应的机器码的执行顺序，甚至有可能是同时执行。&lt;/li&gt;
+&lt;li&gt;内存系统(由缓存控制单元管理)可能会对提交给变量对应的内存单元的写操作进行重排序。这些写操作可能会和其他的计算和内存操作重叠。&lt;/li&gt;
+&lt;li&gt;编译器、处理器和内存系统都可能会交错影响这两句代码在机器码层面的执行。 例如，在一个32位的机器上，变量&lt;strong&gt;&lt;code&gt;b&lt;/code&gt;&lt;/strong&gt;的高阶位的字符可能会先被写入，然后是写入变量&lt;strong&gt;&lt;code&gt;a&lt;/code&gt;&lt;/strong&gt;，最后才是写入&lt;strong&gt;&lt;code&gt;b&lt;/code&gt;&lt;/strong&gt;的低位字符。&lt;/li&gt;
+&lt;li&gt;编译器、处理器和内存系统也可能会将变量对应的内存单元的值放置在某个能让代码有同样执行效果的非内存区域的地方(如CPU寄存器)，直到后续的对变量触发校验动作的时刻才会被真正的更新到主存。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在一个单纯的顺序执行的语言中，以上任何一种情况只要代码遵循&lt;code&gt;as-if-serial&lt;/code&gt;顺序执行语义都不会有问题，顺序执行的程序不依赖于代码块内部的底层处理细节，所以他们很好的应对以上任意一种执行情况，这就为编译器和底层系统提供了很好的伸缩性，充分利用这些便利和机会使得过去的十年间计算机的执行速度得到了大幅度的提升。遵循&lt;code&gt;as-if-serial&lt;/code&gt;顺序执行语义的所有的这些控制方法使得程序员可以不需要知道底层具体发生了什么，那些从来没有创建过线程的程序员们对这些变化和影响几乎不会有任何的感知。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;但是在并发编程中事情是完全不同的。这种情形下，完全有可能&lt;code&gt;set&lt;/code&gt;是在一个线程中被调用而&lt;code&gt;check&lt;/code&gt;是在另一个线程中被执行，也就是说&lt;code&gt;check&lt;/code&gt;可能在&lt;code&gt;监听&lt;/code&gt;另一个线程中&lt;code&gt;set&lt;/code&gt;的执行情况。并且前面说的任何一种控制手段的执行都有可能会导致&lt;code&gt;check&lt;/code&gt;返回&lt;code&gt;false&lt;/code&gt;，例如下面会描述的细节中，&lt;code&gt;check&lt;/code&gt;会读取一个既不是0也不是-1的值给&lt;code&gt;b&lt;/code&gt;,而是一个中间的半写入的值。同样的，&lt;code&gt;set&lt;/code&gt;方法中的乱序执行可能导致&lt;code&gt;check&lt;/code&gt;方法读取到的&lt;code&gt;b&lt;/code&gt;是-1然后读取到&lt;code&gt;a&lt;/code&gt;还是0。&lt;/li&gt;
+&lt;li&gt;换句话说，不单单是并发执行可能会导致执行的错乱，它们同样也可能会被重排序或为了获得某种形式的优化提升而做一些几乎和源代码没有任何关联的的优化操作。随着编译器和运行时技术的成熟和多核处理器的普及，这种现象也越加的普遍，这对那些只具备单线程顺序执行编程背景并且从来没有接触过底层的所谓的顺序执行代码的程序员来说，程序往往会出现让他们很吃惊的结果。这有可能就是那些&lt;strong&gt;狡猾&lt;/strong&gt;的并发编程错误的根源。&lt;/li&gt;
+&lt;li&gt;在几乎所有可能的情况下，有一种很显然的简单的方式去避免由于代码执行优化机制导致的在并发编程中的复杂的问题，那就是&lt;strong&gt;使用同步&lt;/strong&gt;。 例如，如果&lt;code&gt;SetCheck&lt;/code&gt;类中的两个方法都声明成&lt;code&gt;synchronized&lt;/code&gt;，你就可以确认不会有任何的底层的处理细节会影响代码最终的想要的执行结果。&lt;/li&gt;
+&lt;li&gt;但有时候你不能或不想使用同步，又或者也许由于其他人的代码没有使用同步，在这些情形下，你务必要依赖于Java内存模型规定的关于执行结果的最小保证的语义。这个模型允许上面列出的各种的底层操作，但是模型对这些底层操作对执行语义的潜在的影响做了限制，同时提供给程序员一些附加的技术手段去控制这些语义。&lt;/li&gt;
+&lt;li&gt;Java内存模型是&lt;code&gt;JavaTM&lt;/code&gt;语言规范的一部分，主要讲解时在JLS的第17章。 在这里，我们只讨论这个模型基础的使用动机、相关属性和编程影响。&lt;/li&gt;
+&lt;li&gt;我们可以把底层的内存模型假想成如下图的一个理想化的标准的&lt;strong&gt;SMP machine&lt;/strong&gt;图：&lt;br&gt;&lt;img src=&quot;/images/14728112145517.jpg&quot; alt=&quot;&quot;&gt;&lt;ol&gt;
+&lt;li&gt;为便于理解这个模型，我们设想每个线程都运行在一个单独的CPU上。即便在多核的机器上，实际使用中这也是很少见的，但事实上为了让线程占用一些内存模型的初始的属性，这种一个线程一个CPU的匹配方式是合理的且符合这个内存模型的。例如，由于CPU的寄存器不可以别其他的CPU直接访问，这就使得模型就必须允许一个线程感知不到被其他线程操作的的变量的值。但是内存模型的这种影响绝不仅仅限于多核系统，即便在单核CPU上编译器和处理器的一些操作也会产生和多核上一样的担忧和问题。&lt;/li&gt;
+&lt;li&gt;这个模型并没有明确的指出前面列出的各种底层的执行策略具体的是被编译器、CPU、缓存控制器获取其他的机制所执行的。它甚至没有以程序员们熟悉的类、对象或方法的形式介绍过。取而代之的是，这个模型是定义了一个线程和主存之间的抽象的关系。每个线程都有一个工作内存&lt;code&gt;**working memory**&lt;/code&gt; (是一个缓存和寄存器的抽象概念)用来存储值。模型保证了围绕方法顺序执行交互环节的一些属性和变量的内存地址信息。大部分规则的措辞都是规定需要在什么时候应该对主内存和线程工作内存进行交换操作，这些规则产生了以下的一些交织的问题：&lt;ul&gt;
+&lt;li&gt;原子性，这条说明需要有不可分割的效果，为达到模型的要求，这些规则只应该对相应的实例变量、实例、静态变量、数组元素(不包括方法本地变量)的简单的读和写适用。&lt;/li&gt;
+&lt;li&gt;可见性，在什么条件下一个线程的效果对其他的线程是可见的。这些效果包含：对一个实例变量的写入被另外一个线程的读取操作&lt;strong&gt;&lt;code&gt;看见&lt;/code&gt;&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;顺序性，在什么情况下代码的执行顺序对任意的一个线程来说是乱序的。主要的顺序性问题是发生在读取和写入一些关联的顺序的执行一些赋值语句的变量的时候。&lt;blockquote&gt;
+&lt;p&gt;如果是使用同步，所有这些属性都都有一个简单的角色。在一个同步方法或者块内的所有的更新对其          他的持有同一个锁的同步方法和同步块都是原子的和可见的。并且任何线程内的同步方法和同步块的          执行都是顺序的。尽管程序块内的语句执行有可能是乱序的，但是这个对其他的使用同步的线程来说          不会有影响。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;当程序未使用同步或者同步不一致 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/jmm.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/jmm.h
+    
+    </summary>
+    
+      <category term="翻译" scheme="http://kriswan.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="Java" scheme="http://kriswan.github.io/tags/Java/"/>
+    
+      <category term="翻译" scheme="http://kriswan.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="DougLee" scheme="http://kriswan.github.io/tags/DougLee/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java并发结构</title>
     <link href="http://kriswan.github.io/2016/08/29/Java%E5%B9%B6%E5%8F%91%E7%BB%93%E6%9E%84/"/>
     <id>http://kriswan.github.io/2016/08/29/Java并发结构/</id>
@@ -23,7 +88,7 @@
     <updated>2016-08-31T09:28:01.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
-&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&lt;/a&gt;&lt;br&gt;声明： 个人英文水平有限，翻译的不对的地方请重拍！&lt;br&gt;Doug Lee的书:Concurrent Programming In Java的网上地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&lt;/a&gt;&lt;br&gt;声明： 个人英文水平有限，翻译的不对的地方请重拍！&lt;br&gt;Doug Lee的书:Concurrent Programming In Java的网上地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;/images/java-thread-lock.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;线程&quot;&gt;&lt;a href=&quot;#线程&quot; class=&quot;headerlink&quot; title=&quot;线程&quot;&gt;&lt;/a&gt;线程&lt;/h2&gt;&lt;ol&gt;
@@ -223,7 +288,7 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(C.class) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* 推荐使用 */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(getClass()) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* 不推荐使用，这里其实锁的是实际运行时的类，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	不是你想要的类 */&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(C.class) &amp;#123; &lt;span class=&quot;comment&quot;&gt;/* 推荐使用 */&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(getClass()) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/* 不推荐使用，这里其实锁的是实际运行时的类，&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;	不是你想要的类 */&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;监视器&quot;&gt;&lt;a href=&quot;#监视器&quot; class=&quot;headerlink&quot; title=&quot;监视器&quot;&gt;&lt;/a&gt;监视器&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;同每个对象都有一把锁一样，每个对象都有一个只能被这些方法：&lt;code&gt;wait, notify, notifyAll and Thread.interrupt&lt;/code&gt;操控的&lt;strong&gt;线程等待集合&lt;/strong&gt;。同时持有锁和等待集合的对象一般统称为：&lt;strong&gt;监视器&lt;/strong&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -275,7 +340,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gee.cs.oswego.edu/dl/cpj
+&lt;p&gt;原文地址：&lt;a href=&quot;http://gee.cs.oswego.edu/dl/cpj/mechanics.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://gee.cs.oswego.edu/dl/cpj
     
     </summary>
     
@@ -429,7 +494,7 @@
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;先看看我的workflow&quot;&gt;&lt;a href=&quot;#先看看我的workflow&quot; class=&quot;headerlink&quot; title=&quot;先看看我的workflow&quot;&gt;&lt;/a&gt;先看看我的workflow&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/myalfred_workflow.png&quot; alt=&quot;myalfredworkflow&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫&lt;code&gt;workflow search&lt;/code&gt;的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：&lt;br&gt;&lt;a href=&quot;https://www.alfredapp.com/workflows&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.alfredapp.com/workflows&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.alfredworkflow.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.alfredworkflow.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有非常多的这种workflow可以供我们下载使用：当然我们也可以去Google，一搜一大堆，或者直接安装一个叫&lt;code&gt;workflow search&lt;/code&gt;的workflow,直接在alfred上搜，下面提供两个比较常用的搜索地址：&lt;br&gt;&lt;a href=&quot;https://www.alfredapp.com/workflows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.alfredapp.com/workflows&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.alfredworkflow.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.alfredworkflow.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&quot;workflow-search&quot;&gt;&lt;a href=&quot;#workflow-search&quot; class=&quot;headerlink&quot; title=&quot;workflow search&quot;&gt;&lt;/a&gt;workflow search&lt;/h4&gt;&lt;p&gt;这个插件可以随时直接在搜索框中搜索可用的workflow,并下载，关键字是：&lt;code&gt;wf&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/workflow_search.png&quot; alt=&quot;workflow_search&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;baidu-weather&quot;&gt;&lt;a href=&quot;#baidu-weather&quot; class=&quot;headerlink&quot; title=&quot;baidu weather&quot;&gt;&lt;/a&gt;baidu weather&lt;/h4&gt;&lt;p&gt;直接查看当前城市的天气状况，关键字：&lt;code&gt;tq&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/baidu_weather.png&quot; alt=&quot;baidu_weather&quot;&gt;&lt;/p&gt;
@@ -741,19 +806,19 @@
     <updated>2016-06-10T03:10:03.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/hexo_logo.png&quot; alt=&quot;hexo_logo&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentatoin&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentatoin&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;hexo-一些相关的命令&quot;&gt;&lt;a href=&quot;#hexo-一些相关的命令&quot; class=&quot;headerlink&quot; title=&quot;hexo 一些相关的命令&quot;&gt;&lt;/a&gt;hexo 一些相关的命令&lt;/h2&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;这里会介绍一些hexo相关的命令 &lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;一些博客链接&quot;&gt;&lt;a href=&quot;#一些博客链接&quot; class=&quot;headerlink&quot; title=&quot;一些博客链接&quot;&gt;&lt;/a&gt;一些博客链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建博客连接:http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一些博客链接&quot;&gt;&lt;a href=&quot;#一些博客链接&quot; class=&quot;headerlink&quot; title=&quot;一些博客链接&quot;&gt;&lt;/a&gt;一些博客链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;搭建博客连接:http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;p&gt;新建一篇文章&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;p&gt;本地服务器启动，可以在本地看到博客的情况，方便测试&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;p&gt;生成hexo静态文件&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Clean-public-folder-files&quot;&gt;&lt;a href=&quot;#Clean-public-folder-files&quot; class=&quot;headerlink&quot; title=&quot;Clean public folder files&quot;&gt;&lt;/a&gt;Clean public folder files&lt;/h3&gt;&lt;p&gt;清除public文件夹下的已经生成的静态文件&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo clean&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;p&gt;部署到github上的master分支上去&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Hexo-的一些独特的标签-tag&quot;&gt;&lt;a href=&quot;#Hexo-的一些独特的标签-tag&quot; class=&quot;headerlink&quot; title=&quot;Hexo 的一些独特的标签 tag&quot;&gt;&lt;/a&gt;Hexo 的一些独特的标签 tag&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/tags.gif&quot; alt=&quot;blank-tags&quot;&gt;&lt;/p&gt;
 &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;Now, We’ll talk a little bit hexo tag plugins, To help you munipulate you blog easily!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -768,7 +833,7 @@
 {% endblockquote %}
 
 &lt;p&gt;引言：&lt;br&gt;&lt;blockquote&gt;&lt;p&gt;Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.&lt;/p&gt;
-&lt;footer&gt;&lt;strong&gt;David Levithan, Wide Awake&lt;/strong&gt;&lt;cite&gt;&lt;a href=&quot;http://wanders.com.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;万的个人网站&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/p&gt;
+&lt;footer&gt;&lt;strong&gt;David Levithan, Wide Awake&lt;/strong&gt;&lt;cite&gt;&lt;a href=&quot;http://wanders.com.cn&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;万的个人网站&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/p&gt;
 &lt;h3 id=&quot;插入图片&quot;&gt;&lt;a href=&quot;#插入图片&quot; class=&quot;headerlink&quot; title=&quot;插入图片&quot;&gt;&lt;/a&gt;插入图片&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;![/images/blank-tags.png](/images/blank-tags.png)&lt;/code&gt;  这个是标准的markdown的插入图片的语法&lt;/li&gt;
 &lt;li&gt; {% asset_img water-flow.jpg water is comming ! %}  这种标签标示的时候&lt;code&gt;water-flow.jpg&lt;/code&gt;必须要在文章同级目录下的同名文件夹下&lt;br&gt;图片：&lt;br&gt;&lt;img src=&quot;/images/blank-tags.jpg&quot; alt=&quot;/images/blank-tags.jpg&quot;&gt;&lt;/li&gt;
@@ -782,7 +847,7 @@
     code put here
   {% endcodeblock %}
 
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_.compact&lt;/span&gt;&lt;a href=&quot;http://underscorejs.org/#compact&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Underscore.js&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_.compact([0, 1, false, 2, &amp;apos;&amp;apos;, 3]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;=&amp;gt; [1, 2, 3]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_.compact&lt;/span&gt;&lt;a href=&quot;http://underscorejs.org/#compact&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Underscore.js&lt;/a&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_.compact([0, 1, false, 2, &amp;apos;&amp;apos;, 3]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;=&amp;gt; [1, 2, 3]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;普通段落引言&quot;&gt;&lt;a href=&quot;#普通段落引言&quot; class=&quot;headerlink&quot; title=&quot;普通段落引言&quot;&gt;&lt;/a&gt;普通段落引言&lt;/h3&gt; {% pullquote [qut] %}{% endpullquote %}
 &lt;blockquote class=&quot;pullquote [qut]&quot;&gt;&lt;p&gt;you wanna quote something, you’d better place it here!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -792,13 +857,13 @@
 
  If certain content is causing processing issues in your posts, wrap it with the raw tag to avoid rendering errors.
 
-&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#116;&amp;#x6f;&amp;#58;&amp;#x6b;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#97;&amp;#x6e;&amp;#115;&amp;#x66;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&quot;&gt;&amp;#x6b;&amp;#114;&amp;#105;&amp;#115;&amp;#119;&amp;#97;&amp;#x6e;&amp;#115;&amp;#x66;&amp;#64;&amp;#x67;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#x63;&amp;#111;&amp;#109;&lt;/a&gt;
+&lt;h3 id=&quot;邮件-mail-to-me&quot;&gt;&lt;a href=&quot;#邮件-mail-to-me&quot; class=&quot;headerlink&quot; title=&quot;邮件 mail to me&quot;&gt;&lt;/a&gt;邮件 mail to me&lt;/h3&gt;&lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x6b;&amp;#114;&amp;#105;&amp;#x73;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#x66;&amp;#x40;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&quot;&gt;&amp;#x6b;&amp;#114;&amp;#105;&amp;#x73;&amp;#x77;&amp;#97;&amp;#x6e;&amp;#x73;&amp;#x66;&amp;#x40;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#109;&lt;/a&gt;
 </content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;/images/hexo_logo.png&quot; alt=&quot;hexo_logo&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! T
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! T
     
     </summary>
     
